@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:8080/",
+    publicPath: "/",
   },
 
   resolve: {
@@ -44,7 +44,7 @@ module.exports = {
       name: "main",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@http://localhost:8084/remoteEntry.js"
+        components: "components@https://calm-monstera-d723a6.netlify.app/remoteEntry.js"
       },
       exposes: {},
       shared: {
