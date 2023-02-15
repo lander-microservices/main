@@ -10,8 +10,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Jack Herrington",
-    "email": "jherr@pobox.com"
+    "name": "Pranav Kumar",
+    "email": "praispranav@gmail.com"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
+    "dotenv": "^16.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

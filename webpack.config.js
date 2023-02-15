@@ -1,5 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+require('dotenv').config();
+
+console.log("Env", process.env.DOMAIN)
 
 const fs = require('fs');
 try{
@@ -10,7 +13,8 @@ fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://elegant-queijadas-ef3df2.netlify.app/",
+    publicPath: "http://localhost:8080/",
+    // publicPath: "https://elegant-queijadas-ef3df2.netlify.app/",
   },
 
   resolve: {
@@ -50,7 +54,8 @@ module.exports = {
       name: "main",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@https://calm-monstera-d723a6.netlify.app/remoteEntry.js"
+        components: "components@https://calm-monstera-d723a6.netlify.app/remoteEntry.js",
+        landers: "lander@https://candid-pithivier-dd1f7e.netlify.app/remoteEntry.js"
       },
       exposes: {},
       shared: {
@@ -66,7 +71,7 @@ module.exports = {
       },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./src/html/" + process.env.DOMAIN + '.html',
     }),
   ],
 };
