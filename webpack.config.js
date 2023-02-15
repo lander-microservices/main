@@ -10,7 +10,7 @@ fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "/",
+    publicPath: "https://elegant-queijadas-ef3df2.netlify.app/",
   },
 
   resolve: {
