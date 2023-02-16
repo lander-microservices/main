@@ -1,7 +1,7 @@
 import React from "react"
 
-const Header1 = React.lazy(()=> import('components/Header'));
-const Footer1 = React.lazy(()=> import('components/Footer'));
+const Header1 = React.lazy(()=> import('components/Header1'));
+const Footer1 = React.lazy(()=> import('components/Footer1'));
 
 export const COMPONENTS = {
     Header1,
