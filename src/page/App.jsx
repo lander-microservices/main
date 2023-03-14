@@ -34,8 +34,18 @@ const App = () => {
         path: "lander-2",
         component: "Lander2",
       },
+      {
+        path: "lander-3",
+        component: "Lander3",
+      },
+      {
+        path: "lander-4",
+        component: "Lander4",
+      },
     ],
-    pageConfig: {},
+    pageConfig: {
+      voluumUrl: "https://track.qualifybenefits.co/click"
+    },
   };
   return (
     <Wrapper {...wrapperConfig}>

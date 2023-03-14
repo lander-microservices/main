@@ -5,15 +5,15 @@ require('dotenv').config();
 console.log("Env", process.env.DOMAIN)
 
 const fs = require('fs');
-try{
+try {
   fs.mkdirSync('./dist')
-} catch(error){}
+} catch (error) { }
 fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://elegant-queijadas-ef3df2.netlify.app/",
+    publicPath: "http://localhost:8080/",
   },
 
   resolve: {
@@ -53,8 +53,8 @@ module.exports = {
       name: "main",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@https://calm-monstera-d723a6.netlify.app/remoteEntry.js",
-        landers: "lander@https://candid-pithivier-dd1f7e.netlify.app/remoteEntry.js"
+        components: "components@http://localhost:8084/remoteEntry.js",
+        landers: "lander@http://localhost:8082/remoteEntry.js"
       },
       exposes: {},
       shared: {
@@ -70,7 +70,7 @@ module.exports = {
       },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/html/" + 'index' + '.html',
+      template: "./src/html/" + 'qualifybenefits/' + 'index.html',
     }),
   ],
 };

@@ -21,7 +21,7 @@ export default function ContentLoader({
     Lander = LANDERS[findPathName.component];
     return (
       <React.Suspense fallback={<></>}>
-            <Lander init={()=> {}} number="(800)888888" callClickCb={()=>{}} />
+            <Lander init={()=> {}} number="(800)888888" callClickCb={()=>{}} voluumUrl={pageConfig.voluumUrl} />
       </React.Suspense>
     );
   }

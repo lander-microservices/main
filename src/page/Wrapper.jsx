@@ -7,11 +7,15 @@ export default function Wrapper({ headerConfig, footerConfig, header, footer, ch
   return (
     <React.Fragment>
       <React.Suspense fallback={<></>}>
-        <Header {...headerConfig} />
+        <>
+          <Header {...headerConfig} />
+        </>
       </React.Suspense>
       {children}
       <React.Suspense fallback={<></>}>
-        <Footer {...footerConfig} />
+        <>
+          <Footer {...footerConfig} />
+        </>
       </React.Suspense>
     </React.Fragment>
   );
