@@ -70,7 +70,7 @@ module.exports = {
       },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/html/" + 'qualifybenefits/' + 'index.html',
+      template: './src/html/qualifybenefits.html',
     }),
   ],
 };
