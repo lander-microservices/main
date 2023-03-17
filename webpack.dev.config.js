@@ -54,7 +54,8 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         components: "components@http://localhost:8084/remoteEntry.js",
-        landers: "lander@http://localhost:8082/remoteEntry.js"
+        landers: "lander@http://localhost:8082/remoteEntry.js",
+        prelander: "prelander@http://localhost:8086/remoteEntry.js"
       },
       exposes: {},
       shared: {

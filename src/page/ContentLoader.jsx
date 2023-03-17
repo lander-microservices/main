@@ -7,14 +7,15 @@ export default function ContentLoader({
   defaultRedirect,
 }) {
   const currentRoute = window.location.pathname;
-  const findPathName = routeConfig.find((path) =>
-    currentRoute.includes(path.path)
+  const findPathName = routeConfig.find((path) =>{
+    return currentRoute.replace('/', '') === path.path
+  }
   );
 
-  console.log('CurrentRoute', currentRoute, findPathName);
-
   if (!findPathName) {
-    window.location.href = defaultRedirect
+    console.log(findPathName)
+    return <p>Error While Loading Page</p>
+    // window.location.href = defaultRedirect
   } 
   if (findPathName) {
     let Lander;

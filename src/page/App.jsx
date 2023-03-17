@@ -31,16 +31,8 @@ const App = () => {
         component: "Lander1",
       },
       {
-        path: "lander-2",
-        component: "Lander2",
-      },
-      {
-        path: "lander-3",
-        component: "Lander3",
-      },
-      {
-        path: "lander-4",
-        component: "Lander4",
+        path: "prelander-1",
+        component: "PreLander1",
       },
     ],
     pageConfig: {
