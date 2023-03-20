@@ -5,6 +5,8 @@ import ContentLoader from "./ContentLoader";
 import "./index.css";
 import Wrapper from "./Wrapper";
 
+
+
 const App = () => {
   const wrapperConfig = {
     headerConfig: {
