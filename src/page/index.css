@@ -1,15 +1,82 @@
+:root {
+  --blue : #274066;
+  --yellow : #FFE300;
+  --red : #D01B34;
+  --skyblue : #F5FBFF;
+  --lightgreen :#00B67A;
+  --gray :#4D4D4D;
+  --white : #FFFFFF;
+  --black : #000000;
+}
+*, :after, :before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.blue {
+  color: var(--blue);
+}
+.bg-blue {
+  background-color: var(--blue);
+}
+.yellow {
+  color: var(--yellow);
+}
+.bg-yellow {
+  background-color: var(--yellow);
+}
+.red {
+  color: var(--red);
+}
+.bg-red {
+  background-color: var(--red);
+}
+.skyblue {
+  color: var(--skyblue);
+}
+.bg-skyblue {
+  background-color: var(--skyblue);
+}
+.lightgreen {
+  color: var(--lightgreen);
+}
+.bg-lightgreen {
+  background-color: var(--lightgreen);
+}
+.gray {
+  color: var(--gray);
+}
+.bg-gray {
+  background-color: var(--gray);
+}
+.white {
+  color: var(--white);
+}
+.bg-white {
+  background-color: var(--white);
+}
+.black {
+  color: var(--black);
+}
+.bg-black {
+  background-color: var(--black);
+}
 body {
-  color: #274066;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--blue);
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   line-height: 1.4;
   margin: 0;
 }
-*, ::after, ::before {
-  box-sizing: border-box;
+img {
+  max-width: 100%;
 }
-
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
 .container {
   max-width: 100%;
   padding-right: calc(3rem * .5);
