@@ -11,7 +11,7 @@ const App = () => {
   const wrapperConfig = {
     headerConfig: {
       eventID: "EventId",
-      number: "(800) 888 99",
+      number: "(800) 888-9999",
       headerTitle: "QualifyBenefits.co",
     },
     footerConfig: {
