@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ContentLoader from "./ContentLoader";
 
-import "./index.css";
+// import "./index.css";
 import Wrapper from "./Wrapper";
-
+import "components/GlobalCss"
 
 
 const App = () => {
