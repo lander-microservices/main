@@ -3,9 +3,9 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 require('dotenv').config();
 
 const fs = require('fs');
-try{
+try {
   fs.mkdirSync('./dist')
-} catch(error){}
+} catch (error) { }
 fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 
 const deps = require("./package.json").dependencies;
@@ -51,9 +51,9 @@ module.exports = {
       name: "main",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@https://component-microservice.netlify.app/remoteEntry.js",
-        landers: "lander@https://candid-pithivier-dd1f7e.netlify.app/remoteEntry.js",
-        prelander: "prelander@https://preladner-micorservice.netlify.app/remoteEntry.js"
+        components: "components@http://localhost:8084/remoteEntry.js",
+        landers: "lander@http://localhost:8082/remoteEntry.js",
+        prelander: "prelander@http://localhost:8086/remoteEntry.js"
       },
       exposes: {},
       shared: {
@@ -69,7 +69,7 @@ module.exports = {
       },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/html/" + process.env.DOMAIN + '.html',
+      template: './src/html/qualifybenefits.html',
     }),
   ],
 };
