@@ -2,8 +2,6 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 require('dotenv').config();
 
-console.log("Env", process.env.DOMAIN)
-
 const fs = require('fs');
 try {
   fs.mkdirSync('./dist')

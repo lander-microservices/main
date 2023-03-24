@@ -1,50 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ContentLoader from "./ContentLoader";
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+import { useStoryblok, StoryblokComponent } from "@storyblok/react";
+import Prelander from "./PreLander";
+import "components/GlobalCss";
 
-// import "./index.css";
-import Wrapper from "./Wrapper";
-import "components/GlobalCss"
-
+storyblokInit({
+  accessToken: "gVJgZvajxLWDT0saMgTqswtt",
+  use: [apiPlugin],
+  components: {
+    prelander: Prelander,
+  },
+  apiOptions: { region: "us" },
+});
 
 const App = () => {
-  const wrapperConfig = {
-    headerConfig: {
-      eventID: "EventId",
-      number: "(800) 888-9999",
-      headerTitle: "QualifyBenefits.co",
-    },
-    footerConfig: {
-      footerTitle: "QualifyBenefits.co",
-      fullName: "QualifyBenefits",
-      eventID: "EventID",
-      privacyPolicyRoute: "",
-      termsAndConditionsRoute: "",
-      partnerListRoute: "",
-    },
-    header: "Header1",
-    footer: "Footer1",
+  let slug =
+    window.location.pathname === "/"
+      ? "home"
+      : window.location.pathname.replace("/", "");
 
-    defaultRedirect: "qualifybenefits.co",
+  const story = useStoryblok(slug, { version: "draft" });
+  if (!story || !story.content) {
+    return <div>Loading...</div>;
+  }
 
-    routeConfig: [
-      {
-        path: "lander-1",
-        component: "Lander1",
-      },
-      {
-        path: "prelander-1",
-        component: "PreLander1",
-      },
-    ],
-    pageConfig: {
-      voluumUrl: "https://track.qualifybenefits.co/click"
-    },
-  };
-  return (
-    <Wrapper {...wrapperConfig}>
-      <ContentLoader {...wrapperConfig}></ContentLoader>
-    </Wrapper>
-  );
+  return <StoryblokComponent blok={story.content} />;
 };
 ReactDOM.render(<App />, document.getElementById("app"));

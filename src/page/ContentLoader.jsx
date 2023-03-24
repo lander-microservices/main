@@ -14,7 +14,6 @@ export default function ContentLoader({
   });
 
   if (!findPathName) {
-    console.log(findPathName);
     return <p>Error While Loading Page</p>;
     // window.location.href = defaultRedirect
   }
