@@ -11,9 +11,7 @@ fs.copyFileSync('./src/_redirects', "./dist/_redirects")
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-
-    // publicPath: "http://localhost:8080/",
-    publicPath: "https://elegant-queijadas-ef3df2.netlify.app/",
+    publicPath: "https://lander-main-microservice.netlify.app/",
   },
 
   resolve: {
