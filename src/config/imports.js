@@ -5,22 +5,8 @@ const Footer1 = React.lazy(() => import("components/Footer1"));
 const Testimonials1 = React.lazy(() => import("components/Testimonials1"));
 
 export const COMPONENTS = {
-  Lander: {
-    Headers: {
-      v1: React.lazy(() => import("components/prelander/header/v1")),
-    },
-    Footers: {
-      v1: React.lazy(() => import("components/prelander/footer/v1")),
-    }
-  },
-  PreLander: {
-    Headers: {
-      v1: React.lazy(() => import("components/prelander/header/v1")),
-    },
-    Footers: {
-      v1: React.lazy(() => import("components/prelander/footer/v1")),
-    }
-  },
+  Header1,
+  Footer1,
   Testimonials1
 };
 

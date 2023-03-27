@@ -30,7 +30,7 @@ const Prelander = ({ blok }) => {
     switch (content_block.component) {
       case "menu":
         return (
-          <COMPONENTS.PreLander.Headers.v1
+          <COMPONENTS.Header1
             eventID="EventId"
             number="(800) 888-9999"
             headerTitle="QualifyBenefits.co"
@@ -76,7 +76,7 @@ const Prelander = ({ blok }) => {
           content_block.prelander_footer_disclaimer
         );
         return (
-          <COMPONENTS.PreLander.Footers.v1
+          <COMPONENTS.Footer1
             dis={renderedRichText}
             content_block={content_block}
           />
