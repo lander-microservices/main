@@ -8,6 +8,7 @@ import { COMPONENTS, LANDERS } from "../config/imports";
 
 const Prelander = ({ blok }) => {
   const [testimonials, setTestimonials] = useState([]);
+  const [headerData, setHeaderData] = useState({});
   const storyblokApi = useStoryblokApi();
 
   const getStoryBlockTestimonials = async (content) => {
@@ -26,14 +27,18 @@ const Prelander = ({ blok }) => {
     }
   };
 
-  const getComponent = (content_block) => {
+  const getComponent = (content_block, index) => {
     switch (content_block.component) {
       case "menu":
+        if (!headerData.prelander_logo_text) {
+          setHeaderData(content_block);
+        }
         return (
           <COMPONENTS.Header1
             eventID="EventId"
+            key={index}
             number="(800) 888-9999"
-            headerTitle="QualifyBenefits.co"
+            headerTitle={content_block.prelander_logo_text}
             tollFreeVisible={content_block.prelander_nav_toll_free}
             content_block={content_block}
           />
@@ -51,6 +56,7 @@ const Prelander = ({ blok }) => {
         );
         return (
           <HeroSection
+            key={index}
             prelander_hero_paragraph={prelander_hero_paragraph}
             prelander_hero_subtitle={prelander_hero_subtitle}
             prelander_hero_title={prelander_hero_title}
@@ -66,6 +72,7 @@ const Prelander = ({ blok }) => {
         );
         return (
           <COMPONENTS.Testimonials1
+            key={index}
             prelander_testimonial_paragraph={prelander_testimonial_paragraph}
             prelander_testimonial_headline={prelander_testimonial_headline}
             content_block={content_block}
@@ -77,6 +84,9 @@ const Prelander = ({ blok }) => {
         );
         return (
           <COMPONENTS.Footer1
+            key={index}
+            prelander_logo_text={headerData.prelander_logo_text}
+            prelander_logo_text_color={headerData.prelander_logo_text_color}
             dis={renderedRichText}
             content_block={content_block}
           />
@@ -87,9 +97,8 @@ const Prelander = ({ blok }) => {
   return (
     <React.Suspense fallback={<></>}>
       <div {...storyblokEditable(blok)}>
-        {console.log('blok', blok)}
-        {blok.prelander_blocks.map((content_block) =>
-          getComponent(content_block)
+        {blok.prelander_blocks.map((content_block, index) =>
+          getComponent(content_block, index)
         )}
       </div>
     </React.Suspense>
