@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { useStoryblok, StoryblokComponent } from "@storyblok/react";
 import Prelander from "./PreLander";
 import "components/GlobalCss";
 
-storyblokInit({
-  accessToken: "gVJgZvajxLWDT0saMgTqswtt",
-  use: [apiPlugin],
-  components: {
-    prelander: Prelander,
-  },
-  apiOptions: { region: "us" },
-});
+let init = false;
+
+const Main = () => {
+  const [storyBookInit, setStoryBookInit] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.domain_settings && !init) {
+        storyblokInit({
+          accessToken: window.domain_settings.storyblockAccessToken,
+          use: [apiPlugin],
+          components: {
+            prelander: Prelander,
+          },
+          apiOptions: { region: "us" },
+        });
+        init = true;
+        setStoryBookInit(true);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+  if (storyBookInit) return <App />;
+  else return <></>;
+};
 
 const App = () => {
   let slug =
@@ -27,4 +45,4 @@ const App = () => {
 
   return <StoryblokComponent blok={story.content} />;
 };
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Main />, document.getElementById("root"));

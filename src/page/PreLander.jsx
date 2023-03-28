@@ -87,6 +87,7 @@ const Prelander = ({ blok }) => {
   return (
     <React.Suspense fallback={<></>}>
       <div {...storyblokEditable(blok)}>
+        {console.log('blok', blok)}
         {blok.prelander_blocks.map((content_block) =>
           getComponent(content_block)
         )}
