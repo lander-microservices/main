@@ -9,23 +9,6 @@ import { COMPONENTS, LANDERS } from "../config/imports";
 const Prelander = ({ blok }) => {
   const [testimonials, setTestimonials] = useState([]);
   const [headerData, setHeaderData] = useState({});
-  const storyblokApi = useStoryblokApi();
-
-  const getStoryBlockTestimonials = async (content) => {
-    try {
-      let str = "";
-      if (testimonials.length === 0) {
-        content.prelander_testimonials_list.forEach((i) => (str += i + ","));
-        let response = await storyblokApi.get(`cdn/stories?by_uuids=${str}`, {
-          version: "draft",
-        });
-        setTestimonials(response.data);
-        return response.data;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getComponent = (content_block, index) => {
     switch (content_block.component) {
@@ -34,7 +17,7 @@ const Prelander = ({ blok }) => {
           setHeaderData(content_block);
         }
         return (
-          <COMPONENTS.Header1
+          <COMPONENTS.HeaderPreLander
             eventID="EventId"
             key={index}
             number="(800) 888-9999"
@@ -44,7 +27,7 @@ const Prelander = ({ blok }) => {
           />
         );
       case "prelander_hero_section":
-        const HeroSection = LANDERS["prelander-1"];
+        const HeroSection = LANDERS["prelander"];
         const prelander_hero_title = renderRichText(
           content_block.prelander_hero_title
         );
@@ -83,7 +66,7 @@ const Prelander = ({ blok }) => {
           content_block.prelander_footer_disclaimer
         );
         return (
-          <COMPONENTS.Footer1
+          <COMPONENTS.FooterPreLander
             key={index}
             prelander_logo_text={headerData.prelander_logo_text}
             prelander_logo_text_color={headerData.prelander_logo_text_color}

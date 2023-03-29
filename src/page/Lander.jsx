@@ -6,12 +6,14 @@ const Menu = ({ content_block, setHeaderData }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
+
+  console.log("Header Lander", content_block);
   return (
-    <COMPONENTS.Header1
+    <COMPONENTS.HeaderLander
       eventID="EventId"
       number="(800) 888-9999"
-      headerTitle={content_block.prelander_logo_text}
-      tollFreeVisible={content_block.prelander_nav_toll_free}
+      headerTitle={content_block.lander_logo_text}
+      tollFreeVisible={content_block.lander_nav_toll_free}
       content_block={content_block}
     />
   );
@@ -19,12 +21,12 @@ const Menu = ({ content_block, setHeaderData }) => {
 
 const Footer = ({ content_block, headerData }) => {
   const renderedRichText = renderRichText(
-    content_block.prelander_footer_disclaimer
+    content_block.lander_footer_disclaimer
   );
   return (
-    <COMPONENTS.Footer1
-      prelander_logo_text={headerData.prelander_logo_text}
-      prelander_logo_text_color={headerData.prelander_logo_text_color}
+    <COMPONENTS.FooterLander
+      lander_logo_text={headerData.lander_logo_text}
+      lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
       content_block={content_block}
     />
@@ -38,59 +40,8 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
+    console.log("Block", blok);
   const [headerData, setHeaderData] = useState({});
-
-  const getComponent = (content_block, index) => {
-    switch (content_block.component) {
-      case "menu":
-        if (!headerData.prelander_logo_text) {
-          setHeaderData(content_block);
-        }
-        return <></>;
-      case "prelander_hero_section":
-        const HeroSection = LANDERS["prelander-1"];
-        const prelander_hero_title = renderRichText(
-          content_block.prelander_hero_title
-        );
-        const prelander_hero_subtitle = renderRichText(
-          content_block.prelander_hero_subtitle
-        );
-        const prelander_hero_paragraph = renderRichText(
-          content_block.prelander_hero_paragraph
-        );
-        return <></>;
-      // return (
-      //   <HeroSection
-      //     key={index}
-      //     prelander_hero_paragraph={prelander_hero_paragraph}
-      //     prelander_hero_subtitle={prelander_hero_subtitle}
-      //     prelander_hero_title={prelander_hero_title}
-      //     content_block={content_block}
-      //   />
-      // );
-      case "prelander_testimonials_section":
-        const prelander_testimonial_headline = renderRichText(
-          content_block.prelander_testimonial_headline
-        );
-        const prelander_testimonial_paragraph = renderRichText(
-          content_block.prelander_testimonial_paragraph
-        );
-        return <></>;
-      // return (
-      //   <COMPONENTS.Testimonials1
-      //     key={index}
-      //     prelander_testimonial_paragraph={prelander_testimonial_paragraph}
-      //     prelander_testimonial_headline={prelander_testimonial_headline}
-      //     content_block={content_block}
-      //   />
-      // );
-      case "prelander_footer_section":
-        if (content_block.prelander_footer_menu) {
-          return <></>;
-        } else return <></>;
-    }
-    return;
-  };
 
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
@@ -98,7 +49,9 @@ export default function Lander({ blok }) {
     );
   };
 
-  console.log("block", blok);
+  const getRichText = (texts) => { 
+    return renderRichText(texts)
+  }
   return (
     <React.Suspense fallback={<></>}>
       <div {...storyblokEditable(blok)}>
@@ -111,21 +64,28 @@ export default function Lander({ blok }) {
         {/* Advertorial */}
 
         {/* Menu */}
-        {blok && findComponent("menu") && (
+        {blok && findComponent("lander_menu") && (
           <Menu
             setHeaderData={setHeaderData}
-            content_block={findComponent("menu")}
+            content_block={findComponent("lander_menu")}
           />
         )}
         {/* Menu */}
 
-        {/* Hero */}
-
-        {/* Hero */}
-
-        {/* Paragraph */}
-
-        {/* Paragraph */}
+        {/* Hero and Paragraph */}
+        {blok &&
+          findComponent("lander_paragraph") &&
+          findComponent("lander_hero_section") && (
+            <LANDERS.lander
+              init={() => {}}
+              getRichText={getRichText}
+              lander_paragraph={findComponent("lander_paragraph")}
+              lander_hero_section={findComponent("lander_hero_section")}
+              number="(800)888888"
+              callClickCb={() => {}}
+            />
+          )}
+        {/* Hero and Paragraph */}
 
         {/* Footer */}
         {blok && findComponent("lander_footer_section") && (
