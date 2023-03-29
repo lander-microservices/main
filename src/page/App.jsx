@@ -5,6 +5,7 @@ import { useStoryblok, StoryblokComponent } from "@storyblok/react";
 import Prelander from "./PreLander";
 import PropagateLoader from "react-spinners/PropagateLoader"
 import "components/GlobalCss";
+import Lander from "./Lander";
 
 let init = false;
 
@@ -19,6 +20,7 @@ const Main = () => {
           use: [apiPlugin],
           components: {
             prelander: Prelander,
+            lander: Lander
           },
           apiOptions: { region: "us" },
         });

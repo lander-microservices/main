@@ -3,11 +3,13 @@ import React from "react";
 const Header1 = React.lazy(() => import("components/Header1"));
 const Footer1 = React.lazy(() => import("components/Footer1"));
 const Testimonials1 = React.lazy(() => import("components/Testimonials1"));
+const Advertorial = React.lazy(() => import("components/Advertorial"));
 
 export const COMPONENTS = {
   Header1,
   Footer1,
-  Testimonials1
+  Testimonials1,
+  Advertorial
 };
 
 // Header1,
@@ -18,7 +20,6 @@ const Lander1 = React.lazy(() => import("landers/Lander1"));
 const Lander2 = React.lazy(() => import("landers/Lander2"));
 const Lander3 = React.lazy(() => import("landers/Lander3"));
 const Lander4 = React.lazy(() => import("landers/Lander4"));
-const Lander5 = React.lazy(() => import("landers/Lander5"));
 
 const PreLander1 = React.lazy(() => import("prelander/PreLander1"));
 
