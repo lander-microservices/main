@@ -6,8 +6,6 @@ const Menu = ({ content_block, setHeaderData }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
-
-  console.log("Header Lander", content_block);
   return (
     <COMPONENTS.HeaderLander
       eventID="EventId"
@@ -40,7 +38,6 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
-    console.log("Block", blok);
   const [headerData, setHeaderData] = useState({});
 
   const findComponent = (componentName) => {
