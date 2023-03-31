@@ -16,10 +16,6 @@ export const COMPONENTS = {
   Advertorial
 };
 
-// Header1,
-// Footer1,
-// Testimonials1
-
 const Lander1 = React.lazy(() => import("landers/Lander1"));
 const PreLander1 = React.lazy(() => import("prelander/PreLander1"));
 
@@ -27,9 +23,3 @@ export const LANDERS = {
   lander: Lander1,
   prelander: PreLander1
 }
-  // Lander1,
-  // Lander2,
-  // Lander3,
-  // Lander4,
-  // Lander5,
-  // PreLander1

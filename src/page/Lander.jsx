@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { COMPONENTS, LANDERS } from "../config/imports";
 import { renderRichText, storyblokEditable } from "@storyblok/react";
+import { useInitRingba } from "components/useRingba";
 
-const Menu = ({ content_block, setHeaderData }) => {
+const Menu = ({ content_block, setHeaderData, number }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
   return (
     <COMPONENTS.HeaderLander
       eventID="EventId"
-      number="(800) 888-9999"
+      number={number}
       headerTitle={content_block.lander_logo_text}
       tollFreeVisible={content_block.lander_nav_toll_free}
       content_block={content_block}
@@ -39,6 +40,12 @@ const Advertorial = ({ content_block }) => {
 
 export default function Lander({ blok }) {
   const [headerData, setHeaderData] = useState({});
+  const { number } = useInitRingba({ ringbaKey: {
+    key: blok.lander_ringba_number_pool_key,
+    number: blok.lander_ringba_static_number
+  } })
+  console.log("Block", blok);
+  console.log("number", number);
 
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
@@ -46,9 +53,9 @@ export default function Lander({ blok }) {
     );
   };
 
-  const getRichText = (texts) => { 
-    return renderRichText(texts)
-  }
+  const getRichText = (texts) => {
+    return renderRichText(texts);
+  };
   return (
     <React.Suspense fallback={<></>}>
       <div {...storyblokEditable(blok)}>
@@ -64,6 +71,7 @@ export default function Lander({ blok }) {
         {blok && findComponent("lander_menu") && (
           <Menu
             setHeaderData={setHeaderData}
+            number={number}
             content_block={findComponent("lander_menu")}
           />
         )}
@@ -76,9 +84,10 @@ export default function Lander({ blok }) {
             <LANDERS.lander
               init={() => {}}
               getRichText={getRichText}
+              lander_bg_color={blok.lander_bg_color}
               lander_paragraph={findComponent("lander_paragraph")}
               lander_hero_section={findComponent("lander_hero_section")}
-              number="(800)888888"
+              number={number}
               callClickCb={() => {}}
             />
           )}
