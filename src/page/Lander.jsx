@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { COMPONENTS, LANDERS } from "../config/imports";
 import { renderRichText, storyblokEditable } from "@storyblok/react";
-import { useInitRingba } from "components/useRingba";
+import { useInitRingba, useRingba } from "components/useRingba";
+import { useVisitorId } from "components/useVisitorId";
+import { useEventID } from "components/useEventId";
+import { RINGBA_STORAGE_KEYS } from "components/ringbaStorageKeys";
+import { QUERY_STRINGS } from "components/queryStrings";
+import { STORAGE_KEYS } from "components/storageKeys";
+import { COOKIES } from "components/landerToQuizCookie";
+import Cookies from "js-cookie";
+import axios from "axios";
+import APIS from "components/apis";
 
 const Menu = ({ content_block, setHeaderData, number }) => {
   useEffect(() => {
@@ -39,13 +48,31 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
+  const acc_id = blok.lander_acc_id;
+  const domainName = window.location.host.replace("lander.", "");
+  const generator = blok.lander_generator;
+  const utm_source = blok.lander_utm_source
+
   const [headerData, setHeaderData] = useState({});
-  const { number } = useInitRingba({ ringbaKey: {
-    key: blok.lander_ringba_number_pool_key,
-    number: blok.lander_ringba_static_number
-  } })
-  console.log("Block", blok);
-  console.log("number", number);
+
+  const [clickId, setClickId] = useState();
+  const { number } = useInitRingba({
+    ringbaKey: {
+      key: blok.lander_ringba_number_pool_key,
+      number: blok.lander_ringba_static_number,
+    },
+  });
+
+  const fbc = Cookies.get("_fbc" || "");
+  const fbp = Cookies.get("_fbp" || "");
+
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+
+  const { storeRgbaData, removeRingba } = useRingba();
+
+  useVisitorId();
+  const eventID = useEventID();
 
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
@@ -56,8 +83,116 @@ export default function Lander({ blok }) {
   const getRichText = (texts) => {
     return renderRichText(texts);
   };
+
+
+  const setInitialData = () => {
+    storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+    storeRgbaData(
+      RINGBA_STORAGE_KEYS.visitor_id,
+      localStorage.getItem(STORAGE_KEYS.localStorageKeys.visitorId)
+    );
+
+    QUERY_STRINGS.forEach((i) => {
+      storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+    });
+
+    storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
+    storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
+    storeRgbaData(
+      RINGBA_STORAGE_KEYS.fbPixelId,
+      window.domain_settings.fbPixelId
+    );
+    storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
+    storeRgbaData('generator', generator);
+    storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
+
+    COOKIES.forEach((i) => {
+      Cookies.set(i.key, params.get(i.key));
+      Cookies.set(i.key, params.get(i.key), {
+        domain: domainName,
+      });
+    });
+
+    Cookies.set("acc_id");
+    Cookies.set("acc_id", acc_id, {
+      domain: domainName,
+    });
+
+    Cookies.set("visitor_id", localStorage.getItem("visitor_id"));
+    Cookies.set("visitor_id", localStorage.getItem("visitor_id"), {
+      domain: domainName,
+    });
+
+    getIpAdd();
+    cityAddress();
+  };
+
+  const cityAddress = async () => {
+    const options = {};
+    const onSuccess = (success) => {
+      const city = success.city
+        ? success.city.names
+          ? success.city.names.en
+          : ""
+        : "";
+      const state = success.subdivisions
+        ? success.subdivisions[0]
+          ? success.subdivisions[0].iso_code
+          : ""
+        : "";
+      storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
+      storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
+      storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+    };
+    const onError = (error) => {
+      console.log(error);
+    };
+    if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
+  };
+
+  const getIpAdd = async () => {
+    console.log("APIS", APIS);
+    let userIp;
+    try {
+      var response;
+      response = await axios.get(APIS.GET_IP_ADDRESS, {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      userIp = response.data["ip"];
+    } catch (error) {
+      console.error("IpError" + error);
+    }
+    storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
+  };
+
+  useEffect(() => {
+    setInitialData();
+    window.document.title = blok.lander_meta_title
+  }, []);
+
+  useEffect(() => {
+    if (clickId) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
+      Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId, {
+        domain: domainName,
+      });
+      sessionStorage.setItem(
+        STORAGE_KEYS.sessionStorageKeys.isClickIdStored,
+        "true"
+      );
+    }
+  }, [clickId]);
+
   return (
     <React.Suspense fallback={<></>}>
+      {!clickId ? (
+        <GetClickId clickId={clickId} setClickId={setClickId} />
+      ) : undefined}
+
       <div {...storyblokEditable(blok)}>
         {/* Advertorial */}
         {blok && findComponent("lander_advertorial_section") && (
@@ -104,4 +239,16 @@ export default function Lander({ blok }) {
       </div>
     </React.Suspense>
   );
+}
+
+function GetClickId(props) {
+  React.useEffect(() => {
+    if (!props.clickId) {
+      const interval = setInterval(() => {
+        props.setClickId(window.clickId);
+      }, 400);
+      return () => clearInterval(interval);
+    }
+  }, []);
+  return <></>;
 }

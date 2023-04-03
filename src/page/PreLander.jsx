@@ -1,10 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { storyblokEditable, renderRichText } from "@storyblok/react";
-import { COMPONENTS, LANDERS } from "../config/imports";
-import { useInitRingba } from "components/useRingba";
+import { renderRichText, storyblokEditable } from "@storyblok/react";
 import shortCodeReplacer from "components/shortCodeReplacer";
+import { useInitRingba } from "components/useRingba";
+import React, { useEffect, useState } from "react";
+import { COMPONENTS, LANDERS } from "../config/imports";
+import axios from "axios";
+import APIS from "components/apis";
+import { COOKIES } from "components/landerToQuizCookie";
+import { QUERY_STRINGS } from "components/queryStrings";
+import { RINGBA_STORAGE_KEYS } from "components/ringbaStorageKeys";
+import { STORAGE_KEYS } from "components/storageKeys";
+import { useEventID } from "components/useEventId";
+import { useRingba } from "components/useRingba";
+import { useVisitorId } from "components/useVisitorId";
+import Cookies from "js-cookie";
 
 const Prelander = ({ blok }) => {
+  const acc_id = blok.lander_acc_id;
+  const domainName = window.location.host.replace("lander.", "");
+  const generator = blok.lander_generator;
+  const utm_source = blok.lander_utm_source
+
+  const [clickId, setClickId] = useState();
+  const fbc = Cookies.get("_fbc" || "");
+  const fbp = Cookies.get("_fbp" || "");
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+
+  const { storeRgbaData, removeRingba } = useRingba();
+
+  useVisitorId();
+  const eventID = useEventID();
+
   const { number } = useInitRingba({ ringbaKey: {
     key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number
@@ -15,8 +41,6 @@ const Prelander = ({ blok }) => {
     city: "",
     zip: "",
   });
-
-  console.log("blok", blok)
 
   const getComponent = (content_block, index) => {
     switch (content_block.component) {
@@ -118,13 +142,95 @@ const Prelander = ({ blok }) => {
     if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
   };
 
+  const setInitialData = () => {
+    storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+    storeRgbaData(
+      RINGBA_STORAGE_KEYS.visitor_id,
+      localStorage.getItem(STORAGE_KEYS.localStorageKeys.visitorId)
+    );
+
+    QUERY_STRINGS.forEach((i) => {
+      storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+    });
+
+    storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
+    storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
+    storeRgbaData(
+      RINGBA_STORAGE_KEYS.fbPixelId,
+      window.domain_settings.fbPixelId
+    );
+    storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
+    storeRgbaData('generator', generator);
+    storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
+
+    COOKIES.forEach((i) => {
+      Cookies.set(i.key, params.get(i.key));
+      Cookies.set(i.key, params.get(i.key), {
+        domain: domainName,
+      });
+    });
+
+    Cookies.set("acc_id");
+    Cookies.set("acc_id", acc_id, {
+      domain: domainName,
+    });
+
+    Cookies.set("visitor_id", localStorage.getItem("visitor_id"));
+    Cookies.set("visitor_id", localStorage.getItem("visitor_id"), {
+      domain: domainName,
+    });
+
+    getIpAdd();
+    cityAddress();
+  };
+
+  const getIpAdd = async () => {
+    console.log("APIS", APIS);
+    let userIp;
+    try {
+      var response;
+      response = await axios.get(APIS.GET_IP_ADDRESS, {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      userIp = response.data["ip"];
+    } catch (error) {
+      console.error("IpError" + error);
+    }
+    storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
+  };
+
+  useEffect(() => {
+    setInitialData();
+    window.document.title = blok.lander_meta_title
+  }, []);
+
   useEffect(() => {
     if (stateCityResponse.state === "") {
       cityAddress();
     }
   }, []);
+
+  useEffect(() => {
+    if (clickId) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
+      Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId, {
+        domain: domainName,
+      });
+      sessionStorage.setItem(
+        STORAGE_KEYS.sessionStorageKeys.isClickIdStored,
+        "true"
+      );
+    }
+  }, [clickId]);
   return (
     <React.Suspense fallback={<></>}>
+            {!clickId ? (
+        <GetClickId clickId={clickId} setClickId={setClickId} />
+      ) : undefined}
       <div {...storyblokEditable(blok)}>
         {blok.prelander_blocks.map((content_block, index) =>
           getComponent(content_block, index)
@@ -133,5 +239,19 @@ const Prelander = ({ blok }) => {
     </React.Suspense>
   );
 };
+
+
+function GetClickId(props) {
+  React.useEffect(() => {
+    if (!props.clickId) {
+      const interval = setInterval(() => {
+        props.setClickId(window.clickId);
+      }, 400);
+      return () => clearInterval(interval);
+    }
+  }, []);
+  return <></>;
+}
+
 
 export default Prelander;
