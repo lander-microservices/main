@@ -12,14 +12,14 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import APIS from "components/apis";
 
-const Menu = ({ content_block, setHeaderData, number }) => {
+const Menu = ({ content_block, handlePixelEventTrigger, setHeaderData, number }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
   return (
     <COMPONENTS.HeaderLander
-      eventID="EventId"
       number={number}
+      handlePixelEventTrigger={handlePixelEventTrigger}
       headerTitle={content_block.lander_logo_text}
       tollFreeVisible={content_block.lander_nav_toll_free}
       content_block={content_block}
@@ -27,7 +27,7 @@ const Menu = ({ content_block, setHeaderData, number }) => {
   );
 };
 
-const Footer = ({ content_block, headerData }) => {
+const Footer = ({ content_block, headerData, handlePixelEventTrigger }) => {
   const renderedRichText = renderRichText(
     content_block.lander_footer_disclaimer
   );
@@ -36,6 +36,7 @@ const Footer = ({ content_block, headerData }) => {
       lander_logo_text={headerData.lander_logo_text}
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
+      handlePixelEventTrigger={handlePixelEventTrigger}
       content_block={content_block}
     />
   );
@@ -51,7 +52,7 @@ export default function Lander({ blok }) {
   const acc_id = blok.lander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
   const generator = blok.lander_generator;
-  const utm_source = blok.lander_utm_source
+  const utm_source = blok.lander_utm_source;
 
   const [headerData, setHeaderData] = useState({});
 
@@ -84,7 +85,6 @@ export default function Lander({ blok }) {
     return renderRichText(texts);
   };
 
-
   const setInitialData = () => {
     storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
     storeRgbaData(
@@ -103,7 +103,7 @@ export default function Lander({ blok }) {
       window.domain_settings.fbPixelId
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
-    storeRgbaData('generator', generator);
+    storeRgbaData("generator", generator);
     storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
 
     COOKIES.forEach((i) => {
@@ -169,9 +169,29 @@ export default function Lander({ blok }) {
     storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
   };
 
+  const handlePixelEventTrigger = (eventName) => {
+    console.log("Event Name", eventName)
+    if (params.get("utm_source") == "facebook") {
+    window.fbcFunc &&
+        window.fbcFunc("track", eventName, {
+          eventID: eventID,
+        });
+    }
+
+    if (params.get("utm_source") === "tiktok") {
+      window.tikTokEvent.track(
+        eventName,
+        {},
+        {
+          eventID: eventID,
+        }
+      );
+    }
+  };
+
   useEffect(() => {
     setInitialData();
-    window.document.title = blok.lander_meta_title
+    window.document.title = blok.lander_meta_title;
   }, []);
 
   useEffect(() => {
@@ -207,6 +227,7 @@ export default function Lander({ blok }) {
           <Menu
             setHeaderData={setHeaderData}
             number={number}
+            handlePixelEventTrigger={handlePixelEventTrigger}
             content_block={findComponent("lander_menu")}
           />
         )}
@@ -232,6 +253,10 @@ export default function Lander({ blok }) {
         {blok && findComponent("lander_footer_section") && (
           <Footer
             headerData={headerData}
+            tikTokEvent={window.tikTokEvent}
+            fbcFunc={window.fbcFunc}
+            eventID={eventID}
+            handlePixelEventTrigger={handlePixelEventTrigger}
             content_block={findComponent("lander_footer_section")}
           />
         )}

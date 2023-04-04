@@ -53,6 +53,7 @@ const Prelander = ({ blok }) => {
             eventID="EventId"
             key={index}
             number={number}
+            handlePixelEventTrigger={handlePixelEventTrigger}
             headerTitle={content_block.prelander_logo_text}
             tollFreeVisible={content_block.prelander_nav_toll_free}
             content_block={content_block}
@@ -106,6 +107,9 @@ const Prelander = ({ blok }) => {
             prelander_logo_text={headerData.prelander_logo_text}
             prelander_logo_text_color={headerData.prelander_logo_text_color}
             dis={renderedRichText}
+            tikTokEvent={window.tikTokEvent}
+            fbcFunc={window.fbcFunc}
+            eventID={eventID}
             content_block={content_block}
           />
         );
@@ -182,6 +186,26 @@ const Prelander = ({ blok }) => {
 
     getIpAdd();
     cityAddress();
+  };
+
+  const handlePixelEventTrigger = (eventName) => {
+    console.log("Event Name", eventName)
+    if (params.get("utm_source") == "facebook") {
+    window.fbcFunc &&
+        window.fbcFunc("track", eventName, {
+          eventID: eventID,
+        });
+    }
+
+    if (params.get("utm_source") === "tiktok") {
+      window.tikTokEvent.track(
+        eventName,
+        {},
+        {
+          eventID: eventID,
+        }
+      );
+    }
   };
 
   const getIpAdd = async () => {
