@@ -11,6 +11,7 @@ import { COOKIES } from "components/landerToQuizCookie";
 import Cookies from "js-cookie";
 import axios from "axios";
 import APIS from "components/apis";
+import PropagateLoader from "react-spinners/PropagateLoader"
 
 const Menu = ({ content_block, handlePixelEventTrigger, setHeaderData, number }) => {
   useEffect(() => {
@@ -244,6 +245,7 @@ export default function Lander({ blok }) {
               lander_paragraph={findComponent("lander_paragraph")}
               lander_hero_section={findComponent("lander_hero_section")}
               number={number}
+              PropagateLoader={PropagateLoader}
               callClickCb={() => {}}
             />
           )}
