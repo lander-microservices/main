@@ -11,9 +11,14 @@ import { COOKIES } from "components/landerToQuizCookie";
 import Cookies from "js-cookie";
 import axios from "axios";
 import APIS from "components/apis";
-import PropagateLoader from "react-spinners/PropagateLoader"
+import PropagateLoader from "react-spinners/PropagateLoader";
 
-const Menu = ({ content_block, handlePixelEventTrigger, setHeaderData, number }) => {
+const Menu = ({
+  content_block,
+  handlePixelEventTrigger,
+  setHeaderData,
+  number,
+}) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
@@ -114,7 +119,7 @@ export default function Lander({ blok }) {
       });
     });
 
-    Cookies.set("acc_id");
+    Cookies.set("acc_id", acc_id);
     Cookies.set("acc_id", acc_id, {
       domain: domainName,
     });
@@ -145,14 +150,11 @@ export default function Lander({ blok }) {
       storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
     };
-    const onError = (error) => {
-      console.log(error);
-    };
+    const onError = (error) => {};
     if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
   };
 
   const getIpAdd = async () => {
-    console.log("APIS", APIS);
     let userIp;
     try {
       var response;
@@ -171,9 +173,8 @@ export default function Lander({ blok }) {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    console.log("Event Name", eventName)
     if (params.get("utm_source") == "facebook") {
-    window.fbcFunc &&
+      window.fbcFunc &&
         window.fbcFunc("track", eventName, {
           eventID: eventID,
         });
@@ -188,6 +189,15 @@ export default function Lander({ blok }) {
         }
       );
     }
+  };
+
+  const addPixelEventListenerToAllButtons = () => {
+    const callNowButtons = window.document.querySelectorAll(".callnow");
+    const listenerFunc = () => handlePixelEventTrigger("Contact");
+    callNowButtons.forEach((i) => {
+      i.removeEventListener("click", listenerFunc);
+      i.addEventListener("click", listenerFunc);
+    });
   };
 
   useEffect(() => {
@@ -207,6 +217,10 @@ export default function Lander({ blok }) {
       );
     }
   }, [clickId]);
+
+  useEffect(() => {
+    addPixelEventListenerToAllButtons();
+  }, [number]);
 
   return (
     <React.Suspense fallback={<></>}>
@@ -245,8 +259,9 @@ export default function Lander({ blok }) {
               lander_paragraph={findComponent("lander_paragraph")}
               lander_hero_section={findComponent("lander_hero_section")}
               number={number}
+              handlePixelEventTrigger={handlePixelEventTrigger}
               PropagateLoader={PropagateLoader}
-              callClickCb={() => {}}
+              callClickCb={() => handlePixelEventTrigger("Contact")}
             />
           )}
         {/* Hero and Paragraph */}

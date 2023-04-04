@@ -29,6 +29,7 @@
           "https://connect.facebook.net/en_US/fbevents.js"
         );
         const fbPixelId = id;
+        console.log(fbPixelId);
         fbq("init", fbPixelId);
         window.fbPixelId = fbPixelId;
         window.fbcFunc = fbq;
@@ -159,7 +160,6 @@
         var queryString = window.location.search;
         var params = new URLSearchParams(queryString);
         var utm_source = params.get("utm_source");
-        console.log("Utm Source", utm_source);
         if (utm_source === "tiktok") {
           !(function (w, d, t) {
             w.TiktokAnalyticsObject = t;

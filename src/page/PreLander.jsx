@@ -137,11 +137,9 @@ const Prelander = ({ blok }) => {
         : "";
 
       const postalCode = success.postal.code;
-      console.log(success);
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {
-      console.log(error);
     };
     if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
   };
@@ -189,7 +187,6 @@ const Prelander = ({ blok }) => {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    console.log("Event Name", eventName)
     if (params.get("utm_source") == "facebook") {
     window.fbcFunc &&
         window.fbcFunc("track", eventName, {
@@ -209,7 +206,6 @@ const Prelander = ({ blok }) => {
   };
 
   const getIpAdd = async () => {
-    console.log("APIS", APIS);
     let userIp;
     try {
       var response;
@@ -229,7 +225,7 @@ const Prelander = ({ blok }) => {
 
   useEffect(() => {
     setInitialData();
-    window.document.title = blok.lander_meta_title
+    window.document.title = blok.prelander_meta_title
   }, []);
 
   useEffect(() => {
