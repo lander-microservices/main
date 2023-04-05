@@ -43,6 +43,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
+    <style>
+      .dtpcnt {
+        opacity: 0;
+      }
+    </style>
+
     <script>
       const initFacebookPixel = (id) => {
         !(function (f, b, e, v, n, t, s) {
@@ -255,16 +261,48 @@
         }
       };
 
-      const initNoScripts = () => {
+      const initNoScripts = ({ volum }) => {
         const element = window.document.getElementById("noscripts");
         element.innerHTML = `
             <noscript>
               <link
-                href="${window.domain_settings.volumNoScript}"
+                href="${volum}"
                 rel="stylesheet"
               />
             </noscript>
       `;
+      };
+
+      const initMetaDetails = (obj) => {
+        const { volumMeta } = obj;
+        const headTag = document.getElementsByTagName("HEAD")[0];
+        const volumMetaTag = document.createElement("META");
+        volumMetaTag.setAttribute("http-equiv", "delegate-ch");
+        volumMetaTag.setAttribute(
+          "content",
+          `sec-ch-ua ${volumMeta}; sec-ch-ua-mobile ${volumMeta}; sec-ch-ua-arch ${volumMeta}; sec-ch-ua-model ${volumMeta}; sec-ch-ua-platform ${volumMeta}; sec-ch-ua-platform-version ${volumMeta}; sec-ch-ua-bitness ${volumMeta}; sec-ch-ua-full-version-list ${volumMeta}; sec-ch-ua-full-version ${volumMeta}`
+        );
+        headTag.appendChild(volumMetaTag);
+
+        // const ogUrlTag = document.createElement('META');
+        // ogUrlTag.setAttribute('property','og:url')
+        // ogUrlTag.setAttribute('content','og:url')
+        // headTag.appendChild(ogUrlTag);
+
+        // const ogTitleTag = document.createElement('META');
+        // ogTitleTag.setAttribute('property','og:title')
+        // ogTitleTag.setAttribute('content','og:title')
+        // headTag.appendChild(ogUrlTag);
+
+        // const ogDescriptionTag = document.createElement('META');
+        // ogDescriptionTag.setAttribute('property','og:description')
+        // ogDescriptionTag.setAttribute('content','og:description')
+        // headTag.appendChild(ogDescriptionTag);
+
+        // const ogSiteNameTag = document.createElement('META');
+        // ogSiteNameTag.setAttribute('property','og:description')
+        // ogSiteNameTag.setAttribute('content','og:description')
+        // headTag.appendChild(ogSiteNameTag);
       };
 
       const initScripts = (domain_settings) => {
@@ -280,11 +318,18 @@
         if (window.domain_settings) {
           initFacebookPixel(currentDomainSettings.facebookPixel);
           initGTM(currentDomainSettings.gtm);
-          initVolumScript(currentDomainSettings.volumUrl);
+          initVolumScript(currentDomainSettings.volum.url);
           if (params.get("utm_source") === "tiktok") {
             initTikTok(currentDomainSettings.tikTok);
           }
-          // initNoScripts();
+          initNoScripts({ volum: currentDomainSettings.volum.noScript });
+          initMetaDetails({
+            volumMeta: currentDomainSettings.volum.meta,
+            "site:title": "",
+            "site:description": "",
+            "site:name": "",
+            "site:url": "",
+          });
         }
 
         window.document.title = currentDomainSettings.websiteTitle;
