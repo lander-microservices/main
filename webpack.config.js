@@ -4,9 +4,16 @@ require('dotenv').config();
 
 const fs = require('fs');
 try{
-  fs.mkdirSync('./dist')
+  fs.mkdirSync('./dist');
 } catch(error){}
-fs.copyFileSync('./src/_redirects', "./dist/_redirects")
+fs.copyFileSync('./src/_redirects', "./dist/_redirects");
+
+
+const files = fs.readdirSync('./src/html/favicon');
+const arr = Array.from(files);
+arr.forEach((i)=> {
+  fs.copyFileSync(`./src/html/favicon/${i}`, `./dist/${i}`);
+})
 
 const deps = require("./package.json").dependencies;
 module.exports = {
@@ -73,5 +80,3 @@ module.exports = {
     }),
   ],
 };
-
-
