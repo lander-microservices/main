@@ -9,7 +9,6 @@ try {
 fs.copyFileSync('./src/_redirects', "./dist/_redirects");;
 const files = fs.readdirSync('./src/html/favicon');
 const arr = Array.from(files);
-console.log(arr);
 // ('./src/html/favicon', "./dist/favicon");
 
 const deps = require("./package.json").dependencies;

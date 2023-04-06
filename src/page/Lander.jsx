@@ -60,8 +60,6 @@ export default function Lander({ blok }) {
   const generator = blok.lander_generator;
   const utm_source = blok.lander_utm_source;
 
-  console.log("acc_id", acc_id);
-
   const [headerData, setHeaderData] = useState({});
 
   const [clickId, setClickId] = useState();
@@ -82,7 +80,6 @@ export default function Lander({ blok }) {
 
   const { visitorId } = useVisitorId();
   const eventID = useEventID();
-  console.log('visitoid2', visitorId)
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
       (block) => block.component === componentName
@@ -230,7 +227,6 @@ export default function Lander({ blok }) {
 
   useEffect(() => {
     if(eventID && eventID.length){
-      console.log("eventId", eventID)
       storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
