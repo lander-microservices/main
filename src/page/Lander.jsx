@@ -60,6 +60,8 @@ export default function Lander({ blok }) {
   const generator = blok.lander_generator;
   const utm_source = blok.lander_utm_source;
 
+  console.log("acc_id", acc_id);
+
   const [headerData, setHeaderData] = useState({});
 
   const [clickId, setClickId] = useState();
@@ -78,7 +80,7 @@ export default function Lander({ blok }) {
 
   const { storeRgbaData, removeRingba } = useRingba();
 
-  useVisitorId();
+  const { visitorId } = useVisitorId();
   const eventID = useEventID();
 
   const findComponent = (componentName) => {
@@ -124,8 +126,8 @@ export default function Lander({ blok }) {
       domain: domainName,
     });
 
-    Cookies.set("visitor_id", localStorage.getItem("visitor_id"));
-    Cookies.set("visitor_id", localStorage.getItem("visitor_id"), {
+    Cookies.set("visitor_id", visitorId);
+    Cookies.set("visitor_id", visitorId, {
       domain: domainName,
     });
 

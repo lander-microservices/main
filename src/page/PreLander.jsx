@@ -15,10 +15,10 @@ import { useVisitorId } from "components/useVisitorId";
 import Cookies from "js-cookie";
 
 const Prelander = ({ blok }) => {
-  const acc_id = blok.lander_acc_id;
+  const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
-  const generator = blok.lander_generator;
-  const utm_source = blok.lander_utm_source
+  const generator = blok.prelander_generator;
+  const utm_source = blok.prelander_utm_source;
 
   const [clickId, setClickId] = useState();
   const fbc = Cookies.get("_fbc" || "");
@@ -28,13 +28,15 @@ const Prelander = ({ blok }) => {
 
   const { storeRgbaData, removeRingba } = useRingba();
 
-  useVisitorId();
+  const { visitorId } = useVisitorId();
   const eventID = useEventID();
 
-  const { number } = useInitRingba({ ringbaKey: {
-    key: blok.prelander_ringba_number_pool_key,
-    number: blok.prelander_ringba_static_number
-  } })
+  const { number } = useInitRingba({
+    ringbaKey: {
+      key: blok.prelander_ringba_number_pool_key,
+      number: blok.prelander_ringba_static_number,
+    },
+  });
   const [headerData, setHeaderData] = useState({});
   const [stateCityResponse, setStateCityResponse] = useState({
     state: "",
@@ -139,8 +141,7 @@ const Prelander = ({ blok }) => {
       const postalCode = success.postal.code;
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
-    const onError = (error) => {
-    };
+    const onError = (error) => {};
     if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
   };
 
@@ -162,7 +163,7 @@ const Prelander = ({ blok }) => {
       window.domain_settings.fbPixelId
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
-    storeRgbaData('generator', generator);
+    storeRgbaData("generator", generator);
     storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
 
     COOKIES.forEach((i) => {
@@ -177,8 +178,8 @@ const Prelander = ({ blok }) => {
       domain: domainName,
     });
 
-    Cookies.set("visitor_id", localStorage.getItem("visitor_id"));
-    Cookies.set("visitor_id", localStorage.getItem("visitor_id"), {
+    Cookies.set("visitor_id", visitorId);
+    Cookies.set("visitor_id", visitorId, {
       domain: domainName,
     });
 
@@ -188,7 +189,7 @@ const Prelander = ({ blok }) => {
 
   const handlePixelEventTrigger = (eventName) => {
     if (params.get("utm_source") == "facebook") {
-    window.fbcFunc &&
+      window.fbcFunc &&
         window.fbcFunc("track", eventName, {
           eventID: eventID,
         });
@@ -225,7 +226,7 @@ const Prelander = ({ blok }) => {
 
   useEffect(() => {
     setInitialData();
-    window.document.title = blok.prelander_meta_title
+    window.document.title = blok.prelander_meta_title;
   }, []);
 
   useEffect(() => {
@@ -248,7 +249,7 @@ const Prelander = ({ blok }) => {
   }, [clickId]);
   return (
     <React.Suspense fallback={<></>}>
-            {!clickId ? (
+      {!clickId ? (
         <GetClickId clickId={clickId} setClickId={setClickId} />
       ) : undefined}
       <div {...storyblokEditable(blok)}>
@@ -259,7 +260,6 @@ const Prelander = ({ blok }) => {
     </React.Suspense>
   );
 };
-
 
 function GetClickId(props) {
   React.useEffect(() => {
@@ -272,6 +272,5 @@ function GetClickId(props) {
   }, []);
   return <></>;
 }
-
 
 export default Prelander;

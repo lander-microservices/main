@@ -270,7 +270,7 @@
                 rel="stylesheet"
               />
             </noscript>
-      `;
+        `;
       };
 
       const initMetaDetails = (obj) => {
@@ -286,34 +286,34 @@
 
         // add meta description and meta title normally . for google
 
-        const ogUrlTag = document.createElement('META');
-        ogUrlTag.setAttribute('property','og:url')
-        ogUrlTag.setAttribute('content', window.location.href)
+        const ogUrlTag = document.createElement("META");
+        ogUrlTag.setAttribute("property", "og:url");
+        ogUrlTag.setAttribute("content", window.location.href);
         headTag.appendChild(ogUrlTag);
 
-        const ogTitleTag = document.createElement('META');
-        ogTitleTag.setAttribute('property','og:title')
-        ogTitleTag.setAttribute('content', obj['og:title'])
+        const ogTitleTag = document.createElement("META");
+        ogTitleTag.setAttribute("property", "og:title");
+        ogTitleTag.setAttribute("content", obj["og:title"]);
         headTag.appendChild(ogUrlTag);
 
-        const ogDescriptionTag = document.createElement('META');
-        ogDescriptionTag.setAttribute('property','og:description')
-        ogDescriptionTag.setAttribute('content', obj['og:description'])
+        const ogDescriptionTag = document.createElement("META");
+        ogDescriptionTag.setAttribute("property", "og:description");
+        ogDescriptionTag.setAttribute("content", obj["og:description"]);
         headTag.appendChild(ogDescriptionTag);
 
-        const ogSiteNameTag = document.createElement('META');
-        ogSiteNameTag.setAttribute('property','og:site_name')
-        ogSiteNameTag.setAttribute('content', obj['og:site_name'])
+        const ogSiteNameTag = document.createElement("META");
+        ogSiteNameTag.setAttribute("property", "og:site_name");
+        ogSiteNameTag.setAttribute("content", obj["og:site_name"]);
         headTag.appendChild(ogSiteNameTag);
 
-        const titleTag = document.createElement('META');
-        titleTag.setAttribute('name','title')
-        titleTag.setAttribute('content', obj['title'])
+        const titleTag = document.createElement("META");
+        titleTag.setAttribute("name", "title");
+        titleTag.setAttribute("content", obj["title"]);
         headTag.appendChild(titleTag);
-        
-        const descriptionTag = document.createElement('META');
-        descriptionTag.setAttribute('name','description');
-        descriptionTag.setAttribute('content', obj['description'])
+
+        const descriptionTag = document.createElement("META");
+        descriptionTag.setAttribute("name", "description");
+        descriptionTag.setAttribute("content", obj["description"]);
         headTag.appendChild(descriptionTag);
       };
 
@@ -335,14 +335,15 @@
             initTikTok(currentDomainSettings.tikTok);
           }
           initNoScripts({ volum: currentDomainSettings.volum.noScript });
-          console.log("Volum NoScript", currentDomainSettings.volum)
+          console.log("Volum NoScript", currentDomainSettings.volum);
           initMetaDetails({
             volumMeta: currentDomainSettings.volum.meta,
-            "og:title": currentDomainSettings.metaDetails['og:title'],
-            "og:description": currentDomainSettings.metaDetails['og:description'],
-            "og:site_name": currentDomainSettings.metaDetails['og:site_name'],
-            "title": currentDomainSettings.metaDetails['title'],
-            "description": currentDomainSettings.metaDetails['description']
+            "og:title": currentDomainSettings.metaDetails["og:title"],
+            "og:description":
+              currentDomainSettings.metaDetails["og:description"],
+            "og:site_name": currentDomainSettings.metaDetails["og:site_name"],
+            title: currentDomainSettings.metaDetails["title"],
+            description: currentDomainSettings.metaDetails["description"],
           });
         }
 
