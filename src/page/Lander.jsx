@@ -82,7 +82,7 @@ export default function Lander({ blok }) {
 
   const { visitorId } = useVisitorId();
   const eventID = useEventID();
-
+  console.log('visitoid2', visitorId)
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
       (block) => block.component === componentName
@@ -94,12 +94,6 @@ export default function Lander({ blok }) {
   };
 
   const setInitialData = () => {
-    storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
-    storeRgbaData(
-      RINGBA_STORAGE_KEYS.visitor_id,
-      localStorage.getItem(STORAGE_KEYS.localStorageKeys.visitorId)
-    );
-
     QUERY_STRINGS.forEach((i) => {
       storeRgbaData(i.ringbaKey, params.get(i.redirectString));
     });
@@ -223,6 +217,27 @@ export default function Lander({ blok }) {
   useEffect(() => {
     addPixelEventListenerToAllButtons();
   }, [number]);
+
+  useEffect(() => {
+    if(visitorId){
+      storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
+      Cookies.set("visitor_id", visitorId);
+      Cookies.set("visitor_id", visitorId, {
+        domain: domainName,
+      });
+    }
+  },[visitorId])
+
+  useEffect(() => {
+    if(eventID && eventID.length){
+      console.log("eventId", eventID)
+      storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
+        domain: domainName,
+      });
+    }
+  },[eventID])
 
   return (
     <React.Suspense fallback={<></>}>

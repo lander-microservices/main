@@ -247,6 +247,16 @@ const Prelander = ({ blok }) => {
       );
     }
   }, [clickId]);
+
+  useEffect(() => {
+    if(visitorId){
+      storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
+      Cookies.set("visitor_id", visitorId);
+      Cookies.set("visitor_id", visitorId, {
+        domain: domainName,
+      });
+    }
+  },[visitorId])
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
