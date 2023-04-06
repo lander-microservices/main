@@ -1,35 +1,35 @@
 import React from "react";
 
-const HeaderPreLander = React.lazy(() => import("components/HeaderPreLander"));
-const FooterPreLander = React.lazy(() => import("components/FooterPreLander"));
-const HeaderLander = React.lazy(() => import("components/HeaderLander"));
-const FooterLander = React.lazy(() => import("components/FooterLander"));
 const Testimonials1 = React.lazy(() => import("components/Testimonials1"));
 const Advertorial = React.lazy(() => import("components/Advertorial"));
 
-const V1Footer = React.lazy(() => import("landers/V1Footer"));
-const V1Header = React.lazy(() => import("landers/V1Header"));
 
 export const COMPONENTS = {
-  HeaderPreLander,
-  FooterPreLander,
-  HeaderLander,
-  FooterLander,
   Testimonials1,
   Advertorial
 };
 
-const V1Lander = React.lazy(() => import("landers/V1Lander"));
-const PreLander1 = React.lazy(() => import("prelander/PreLander1"));
+const V1LanderLander = React.lazy(() => import("landers/V1Lander"));
+const V1LanderFooter = React.lazy(() => import("landers/V1Footer"));
+const V1LanderHeader = React.lazy(() => import("landers/V1Header"));
+
+const V1PrelanderFooter = React.lazy(() => import("prelander/V1PrelanderFooter"));
+const V1PrelanderHeader = React.lazy(() => import("prelander/V1PrelanderHeader"));
+const V1PrelanderPrelander = React.lazy(() => import("prelander/V1Prelander"));
 
 export const LANDERS = {
   lander:{
     v1: {
-      lander: V1Lander,
-      header: V1Header,
-      footer: V1Footer
+      lander: V1LanderLander,
+      header: V1LanderHeader,
+      footer: V1LanderFooter
     }
   },
-  // lander: Lander1,
-  prelander: PreLander1
+  prelander:{
+    v1: {
+      prelander: V1PrelanderPrelander,
+      footer: V1PrelanderFooter,
+      header: V1PrelanderHeader
+    }
+  }
 }

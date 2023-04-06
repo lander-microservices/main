@@ -51,7 +51,7 @@ const Prelander = ({ blok }) => {
           setHeaderData(content_block);
         }
         return (
-          <COMPONENTS.HeaderPreLander
+          <LANDERS.prelander.v1.header
             eventID="EventId"
             key={index}
             number={number}
@@ -62,7 +62,7 @@ const Prelander = ({ blok }) => {
           />
         );
       case "prelander_hero_section":
-        const HeroSection = LANDERS["prelander"];
+        const HeroSection = LANDERS.prelander.v1.prelander;
         const prelander_hero_title = shortCodeReplacer(
           renderRichText(content_block.prelander_hero_title),
           stateCityResponse
@@ -104,7 +104,7 @@ const Prelander = ({ blok }) => {
           content_block.prelander_footer_disclaimer
         );
         return (
-          <COMPONENTS.FooterPreLander
+          <LANDERS.prelander.v1.footer
             key={index}
             prelander_logo_text={headerData.prelander_logo_text}
             prelander_logo_text_color={headerData.prelander_logo_text_color}
@@ -249,14 +249,14 @@ const Prelander = ({ blok }) => {
   }, [clickId]);
 
   useEffect(() => {
-    if(visitorId){
+    if (visitorId) {
       storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
       Cookies.set("visitor_id", visitorId);
       Cookies.set("visitor_id", visitorId, {
         domain: domainName,
       });
     }
-  },[visitorId])
+  }, [visitorId]);
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
