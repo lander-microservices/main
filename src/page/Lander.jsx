@@ -203,7 +203,7 @@ export default function Lander({ blok }) {
   useEffect(() => {
     setInitialData();
     window.document.title = blok.lander_meta_title;
-  }, []);
+  },[]);
 
   useEffect(() => {
     if (clickId) {
