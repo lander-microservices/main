@@ -23,7 +23,7 @@ const Menu = ({
     setHeaderData(content_block);
   }, []);
   return (
-    <COMPONENTS.HeaderLander
+    <LANDERS.lander.v1.header
       number={number}
       handlePixelEventTrigger={handlePixelEventTrigger}
       headerTitle={content_block.lander_logo_text}
@@ -38,7 +38,7 @@ const Footer = ({ content_block, headerData, handlePixelEventTrigger }) => {
     content_block.lander_footer_disclaimer
   );
   return (
-    <COMPONENTS.FooterLander
+    <LANDERS.lander.v1.footer
       lander_logo_text={headerData.lander_logo_text}
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
@@ -235,6 +235,7 @@ export default function Lander({ blok }) {
     }
   },[eventID])
 
+  const Lander = LANDERS.lander['v1'].lander
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -265,7 +266,7 @@ export default function Lander({ blok }) {
         {blok &&
           findComponent("lander_paragraph") &&
           findComponent("lander_hero_section") && (
-            <LANDERS.lander
+            <Lander
               init={() => {}}
               getRichText={getRichText}
               lander_bg_color={blok.lander_bg_color}
