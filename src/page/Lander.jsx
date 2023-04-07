@@ -58,7 +58,6 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
-  console.log("BLock", blok);
   const lander_show_cta_section = blok.lander_show_cta_section
   const lander_show_quiz_section =  blok.lander_show_quiz_section
   const lander_name = blok.lander_name;
