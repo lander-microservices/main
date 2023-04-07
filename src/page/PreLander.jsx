@@ -15,6 +15,7 @@ import { useVisitorId } from "components/useVisitorId";
 import Cookies from "js-cookie";
 
 const Prelander = ({ blok }) => {
+  console.log("Block", blok)
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
   const generator = blok.prelander_generator;
@@ -50,7 +51,7 @@ const Prelander = ({ blok }) => {
         if (!headerData.prelander_logo_text) {
           setHeaderData(content_block);
         }
-        const Menu = LANDERS.prelander[blok.prelander_name].header;
+        const Menu = LANDERS.prelander[blok.theme].header;
         return (
           <Menu
             eventID="EventId"
@@ -63,7 +64,7 @@ const Prelander = ({ blok }) => {
           />
         );
       case "prelander_hero_section":
-        const HeroSection = LANDERS.prelander[blok.prelander_name].prelander;
+        const HeroSection = LANDERS.prelander[blok.theme].prelander;
         const prelander_hero_title = shortCodeReplacer(
           renderRichText(content_block.prelander_hero_title),
           stateCityResponse
@@ -104,7 +105,7 @@ const Prelander = ({ blok }) => {
         const renderedRichText = renderRichText(
           content_block.prelander_footer_disclaimer
         );
-        const Footer = LANDERS.prelander[blok.prelander_name].footer;
+        const Footer = LANDERS.prelander[blok.theme].footer;
         return (
           <Footer
             key={index}
