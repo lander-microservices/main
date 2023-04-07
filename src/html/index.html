@@ -333,7 +333,7 @@
           if (params.get("utm_source") === "tiktok") {
             initTikTok(currentDomainSettings.tikTok);
           }
-          // initNoScripts({ volum: currentDomainSettings.volum.noScript });
+          initNoScripts({ volum: currentDomainSettings.volum.noScript });
           initMetaDetails({
             volumMeta: currentDomainSettings.volum.meta,
             "og:title": currentDomainSettings.metaDetails["og:title"],
@@ -348,105 +348,11 @@
         window.document.title = currentDomainSettings.websiteTitle;
       };
 
-      // fetch(
-      //   "https://raw.githubusercontent.com/nikhilwecall/wecallcms/main/json_data/domain_settings.json"
-      // )
-      //   .then((response) => response.json())
-      //   .then((data) => initScripts(data));
-      const data = [
-        {
-          name: "qualifybenefits.co",
-          gtm: "GTM-TC59FRB",
-          facebookPixel: "687474176447071",
-          volumUrl: "https://track.qualifybenefits.co/d/.js",
-          tikTok: "",
-          industry: "",
-          vertical: "medicareaca",
-          websiteTitle: "",
-          storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
-        },
-        {
-          name: "localhost",
-          gtm: "GTM-THXW4VH",
-          facebookPixel: "532418778266412",
-          volum: {
-            url: "https://track.improveourcredit.com/d/.js",
-            noScript:
-              "https://track.improveourcredit.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.improveourcredit.com",
-          },
-          metaDetails: {
-            "og:title": "og title",
-            "og:description": "og description",
-            "og:site_name": "og site_name",
-            title: "Meta title",
-            description: "Meta Description",
-          },
-          tikTok: "",
-          industry: "",
-          websiteTitle: "Localhost",
-          vertical: "medicareaca",
-          storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
-        },
-        {
-          name: "lander-main-microservice.netlify.app",
-          gtm: "GTM-THXW4VH",
-          facebookPixel: "532418778266412",
-          volumUrl: "https://track.realseniorbenefits.com/d/.js",
-          tikTok: "",
-          industry: "",
-          websiteTitle: "Localhost",
-          vertical: "medicareaca",
-          storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
-        },
-        {
-          name: "lander.improveourcredit.com",
-          gtm: "GTM-THXW4VH",
-          facebookPixel: "532418778266412",
-          volum: {
-            url: "https://track.improveourcredit.com/d/.js",
-            noScript:
-              "https://track.improveourcredit.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.improveourcredit.com",
-          },
-          metaDetails: {
-            "og:title": "og title",
-            "og:description": "og description",
-            "og:site_name": "og site_name",
-            title: "Meta title",
-            description: "Meta Description",
-          },
-          tikTok: "",
-          industry: "",
-          websiteTitle: "Localhost",
-          vertical: "medicareaca",
-          storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
-        },
-        {
-          name: "lander-main-microservice.netlify.app",
-          gtm: "GTM-THXW4VH",
-          facebookPixel: "532418778266412",
-          volum: {
-            url: "https://track.improveourcredit.com/d/.js",
-            noScript:
-              "https://track.improveourcredit.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.improveourcredit.com",
-          },
-          metaDetails: {
-            "og:title": "og title",
-            "og:description": "og description",
-            "og:site_name": "og site_name",
-            title: "Meta title",
-            description: "Meta Description",
-          },
-          tikTok: "",
-          industry: "",
-          websiteTitle: "Localhost",
-          vertical: "medicareaca",
-          storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
-        },
-      ];
-      initScripts(data);
+      fetch(
+        "https://raw.githubusercontent.com/nikhilwecall/wecallcms/main/json_data/domain_settings.json"
+      )
+        .then((response) => response.json())
+        .then((data) => initScripts(data));
     </script>
     <script
       src="//geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"

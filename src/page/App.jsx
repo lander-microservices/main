@@ -69,4 +69,4 @@ const App = () => {
 
   return <StoryblokComponent blok={story.content} />;
 };
-ReactDOM.render(<Main />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
