@@ -50,8 +50,9 @@ const Prelander = ({ blok }) => {
         if (!headerData.prelander_logo_text) {
           setHeaderData(content_block);
         }
+        const Menu = LANDERS.prelander[blok.prelander_name].header;
         return (
-          <LANDERS.prelander.v1.header
+          <Menu
             eventID="EventId"
             key={index}
             number={number}
@@ -62,7 +63,7 @@ const Prelander = ({ blok }) => {
           />
         );
       case "prelander_hero_section":
-        const HeroSection = LANDERS.prelander.v1.prelander;
+        const HeroSection = LANDERS.prelander[blok.prelander_name].prelander;
         const prelander_hero_title = shortCodeReplacer(
           renderRichText(content_block.prelander_hero_title),
           stateCityResponse
@@ -103,8 +104,9 @@ const Prelander = ({ blok }) => {
         const renderedRichText = renderRichText(
           content_block.prelander_footer_disclaimer
         );
+        const Footer = LANDERS.prelander[blok.prelander_name].footer;
         return (
-          <LANDERS.prelander.v1.footer
+          <Footer
             key={index}
             prelander_logo_text={headerData.prelander_logo_text}
             prelander_logo_text_color={headerData.prelander_logo_text_color}
@@ -164,6 +166,7 @@ const Prelander = ({ blok }) => {
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
     storeRgbaData("generator", generator);
+    console.log("AccId", acc_id);
     storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
 
     COOKIES.forEach((i) => {
@@ -173,7 +176,7 @@ const Prelander = ({ blok }) => {
       });
     });
 
-    Cookies.set("acc_id");
+    Cookies.set("acc_id", acc_id);
     Cookies.set("acc_id", acc_id, {
       domain: domainName,
     });
