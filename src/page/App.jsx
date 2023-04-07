@@ -7,7 +7,16 @@ import PropagateLoader from "react-spinners/PropagateLoader"
 import "components/GlobalCss";
 import Lander from "./Lander";
 
-let init = false;
+let init = true;
+storyblokInit({
+  accessToken: "gVJgZvajxLWDT0saMgTqswtt",
+  use: [apiPlugin],
+  components: {
+    prelander: Prelander,
+    lander: Lander
+  },
+  apiOptions: { region: "us" },
+});
 
 const Main = () => {
   const [storyBookInit, setStoryBookInit] = useState(false);
