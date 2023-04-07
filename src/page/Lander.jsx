@@ -18,12 +18,12 @@ const Menu = ({
   handlePixelEventTrigger,
   setHeaderData,
   number,
-  theme
+  theme,
 }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
-  const Header = LANDERS.lander[theme].header
+  const Header = LANDERS.lander[theme].header;
   return (
     <Header
       number={number}
@@ -35,11 +35,16 @@ const Menu = ({
   );
 };
 
-const Footer = ({ theme, content_block, headerData, handlePixelEventTrigger }) => {
+const Footer = ({
+  theme,
+  content_block,
+  headerData,
+  handlePixelEventTrigger,
+}) => {
   const renderedRichText = renderRichText(
     content_block.lander_footer_disclaimer
   );
-  const Footer = LANDERS.lander[theme].footer
+  const Footer = LANDERS.lander[theme].footer;
   return (
     <Footer
       lander_logo_text={headerData.lander_logo_text}
@@ -58,8 +63,8 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
-  const lander_show_cta_section = blok.lander_show_cta_section
-  const lander_show_quiz_section =  blok.lander_show_quiz_section
+  const lander_show_cta_section = blok.lander_show_cta_section;
+  const lander_show_quiz_section = blok.lander_show_quiz_section;
   const theme = blok.theme;
   const acc_id = blok.lander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
@@ -202,7 +207,7 @@ export default function Lander({ blok }) {
   useEffect(() => {
     setInitialData();
     window.document.title = blok.lander_meta_title;
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (clickId) {
@@ -222,26 +227,26 @@ export default function Lander({ blok }) {
   }, [number]);
 
   useEffect(() => {
-    if(visitorId){
+    if (visitorId) {
       storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
       Cookies.set("visitor_id", visitorId);
       Cookies.set("visitor_id", visitorId, {
         domain: domainName,
       });
     }
-  },[visitorId])
+  }, [visitorId]);
 
   useEffect(() => {
-    if(eventID && eventID.length){
+    if (eventID && eventID.length) {
       storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
         domain: domainName,
       });
     }
-  },[eventID])
+  }, [eventID]);
 
-  const Lander = LANDERS.lander[theme].lander
+  const Lander = LANDERS.lander[theme].lander;
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -249,25 +254,28 @@ export default function Lander({ blok }) {
       ) : undefined}
 
       <div {...storyblokEditable(blok)}>
-        {/* Advertorial */}
-        {blok && findComponent("lander_advertorial_section") && (
-          <Advertorial
-            content_block={findComponent("lander_advertorial_section")}
-          />
-        )}
-        {/* Advertorial */}
+        <div className="fixed-nav">
+          {/* Advertorial */}
 
-        {/* Menu */}
-        {blok && findComponent("lander_menu") && (
-          <Menu
-            setHeaderData={setHeaderData}
-            number={number}
-            theme={theme}
-            handlePixelEventTrigger={handlePixelEventTrigger}
-            content_block={findComponent("lander_menu")}
-          />
-        )}
-        {/* Menu */}
+          {blok && findComponent("lander_advertorial_section") && (
+            <Advertorial
+              content_block={findComponent("lander_advertorial_section")}
+            />
+          )}
+          {/* Advertorial */}
+
+          {/* Menu */}
+          {blok && findComponent("lander_menu") && (
+            <Menu
+              setHeaderData={setHeaderData}
+              number={number}
+              theme={theme}
+              handlePixelEventTrigger={handlePixelEventTrigger}
+              content_block={findComponent("lander_menu")}
+            />
+          )}
+          {/* Menu */}
+        </div>
 
         {/* Hero and Paragraph */}
         {blok &&
