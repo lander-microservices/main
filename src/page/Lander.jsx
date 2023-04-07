@@ -18,12 +18,12 @@ const Menu = ({
   handlePixelEventTrigger,
   setHeaderData,
   number,
-  lander_name
+  theme
 }) => {
   useEffect(() => {
     setHeaderData(content_block);
   }, []);
-  const Header = LANDERS.lander[lander_name].header
+  const Header = LANDERS.lander[theme].header
   return (
     <Header
       number={number}
@@ -35,11 +35,11 @@ const Menu = ({
   );
 };
 
-const Footer = ({ lander_name, content_block, headerData, handlePixelEventTrigger }) => {
+const Footer = ({ theme, content_block, headerData, handlePixelEventTrigger }) => {
   const renderedRichText = renderRichText(
     content_block.lander_footer_disclaimer
   );
-  const Footer = LANDERS.lander[lander_name].footer
+  const Footer = LANDERS.lander[theme].footer
   return (
     <Footer
       lander_logo_text={headerData.lander_logo_text}
@@ -60,7 +60,7 @@ const Advertorial = ({ content_block }) => {
 export default function Lander({ blok }) {
   const lander_show_cta_section = blok.lander_show_cta_section
   const lander_show_quiz_section =  blok.lander_show_quiz_section
-  const lander_name = blok.lander_name;
+  const theme = blok.theme;
   const acc_id = blok.lander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
   const generator = blok.lander_generator;
@@ -241,7 +241,7 @@ export default function Lander({ blok }) {
     }
   },[eventID])
 
-  const Lander = LANDERS.lander[lander_name].lander
+  const Lander = LANDERS.lander[theme].lander
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -262,7 +262,7 @@ export default function Lander({ blok }) {
           <Menu
             setHeaderData={setHeaderData}
             number={number}
-            lander_name={lander_name}
+            theme={theme}
             handlePixelEventTrigger={handlePixelEventTrigger}
             content_block={findComponent("lander_menu")}
           />
@@ -296,7 +296,7 @@ export default function Lander({ blok }) {
             tikTokEvent={window.tikTokEvent}
             fbcFunc={window.fbcFunc}
             eventID={eventID}
-            lander_name={lander_name}
+            theme={theme}
             handlePixelEventTrigger={handlePixelEventTrigger}
             content_block={findComponent("lander_footer_section")}
           />
