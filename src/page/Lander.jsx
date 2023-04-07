@@ -58,6 +58,9 @@ const Advertorial = ({ content_block }) => {
 };
 
 export default function Lander({ blok }) {
+  console.log("BLock", blok);
+  const lander_show_cta_section = blok.lander_show_cta_section
+  const lander_show_quiz_section =  blok.lander_show_quiz_section
   const lander_name = blok.lander_name;
   const acc_id = blok.lander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
@@ -278,6 +281,8 @@ export default function Lander({ blok }) {
               lander_paragraph={findComponent("lander_paragraph")}
               lander_hero_section={findComponent("lander_hero_section")}
               number={number}
+              lander_show_cta_section={lander_show_cta_section}
+              lander_show_quiz_section={lander_show_quiz_section}
               handlePixelEventTrigger={handlePixelEventTrigger}
               PropagateLoader={PropagateLoader}
               callClickCb={() => handlePixelEventTrigger("Contact")}
