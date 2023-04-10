@@ -7,6 +7,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import "../globalCss.scss";
 import Lander from "./Lander";
 import { ExampleComponent } from "wecall-config-lib";
+import Advertorial from "./Advertorial";
 
 let init = true;
 storyblokInit({
@@ -15,6 +16,7 @@ storyblokInit({
   components: {
     prelander: Prelander,
     lander: Lander,
+    advertorial: Advertorial
   },
   apiOptions: { region: "us" },
 });
