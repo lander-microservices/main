@@ -42,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,
@@ -59,7 +59,6 @@ module.exports = {
       name: "main",
       filename: "remoteEntry.js",
       remotes: {
-        components: "components@https://component-microservice.netlify.app/remoteEntry.js",
         landers: "lander@https://lander-component-microservice.netlify.app/remoteEntry.js",
         prelander: "prelander@https://preladner-micorservice.netlify.app/remoteEntry.js"
       },

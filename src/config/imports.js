@@ -1,8 +1,5 @@
 import React from "react";
 
-// const Testimonials1 = React.lazy(() => import("components/Testimonials1"));
-// const Advertorial = React.lazy(() => import("components/Advertorial"));
-
 const V1LanderLander = React.lazy(() => import("landers/V1Lander"));
 const V1LanderFooter = React.lazy(() => import("landers/V1Footer"));
 const V1LanderHeader = React.lazy(() => import("landers/V1Header"));

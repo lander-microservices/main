@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { COMPONENTS, LANDERS } from "../config/imports";
+import { LANDERS } from "../config/imports";
 import { renderRichText, storyblokEditable } from "@storyblok/react";
-import { useInitRingba, useRingba } from "components/useRingba";
-import { useVisitorId } from "components/useVisitorId";
-import { useEventID } from "components/useEventId";
-import { RINGBA_STORAGE_KEYS } from "components/ringbaStorageKeys";
-import { QUERY_STRINGS } from "components/queryStrings";
-import { STORAGE_KEYS } from "components/storageKeys";
-import { COOKIES } from "components/landerToQuizCookie";
+import { useInitRingba, useRingba } from "wecall-config-lib";
+import { useVisitorId } from "wecall-config-lib";
+import { useEventID } from "wecall-config-lib";
+import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
+import { QUERY_STRINGS } from "wecall-config-lib";
+import { STORAGE_KEYS } from "wecall-config-lib";
+import { COOKIES } from "wecall-config-lib";
 import Cookies from "js-cookie";
 import axios from "axios";
-import APIS from "components/apis";
+import {APIS} from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Menu = ({

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { useStoryblok, StoryblokComponent } from "@storyblok/react";
 import Prelander from "./PreLander";
-import PuffLoader from "react-spinners/PuffLoader"
-import "components/GlobalCss";
+import PuffLoader from "react-spinners/PuffLoader";
+import "../globalCss.scss";
 import Lander from "./Lander";
+import { ExampleComponent } from "wecall-config-lib";
 
 let init = true;
 storyblokInit({
@@ -13,36 +14,10 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     prelander: Prelander,
-    lander: Lander
+    lander: Lander,
   },
   apiOptions: { region: "us" },
 });
-
-const Main = () => {
-  const [storyBookInit, setStoryBookInit] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.domain_settings && !init) {
-        storyblokInit({
-          accessToken: window.domain_settings.storyblockAccessToken,
-          use: [apiPlugin],
-          components: {
-            prelander: Prelander,
-            lander: Lander
-          },
-          apiOptions: { region: "us" },
-        });
-        init = true;
-        setStoryBookInit(true);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-  if (storyBookInit) return <App />;
-  else return <></>;
-};
 
 const App = () => {
   let slug =
@@ -63,8 +38,8 @@ const App = () => {
         }}
       >
         <div>
-        <PuffLoader color="#274066" />
-        <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+          <PuffLoader color="#274066" />
+          <p style={{ margin: 0, padding: 0 }}>Loading...</p>
         </div>
       </div>
     );

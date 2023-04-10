@@ -1,21 +1,20 @@
 import { renderRichText, storyblokEditable } from "@storyblok/react";
-import shortCodeReplacer from "components/shortCodeReplacer";
-import { useInitRingba } from "components/useRingba";
+import {replaceShortCodes as shortCodeReplacer} from "wecall-config-lib";
+import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
-import { COMPONENTS, LANDERS } from "../config/imports";
+import { LANDERS } from "../config/imports";
 import axios from "axios";
-import APIS from "components/apis";
-import { COOKIES } from "components/landerToQuizCookie";
-import { QUERY_STRINGS } from "components/queryStrings";
-import { RINGBA_STORAGE_KEYS } from "components/ringbaStorageKeys";
-import { STORAGE_KEYS } from "components/storageKeys";
-import { useEventID } from "components/useEventId";
-import { useRingba } from "components/useRingba";
-import { useVisitorId } from "components/useVisitorId";
+import {APIS} from "wecall-config-lib";
+import { COOKIES } from "wecall-config-lib";
+import { QUERY_STRINGS } from "wecall-config-lib";
+import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
+import { STORAGE_KEYS } from "wecall-config-lib";
+import { useEventID } from "wecall-config-lib";
+import { useRingba } from "wecall-config-lib";
+import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
 
 const Prelander = ({ blok }) => {
-  console.log("Block", blok)
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("lander.", "");
   const generator = blok.prelander_generator;
