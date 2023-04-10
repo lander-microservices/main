@@ -56,9 +56,11 @@ const Footer = ({
   );
 };
 
-const Advertorial = ({ content_block }) => {
+const Advertorial = ({ content_block, theme }) => {
+  const AdvertorialComponent = LANDERS.lander[theme].advertorial;
+
   if (content_block.lander_hero_section_advertorial_display === "yes")
-    return <COMPONENTS.Advertorial content_block={content_block} />;
+    return <AdvertorialComponent content_block={content_block} />;
   else return <></>;
 };
 
@@ -247,6 +249,7 @@ export default function Lander({ blok }) {
   }, [eventID]);
 
   const Lander = LANDERS.lander[theme].lander;
+
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -258,7 +261,7 @@ export default function Lander({ blok }) {
           {/* Advertorial */}
 
           {blok && findComponent("lander_advertorial_section") && (
-            <Advertorial
+            <Advertorial theme={theme}
               content_block={findComponent("lander_advertorial_section")}
             />
           )}

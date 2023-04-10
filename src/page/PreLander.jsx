@@ -93,8 +93,9 @@ const Prelander = ({ blok }) => {
         const prelander_testimonial_paragraph = renderRichText(
           content_block.prelander_testimonial_paragraph
         );
+        const Testimonials = LANDERS.prelander[blok.theme].testimonials
         return (
-          <COMPONENTS.Testimonials1
+          <Testimonials
             key={index}
             prelander_testimonial_paragraph={prelander_testimonial_paragraph}
             prelander_testimonial_headline={prelander_testimonial_headline}
