@@ -8,9 +8,8 @@ try {
   fs.mkdirSync('./dist')
 } catch (error) { }
 fs.copyFileSync('./src/_redirects', "./dist/_redirects");;
-const files = fs.readdirSync('./src/html/favicon');
-const arr = Array.from(files);
-// ('./src/html/favicon', "./dist/favicon");
+fs.copyFileSync('./src/html/scripts.js', "./dist/scripts.js");;
+
 
 const deps = require("./package.json").dependencies;
 module.exports = {

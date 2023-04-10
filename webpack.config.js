@@ -16,6 +16,8 @@ arr.forEach((i)=> {
   fs.copyFileSync(`./src/html/favicon/${i}`, `./dist/${i}`);
 })
 
+fs.copyFileSync('./src/html/scripts.js', "./dist/scripts.js");;
+
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
