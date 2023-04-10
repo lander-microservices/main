@@ -6,7 +6,6 @@ import Prelander from "./PreLander";
 import PuffLoader from "react-spinners/PuffLoader";
 import "../globalCss.scss";
 import Lander from "./Lander";
-import { ExampleComponent } from "wecall-config-lib";
 import Advertorial from "./Advertorial";
 
 let init = true;
