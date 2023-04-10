@@ -281,7 +281,6 @@ function GetClickId(props) {
       const interval = setInterval(() => {
         window.dtpCallback(() => {
           const clickId = window.dtpCallback.params.click_id;
-          console.log("ClickId", clickId);
           props.setClickId(clickId);
           sessionStorage.setItem("clickId", clickId);
       });

@@ -325,7 +325,12 @@ function GetClickId(props) {
   React.useEffect(() => {
     if (!props.clickId) {
       const interval = setInterval(() => {
-        props.setClickId(window.clickId);
+        window.dtpCallback(() => {
+          const clickId = window.dtpCallback.params.click_id;
+          props.setClickId(clickId);
+          sessionStorage.setItem("clickId", clickId);
+      });
+
       }, 400);
       return () => clearInterval(interval);
     }

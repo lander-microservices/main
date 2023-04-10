@@ -144,7 +144,6 @@ const initVolumScript = (url) => {
     );
     var clickId;
     window.dtpCallback(() => {
-        console.log("ClickId", clickId);
         clickId = window.dtpCallback.params.click_id;
         sessionStorage.setItem("clickId", clickId);
     });
