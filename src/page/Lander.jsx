@@ -10,8 +10,9 @@ import { STORAGE_KEYS } from "wecall-config-lib";
 import { COOKIES } from "wecall-config-lib";
 import Cookies from "js-cookie";
 import axios from "axios";
-import {APIS} from "wecall-config-lib";
+import { APIS } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 
 const Menu = ({
   content_block,
@@ -261,7 +262,8 @@ export default function Lander({ blok }) {
           {/* Advertorial */}
 
           {blok && findComponent("lander_advertorial_section") && (
-            <Advertorial theme={theme}
+            <Advertorial
+              theme={theme}
               content_block={findComponent("lander_advertorial_section")}
             />
           )}
@@ -285,6 +287,7 @@ export default function Lander({ blok }) {
           findComponent("lander_paragraph") &&
           findComponent("lander_hero_section") && (
             <Lander
+              shortCodeReplacer={shortCodeReplacer}
               init={() => {}}
               getRichText={getRichText}
               lander_bg_color={blok.lander_bg_color}
