@@ -2,7 +2,7 @@ import { renderRichText, storyblokEditable } from "@storyblok/react";
 import {replaceShortCodes as shortCodeReplacer} from "wecall-config-lib";
 import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
-import { LANDERS } from "../config/imports";
+import { LANDERS } from "../../config/imports";
 import axios from "axios";
 import {APIS} from "wecall-config-lib";
 import { COOKIES } from "wecall-config-lib";
@@ -13,6 +13,7 @@ import { useEventID } from "wecall-config-lib";
 import { useRingba } from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
+import CssLoader from "./CssLoader";
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -270,6 +271,9 @@ const Prelander = ({ blok }) => {
           getComponent(content_block, index)
         )}
       </div>
+      <React.Suspense fallback={<></>}>
+        <CssLoader />
+      </React.Suspense>
     </React.Suspense>
   );
 };

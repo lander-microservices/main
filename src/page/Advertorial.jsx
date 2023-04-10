@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { LANDERS } from '../config/imports';
 
 export default function Advertorial({ blok }){
-    console.log(blok)
     return (
-        <div>
-            {'Advertorial Page'}
-        </div>
+    <React.Suspense fallback={<></>}>
+        <LANDERS.advertorial.v1 />
+    </React.Suspense>
     )
 }

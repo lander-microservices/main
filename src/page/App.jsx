@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { useStoryblok, StoryblokComponent } from "@storyblok/react";
-import Prelander from "./PreLander";
+import Prelander from "./PreLander/PreLander";
 import PuffLoader from "react-spinners/PuffLoader";
-import "../globalCss.scss";
-import Lander from "./Lander";
+import Lander from "./Lander/Lander";
 import Advertorial from "./Advertorial";
 
 let init = true;

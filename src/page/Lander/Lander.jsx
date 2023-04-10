@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LANDERS } from "../config/imports";
+import { LANDERS } from "../../config/imports";
 import { renderRichText, storyblokEditable } from "@storyblok/react";
 import { useInitRingba, useRingba } from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
@@ -13,6 +13,9 @@ import axios from "axios";
 import { APIS } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
+
+const CssLoader = React.lazy(()=>import("./CssLoader"));
+// import "landers/GlobalScss";
 
 const Menu = ({
   content_block,
@@ -317,6 +320,9 @@ export default function Lander({ blok }) {
         )}
         {/* Footer */}
       </div>
+      <React.Suspense fallback={<></>}>
+      <CssLoader />
+      </React.Suspense>
     </React.Suspense>
   );
 }
