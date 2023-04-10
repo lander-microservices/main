@@ -53,7 +53,7 @@ const Prelander = ({ blok }) => {
         const Menu = LANDERS.prelander[blok.theme].header;
         return (
           <Menu
-            eventID="EventId"
+            eventID={eventID}
             key={index}
             number={number}
             handlePixelEventTrigger={handlePixelEventTrigger}
@@ -167,7 +167,6 @@ const Prelander = ({ blok }) => {
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
     storeRgbaData("generator", generator);
-    console.log("AccId", acc_id);
     storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
 
     COOKIES.forEach((i) => {
