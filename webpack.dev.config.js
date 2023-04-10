@@ -40,6 +40,11 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+      {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         use: {

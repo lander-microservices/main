@@ -28,6 +28,7 @@
     "postcss-loader": "^4.1.0",
     "sass": "^1.61.0",
     "sass-loader": "^13.2.2",
+    "source-map-loader": "^4.0.1",
     "style-loader": "^3.3.0",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.9.0",
