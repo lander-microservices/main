@@ -244,6 +244,15 @@ const Prelander = ({ blok }) => {
     storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
   };
 
+  const addPixelEventListenerToAllButtons = () => {
+    const callNowButtons = window.document.querySelectorAll(".callnow");
+    const listenerFunc = () => handlePixelEventTrigger("Contact");
+    callNowButtons.forEach((i) => {
+      i.removeEventListener("click", listenerFunc);
+      i.addEventListener("click", listenerFunc);
+    });
+  };
+
   useEffect(() => {
     setInitialData();
     window.document.title = blok.prelander_meta_title;
@@ -261,6 +270,10 @@ const Prelander = ({ blok }) => {
       );
     }
   }, [clickId]);
+
+  useEffect(() => {
+    addPixelEventListenerToAllButtons();
+  }, [number]);
 
   useEffect(() => {
     if (visitorId) {
