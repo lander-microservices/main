@@ -14,7 +14,7 @@ import { APIS } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 
-const CssLoader = React.lazy(()=>import("./CssLoader"));
+const CssLoader = React.lazy(() => import("./CssLoader"));
 // import "landers/GlobalScss";
 
 const Menu = ({
@@ -80,12 +80,24 @@ export default function Lander({ blok }) {
   const [headerData, setHeaderData] = useState({});
 
   const [clickId, setClickId] = useState();
+
+  const testRingba = {
+    key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
+    user: "pranavtest",
+    number: "1-866-578-2331",
+  };
   const { number } = useInitRingba({
     ringbaKey: {
-      key: blok.lander_ringba_number_pool_key,
-      number: blok.lander_ringba_static_number,
+      key: testRingba.key,
+      number: testRingba.number,
     },
   });
+  // const { number } = useInitRingba({
+  //   ringbaKey: {
+  //     key: blok.lander_ringba_number_pool_key,
+  //     number: blok.lander_ringba_static_number,
+  //   },
+  // });
 
   const fbc = Cookies.get("_fbc" || "");
   const fbp = Cookies.get("_fbp" || "");
@@ -234,7 +246,7 @@ export default function Lander({ blok }) {
 
   useEffect(() => {
     if (visitorId) {
-      storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
+      storeRgbaData(RINGBA_STORAGE_KEYS.visitor_id, visitorId);
       Cookies.set("visitor_id", visitorId);
       Cookies.set("visitor_id", visitorId, {
         domain: domainName,
@@ -297,10 +309,12 @@ export default function Lander({ blok }) {
               lander_paragraph={findComponent("lander_paragraph")}
               lander_hero_section={findComponent("lander_hero_section")}
               number={number}
+              RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
               lander_show_cta_section={lander_show_cta_section}
               lander_show_quiz_section={lander_show_quiz_section}
               handlePixelEventTrigger={handlePixelEventTrigger}
               PropagateLoader={PropagateLoader}
+              storeRgbaData={storeRgbaData}
               callClickCb={() => handlePixelEventTrigger("Contact")}
             />
           )}
@@ -321,7 +335,7 @@ export default function Lander({ blok }) {
         {/* Footer */}
       </div>
       <React.Suspense fallback={<></>}>
-      <CssLoader />
+        <CssLoader />
       </React.Suspense>
     </React.Suspense>
   );
@@ -335,8 +349,7 @@ function GetClickId(props) {
           const clickId = window.dtpCallback.params.click_id;
           props.setClickId(clickId);
           sessionStorage.setItem("clickId", clickId);
-      });
-
+        });
       }, 400);
       return () => clearInterval(interval);
     }
