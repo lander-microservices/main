@@ -181,7 +181,6 @@ const Prelander = ({ blok }) => {
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
     storeRgbaData("generator", generator);
-    storeRgbaData(RINGBA_STORAGE_KEYS.acc_id, acc_id);
 
     COOKIES.forEach((i) => {
       Cookies.set(i.key, params.get(i.key));
@@ -190,10 +189,10 @@ const Prelander = ({ blok }) => {
       });
     });
 
-    Cookies.set("acc_id", acc_id);
-    Cookies.set("acc_id", acc_id, {
-      domain: domainName,
-    });
+    // Cookies.set("acc_id", params.get(''));
+    // Cookies.set("acc_id", params.get(''), {
+    //   domain: domainName,
+    // });
 
     Cookies.set("visitor_id", visitorId);
     Cookies.set("visitor_id", visitorId, {
