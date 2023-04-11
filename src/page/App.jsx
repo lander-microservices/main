@@ -7,6 +7,8 @@ import PuffLoader from "react-spinners/PuffLoader";
 import Lander from "./Lander/Lander";
 import Advertorial from "./Advertorial";
 
+localStorage.removeItem('ringbaData');
+
 let init = true;
 storyblokInit({
   accessToken: "gVJgZvajxLWDT0saMgTqswtt",

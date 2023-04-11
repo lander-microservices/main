@@ -80,6 +80,11 @@ export default function Lander({ blok }) {
   const [headerData, setHeaderData] = useState({});
 
   const [clickId, setClickId] = useState();
+  const [stateCityResponse, setStateCityResponse] = useState({
+    state: "",
+    city: "",
+    zip: "",
+  });
 
   const testRingba = {
     key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
@@ -138,9 +143,6 @@ export default function Lander({ blok }) {
           : ""
         : "";
 
-      storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
-      storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
-      storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
@@ -210,6 +212,31 @@ export default function Lander({ blok }) {
   }, [fbc, fbp]);
 
   const handlePixelEventTrigger = (eventName) => {
+    console.log(
+      "Ringba Data -----------------",
+      localStorage.getItem("ringbaData")
+    );
+
+    const ringbaData = localStorage.getItem("ringbaData");
+
+    storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
+    storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+
+    if (ringbaData.includes("zip")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.zip, stateCityResponse.zip);
+    }
+
+    if (ringbaData.includes("city")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.city, stateCityResponse.city);
+    }
+
+    if (ringbaData.includes("state")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.state, stateCityResponse.state);
+    }
+
     if (params.get("utm_source") == "facebook") {
       window.fbcFunc &&
         window.fbcFunc("track", eventName, {
