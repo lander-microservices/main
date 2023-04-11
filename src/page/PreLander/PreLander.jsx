@@ -266,7 +266,7 @@ const Prelander = ({ blok }) => {
 
   useEffect(() => {
     if (visitorId) {
-      storeRgbaData(RINGBA_STORAGE_KEYS.visitorId, visitorId);
+      storeRgbaData(RINGBA_STORAGE_KEYS.visitor_id, visitorId);
       Cookies.set("visitor_id", visitorId);
       Cookies.set("visitor_id", visitorId, {
         domain: domainName,
