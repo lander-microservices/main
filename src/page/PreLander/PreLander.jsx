@@ -175,8 +175,6 @@ const Prelander = ({ blok }) => {
       storeRgbaData(i.ringbaKey, params.get(i.redirectString));
     });
 
-    storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
-    storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
     storeRgbaData(
       RINGBA_STORAGE_KEYS.fbPixelId,
       window.domain_settings.fbPixelId
@@ -206,8 +204,14 @@ const Prelander = ({ blok }) => {
     cityAddress();
   };
 
-  console.log("fbc", fbc);
-  console.log("fbp", fbp);
+  useEffect(() => {
+    if (fbc) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
+    }
+    if (fbp) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
+    }
+  }, [fbc, fbp]);
 
   const handlePixelEventTrigger = (eventName) => {
     if (params.get("utm_source") == "facebook") {
