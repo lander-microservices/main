@@ -32,12 +32,24 @@ const Prelander = ({ blok }) => {
   const { visitorId } = useVisitorId();
   const eventID = useEventID();
 
+  const testRingba = {
+    key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
+    user: "pranavtest",
+    number: "1-866-578-2331",
+  };
   const { number } = useInitRingba({
     ringbaKey: {
-      key: blok.prelander_ringba_number_pool_key,
-      number: blok.prelander_ringba_static_number,
+      key: testRingba.key,
+      number: testRingba.number,
     },
   });
+
+  // const { number } = useInitRingba({
+  //   ringbaKey: {
+  //     key: blok.prelander_ringba_number_pool_key,
+  //     number: blok.prelander_ringba_static_number,
+  //   },
+  // });
   const [headerData, setHeaderData] = useState({});
   const [stateCityResponse, setStateCityResponse] = useState({
     state: "",
