@@ -15,7 +15,6 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 
 const CssLoader = React.lazy(() => import("./CssLoader"));
-// import "landers/GlobalScss";
 
 const Menu = ({
   content_block,
@@ -229,16 +228,10 @@ export default function Lander({ blok }) {
         });
       }
     });
-    console.log("Comp===================", comp);
     // lander_paragraph_holder.quiz_holder_questions
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    console.log(
-      "Ringba Data -----------------",
-      localStorage.getItem("ringbaData")
-    );
-
     setBlankData();
 
     const ringbaData = localStorage.getItem("ringbaData");
