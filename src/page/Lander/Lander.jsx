@@ -115,82 +115,8 @@ export default function Lander({ blok }) {
     );
   };
 
-  const getComponent = (content_block, index) => {
-    switch (content_block.component) {
-      case "menu":
-        if (!headerData.prelander_logo_text) {
-          setHeaderData(content_block);
-        }
-        const Menu = LANDERS.prelander[blok.theme].header;
-        return (
-          <Menu
-            eventID={eventID}
-            key={index}
-            number={number}
-            handlePixelEventTrigger={handlePixelEventTrigger}
-            headerTitle={content_block.prelander_logo_text}
-            tollFreeVisible={content_block.prelander_nav_toll_free}
-            content_block={content_block}
-          />
-        );
-      case "prelander_hero_section":
-        const HeroSection = LANDERS.prelander[blok.theme].prelander;
-        const prelander_hero_title = shortCodeReplacer(
-          renderRichText(content_block.prelander_hero_title),
-          stateCityResponse
-        );
-        const prelander_hero_subtitle = shortCodeReplacer(
-          renderRichText(content_block.prelander_hero_subtitle),
-          stateCityResponse
-        );
-        const prelander_hero_paragraph = shortCodeReplacer(
-          renderRichText(content_block.prelander_hero_paragraph),
-          stateCityResponse
-        );
-        return (
-          <HeroSection
-            key={index}
-            prelander_hero_paragraph={prelander_hero_paragraph}
-            prelander_hero_subtitle={prelander_hero_subtitle}
-            prelander_hero_title={prelander_hero_title}
-            content_block={content_block}
-          />
-        );
-      case "prelander_testimonials_section":
-        const prelander_testimonial_headline = renderRichText(
-          content_block.prelander_testimonial_headline
-        );
-        const prelander_testimonial_paragraph = renderRichText(
-          content_block.prelander_testimonial_paragraph
-        );
-        const Testimonials = LANDERS.prelander[blok.theme].testimonials;
-        return (
-          <Testimonials
-            key={index}
-            prelander_testimonial_paragraph={prelander_testimonial_paragraph}
-            prelander_testimonial_headline={prelander_testimonial_headline}
-            content_block={content_block}
-          />
-        );
-      case "prelander_footer_section":
-        const renderedRichText = renderRichText(
-          content_block.prelander_footer_disclaimer
-        );
-        const Footer = LANDERS.prelander[blok.theme].footer;
-        return (
-          <Footer
-            key={index}
-            prelander_logo_text={headerData.prelander_logo_text}
-            prelander_logo_text_color={headerData.prelander_logo_text_color}
-            dis={renderedRichText}
-            tikTokEvent={window.tikTokEvent}
-            fbcFunc={window.fbcFunc}
-            eventID={eventID}
-            content_block={content_block}
-          />
-        );
-    }
-    return;
+  const getRichText = (texts) => {
+    return renderRichText(texts);
   };
 
   const cityAddress = async () => {
@@ -254,6 +180,24 @@ export default function Lander({ blok }) {
 
     getIpAdd();
     cityAddress();
+  };
+
+  const getIpAdd = async () => {
+    let userIp;
+    try {
+      var response;
+      response = await axios.get(APIS.GET_IP_ADDRESS, {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      userIp = response.data["ip"];
+    } catch (error) {
+      console.error("IpError" + error);
+    }
+    storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
   };
 
   useEffect(() => {
