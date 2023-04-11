@@ -211,11 +211,35 @@ export default function Lander({ blok }) {
     }
   }, [fbc, fbp]);
 
+  const setBlankData = () => {
+    const ringbaData = localStorage.getItem("ringbaData");
+    const comp = findComponent("lander_paragraph");
+    comp.lander_paragraph_holder.forEach((component) => {
+      if (component.component == "quiz_holder_section") {
+        component.quiz_holder_questions.forEach((question) => {
+          question.question_option.forEach((i) => {
+            if (ringbaData.includes(i.question_key_name)) {
+            } else {
+              storeRgbaData(
+                i.question_key_name,
+                i.question_option_default_value
+              );
+            }
+          });
+        });
+      }
+    });
+    console.log("Comp===================", comp);
+    // lander_paragraph_holder.quiz_holder_questions
+  };
+
   const handlePixelEventTrigger = (eventName) => {
     console.log(
       "Ringba Data -----------------",
       localStorage.getItem("ringbaData")
     );
+
+    setBlankData();
 
     const ringbaData = localStorage.getItem("ringbaData");
 
