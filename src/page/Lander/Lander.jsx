@@ -219,9 +219,6 @@ export default function Lander({ blok }) {
 
     const ringbaData = localStorage.getItem("ringbaData");
 
-    storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
-    storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
-
     if (ringbaData.includes("zip")) {
     } else {
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, stateCityResponse.zip);
