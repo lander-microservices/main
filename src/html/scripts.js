@@ -208,17 +208,6 @@ const initTikTok = (pixelId) => {
     }
 };
 
-const initNoScripts = ({ volum }) => {
-    const element = window.document.getElementById("noscripts");
-    element.innerHTML = `
-      <noscript>
-        <link
-          href="${volum}"
-          rel="stylesheet"
-        />
-      </noscript>
-  `;
-};
 
 const initMetaDetails = (obj) => {
     const { volumMeta } = obj;
