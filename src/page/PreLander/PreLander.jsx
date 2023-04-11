@@ -158,7 +158,6 @@ const Prelander = ({ blok }) => {
       storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
-      console.log("State City Zip", state, city, postalCode);
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -206,6 +205,9 @@ const Prelander = ({ blok }) => {
     getIpAdd();
     cityAddress();
   };
+
+  console.log("fbc", fbc);
+  console.log("fbp", fbp);
 
   const handlePixelEventTrigger = (eventName) => {
     if (params.get("utm_source") == "facebook") {
