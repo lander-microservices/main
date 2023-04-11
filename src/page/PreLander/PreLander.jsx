@@ -1,10 +1,10 @@
 import { renderRichText, storyblokEditable } from "@storyblok/react";
-import {replaceShortCodes as shortCodeReplacer} from "wecall-config-lib";
+import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
 import { LANDERS } from "../../config/imports";
 import axios from "axios";
-import {APIS} from "wecall-config-lib";
+import { APIS } from "wecall-config-lib";
 import { COOKIES } from "wecall-config-lib";
 import { QUERY_STRINGS } from "wecall-config-lib";
 import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
@@ -105,7 +105,7 @@ const Prelander = ({ blok }) => {
         const prelander_testimonial_paragraph = renderRichText(
           content_block.prelander_testimonial_paragraph
         );
-        const Testimonials = LANDERS.prelander[blok.theme].testimonials
+        const Testimonials = LANDERS.prelander[blok.theme].testimonials;
         return (
           <Testimonials
             key={index}
@@ -154,7 +154,11 @@ const Prelander = ({ blok }) => {
           : ""
         : "";
 
+      storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
+      storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
+      storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
+      console.log("State City Zip", state, city, postalCode);
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -246,12 +250,6 @@ const Prelander = ({ blok }) => {
   }, []);
 
   useEffect(() => {
-    if (stateCityResponse.state === "") {
-      cityAddress();
-    }
-  }, []);
-
-  useEffect(() => {
     if (clickId) {
       storeRgbaData(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
       Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId, {
@@ -298,8 +296,7 @@ function GetClickId(props) {
           const clickId = window.dtpCallback.params.click_id;
           props.setClickId(clickId);
           sessionStorage.setItem("clickId", clickId);
-      });
-
+        });
       }, 400);
       return () => clearInterval(interval);
     }
