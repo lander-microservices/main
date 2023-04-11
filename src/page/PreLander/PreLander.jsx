@@ -177,7 +177,7 @@ const Prelander = ({ blok }) => {
 
     storeRgbaData(
       RINGBA_STORAGE_KEYS.fbPixelId,
-      window.domain_settings.fbPixelId
+      window.domain_settings.facebookPixel
     );
     storeRgbaData(RINGBA_STORAGE_KEYS.domainName, domainName);
     storeRgbaData("generator", generator);

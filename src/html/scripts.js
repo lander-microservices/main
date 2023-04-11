@@ -270,7 +270,7 @@ const initScripts = (domain_settings) => {
         if (params.get("utm_source") === "tiktok") {
             initTikTok(currentDomainSettings.tikTok);
         }
-        initNoScripts({ volum: currentDomainSettings.volum.noScript });
+        // initNoScripts({ volum: currentDomainSettings.volum.noScript });
         initMetaDetails({
             volumMeta: currentDomainSettings.volum.meta,
             "og:title": currentDomainSettings.metaDetails["og:title"],
