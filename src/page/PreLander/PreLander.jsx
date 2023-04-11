@@ -189,11 +189,6 @@ const Prelander = ({ blok }) => {
       });
     });
 
-    // Cookies.set("acc_id", params.get(''));
-    // Cookies.set("acc_id", params.get(''), {
-    //   domain: domainName,
-    // });
-
     Cookies.set("visitor_id", visitorId);
     Cookies.set("visitor_id", visitorId, {
       domain: domainName,
