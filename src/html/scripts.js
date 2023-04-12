@@ -26,6 +26,7 @@ const initFacebookPixel = (id) => {
     fbq("init", fbPixelId);
     window.fbPixelId = fbPixelId;
     window.fbcFunc = fbq;
+    window.facebookPixelLoaded = true
 };
 
 const initGTM = (id) => {

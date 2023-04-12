@@ -297,7 +297,7 @@ export default function Lander({ blok }) {
   }, [clickId]);
 
   useEffect(() => {
-    addPixelEventListenerToAllButtons();
+    window.trackCallEvent = () => handlePixelEventTrigger("Contact");
   }, [number]);
 
   useEffect(() => {
@@ -319,7 +319,7 @@ export default function Lander({ blok }) {
       });
     }
   }, [eventID]);
-
+  
   const Lander = LANDERS.lander[theme].lander;
 
   return (
