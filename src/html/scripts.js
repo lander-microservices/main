@@ -383,6 +383,99 @@ const domain_settings = [
         vertical: "medicareaca",
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
+
+    {
+        name: "prelander.qualifyaca.com",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.qualifyaca.com/d/.js",
+            noScript:
+                "https://track.qualifyaca.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.qualifyaca.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "8aByZOOBzZ3TR7eSBCu2BAtt",
+    },
+    {
+        name: "prelander.qualifyacanow.com",
+        gtm: "GTM-MPCJVTW",
+        facebookPixel: "684500325922868",
+        volum: {
+            url: "https://track.qualifyacanow.com/d/.js",
+            noScript:
+                "https://track.qualifyacanow.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.qualifyacanow.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+    },
+    {
+        name: "prelander.health-benefits.co",
+        gtm: "GTM-NZ2PBFN",
+        facebookPixel: "1291684211590181",
+        volum: {
+            url: "https://track.health-benefits.co/d/.js",
+            noScript:
+                "https://track.health-benefits.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.health-benefits.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+    },
+    {
+        name: "prelander.justhealthbenefits.com",
+        gtm: "GTM-TRRWZN2",
+        facebookPixel: "1558807927960387",
+        volum: {
+            url: "https://track.justhealthbenefits.com/d/.js",
+            noScript:
+                "https://track.justhealthbenefits.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.justhealthbenefits.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+    },
 ];
 
 initScripts(domain_settings);
