@@ -11,7 +11,6 @@ localStorage.removeItem('ringbaData');
 
 let init = true;
 
-console.log(window.domain_settings.storyblockAccessToken)
 storyblokInit({
   accessToken: window.domain_settings.storyblockAccessToken,
   use: [apiPlugin],
