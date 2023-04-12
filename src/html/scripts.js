@@ -384,7 +384,7 @@ const domain_settings = [
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
 
-    
+
     {
         name: "prelander.qualifyaca.com",
         gtm: "GTM-M8F8CW4",
@@ -476,6 +476,29 @@ const domain_settings = [
         websiteTitle: "",
         vertical: "aca",
         storyblockAccessToken: "QA9CNHDprhz7MJKYzEuQLQtt",
+    },
+    {
+        name: "prelander.myacaquote.com",
+        gtm: "GTM-KT8XQWB",
+        facebookPixel: "487439593578874",
+        volum: {
+            url: "https://track.myacaquote.com/d/.js",
+            noScript:
+                "https://track.myacaquote.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.myacaquote.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "rTose7Mor5RO346LgEd4Cgtt",
     },
 ];
 
