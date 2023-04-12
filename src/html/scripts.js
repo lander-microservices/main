@@ -405,7 +405,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "8aByZOOBzZ3TR7eSBCu2BAtt",
+        storyblockAccessToken: "MYnrdyo1glpZZdZtPob0Xgtt",
     },
     {
         name: "prelander.qualifyacanow.com",
