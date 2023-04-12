@@ -384,6 +384,7 @@ const domain_settings = [
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
 
+    
     {
         name: "prelander.qualifyaca.com",
         gtm: "GTM-M8F8CW4",
@@ -428,7 +429,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+        storyblockAccessToken: "8cbn2vaXyBH39cr807LcEgtt",
     },
     {
         name: "prelander.health-benefits.co",
@@ -451,7 +452,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+        storyblockAccessToken: "VcOpj5bMxfZmX8TjWOT4Wwtt",
     },
     {
         name: "prelander.justhealthbenefits.com",
@@ -474,7 +475,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+        storyblockAccessToken: "QA9CNHDprhz7MJKYzEuQLQtt",
     },
 ];
 
