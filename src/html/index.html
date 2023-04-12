@@ -62,7 +62,7 @@
     <div id="noscripts"></div>
   </body>
   <script>
-    const initNoScripts = ({ volum }) => {
+    const initNoScripts = ({ volum, gtm, fb, tikTok }) => {
       const element = window.document.getElementById("noscripts");
       element.innerHTML = `
       <noscript>
@@ -71,8 +71,28 @@
           rel="stylesheet"
         />
       </noscript>
-  `;
+      `;
+
+      element.innerHTML = `
+      <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=${gtm}"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe
+      ></noscript>
+      `;
+      element.innerHTML = `
+      <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=${fb}&ev=PageView&noscript=1"
+      /></noscript>
+      `;
     };
-    initNoScripts({ volum: window.domain_settings.volum.noScript });
+    initNoScripts({ volum: window.domain_settings.volum.noScript, gtm: window.domain_settings.gtm, fb: window.domain_settings.facebookPixel, tikTok: window.domain_settings.tikTok });
   </script>
 </html>
