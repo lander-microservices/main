@@ -4191,10 +4191,10 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-wecall-config-lib@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/wecall-config-lib/-/wecall-config-lib-1.0.2.tgz#064357d8b987742607ecb2cf46898d170da5615e"
-  integrity sha512-rhoTAoT37q8WF6gsBmVEhUkZDUh0IRunPQThgAjFatEV9MTIjyz9xhDXpXVLqwSHaj/IuxFmP0ackWvp0W6XHg==
+wecall-config-lib@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/wecall-config-lib/-/wecall-config-lib-1.0.4.tgz#bbe74a1706435863fbf75468e22d2a2965b5d5b1"
+  integrity sha512-Vp2KBuC5xEIzyAtOIey/U/uyLaKGqXykMeBx/0f+hxR0W9fQWIk/dv0smW4B0nqPtuL6IL802xOFmgreXY3rsg==
   dependencies:
     js-cookie "^3.0.1"
     uuid "^9.0.0"
