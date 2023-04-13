@@ -371,6 +371,7 @@ export default function Lander({ blok }) {
               handlePixelEventTrigger={handlePixelEventTrigger}
               PropagateLoader={PropagateLoader}
               storeRgbaData={storeRgbaData}
+              stateCityResponse={stateCityResponse}
               callClickCb={() => handlePixelEventTrigger("Contact")}
             />
           )}
