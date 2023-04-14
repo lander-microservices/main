@@ -58,9 +58,9 @@ const initVolumScript = (url) => {
         "savedCid"
       );
       var clickId;
-      window.dtpCallback(() => {
-          clickId = window.dtpCallback.params.click_id;
-          sessionStorage.setItem("clickId", clickId);
+      dtpCallback(() => {
+        clickId = dtpCallback.getClickID();
+        sessionStorage.setItem("clickId", clickId);
       });
 }
 
