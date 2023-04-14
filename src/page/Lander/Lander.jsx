@@ -296,6 +296,8 @@ export default function Lander({ blok }) {
     }
   }, [clickId]);
 
+  console.log("Domain Name", domainName);
+
   useEffect(() => {
     window.trackCallEvent = () => handlePixelEventTrigger("Contact");
   }, [number]);
