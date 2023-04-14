@@ -319,6 +319,9 @@ export default function Lander({ blok }) {
     }
   }, [eventID]);
 
+  const showQuizSection = lander_show_quiz_section &&
+        lander_show_quiz_section.toLowerCase() === "yes"
+
   useEffect(() => {
     const scriptId = "volumScript";
     const volumScript = window.document.getElementById(scriptId);
@@ -326,8 +329,7 @@ export default function Lander({ blok }) {
     } else {
       const baseUrl = "https://lander-main-microservice.netlify.app/";
       const src =
-        lander_show_quiz_section &&
-        lander_show_quiz_section.toLowerCase() === "yes"
+      showQuizSection
           ? baseUrl + "volumOfferScript.js"
           : baseUrl + "volumLanderScript.js";
       const doc = document.createElement("script");
@@ -362,7 +364,7 @@ export default function Lander({ blok }) {
       }
     >
       {!clickId ? (
-        <GetClickId clickId={clickId} setClickId={setClickId} />
+        <GetClickId clickId={clickId} showQuizSection={showQuizSection} setClickId={setClickId} />
       ) : undefined}
 
       <div {...storyblokEditable(blok)}>
@@ -456,11 +458,19 @@ function GetClickId(props) {
   React.useEffect(() => {
     if (!props.clickId) {
       const interval = setInterval(() => {
-        window.dtpCallback(() => {
-          const clickId = window.dtpCallback.params.click_id;
-          props.setClickId(clickId);
-          sessionStorage.setItem("clickId", clickId);
-        });
+        if(props.showQuizSection){
+          window.dtpCallback(() => {
+            clickId = dtpCallback.getClickID();
+            props.setClickId(clickId);
+            sessionStorage.setItem("clickId", clickId);
+          });
+        } else {
+          window.dtpCallback(() => {
+            const clickId = window.dtpCallback.params.click_id;
+            props.setClickId(clickId);
+            sessionStorage.setItem("clickId", clickId);
+          });
+        }
       }, 400);
       return () => clearInterval(interval);
     }
