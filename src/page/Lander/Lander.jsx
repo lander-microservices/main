@@ -460,7 +460,7 @@ function GetClickId(props) {
       const interval = setInterval(() => {
         if(props.showQuizSection){
           window.dtpCallback(() => {
-            clickId = dtpCallback.getClickID();
+            const clickId = dtpCallback.getClickID();
             props.setClickId(clickId);
             sessionStorage.setItem("clickId", clickId);
           });
