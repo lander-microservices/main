@@ -296,7 +296,6 @@ export default function Lander({ blok }) {
     }
   }, [clickId]);
 
-  console.log("Domain Name", domainName);
 
   useEffect(() => {
     window.trackCallEvent = () => handlePixelEventTrigger("Contact");
@@ -465,7 +464,6 @@ function GetClickId(props) {
           window.dtpCallback(() => {
             const clickId = dtpCallback.getClickID();
             props.setClickId(clickId);
-            console.log("CLickId", clickId)
             sessionStorage.setItem("clickId", clickId);
           });
         } else {
