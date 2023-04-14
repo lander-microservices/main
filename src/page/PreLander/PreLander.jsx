@@ -16,7 +16,7 @@ import Cookies from "js-cookie";
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
-  const domainName = window.location.host.replace("lander.", "");
+  const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
 

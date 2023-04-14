@@ -71,7 +71,7 @@ export default function Lander({ blok }) {
   const lander_show_quiz_section = blok.lander_show_quiz_section;
   const theme = blok.theme;
   const acc_id = blok.lander_acc_id;
-  const domainName = window.location.host.replace("lander.", "");
+  const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.lander_generator;
   const utm_source = blok.lander_utm_source;
 
