@@ -462,6 +462,7 @@ function GetClickId(props) {
           window.dtpCallback(() => {
             const clickId = dtpCallback.getClickID();
             props.setClickId(clickId);
+            console.log("CLickId", clickId)
             sessionStorage.setItem("clickId", clickId);
           });
         } else {
