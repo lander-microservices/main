@@ -13,8 +13,7 @@ import axios from "axios";
 import { APIS } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
-
-const CssLoader = React.lazy(() => import("./CssLoader"));
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Menu = ({
   content_block,
@@ -319,11 +318,30 @@ export default function Lander({ blok }) {
       });
     }
   }, [eventID]);
-  
-  const Lander = LANDERS.lander[theme].lander;
 
+  const Lander = LANDERS.lander[theme].lander;
+  const FloatingCard = LANDERS.lander[theme].floatingCard
   return (
-    <React.Suspense fallback={<></>}>
+    <React.Suspense
+      fallback={
+        <>
+          <div
+            style={{
+              width: "100vw",
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <PuffLoader color="#274066" />
+              <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+            </div>
+          </div>
+        </>
+      }
+    >
       {!clickId ? (
         <GetClickId clickId={clickId} setClickId={setClickId} />
       ) : undefined}
@@ -390,10 +408,27 @@ export default function Lander({ blok }) {
           />
         )}
         {/* Footer */}
+        <React.Suspense
+          fallback={
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <PuffLoader color="#274066" />
+                <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+              </div>
+            </div>
+          }
+        >
+          <FloatingCard />
+        </React.Suspense>
       </div>
-      <React.Suspense fallback={<></>}>
-        <CssLoader />
-      </React.Suspense>
     </React.Suspense>
   );
 }

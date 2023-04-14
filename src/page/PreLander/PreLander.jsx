@@ -13,7 +13,6 @@ import { useEventID } from "wecall-config-lib";
 import { useRingba } from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
-import CssLoader from "./CssLoader";
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -285,9 +284,6 @@ const Prelander = ({ blok }) => {
           getComponent(content_block, index)
         )}
       </div>
-      <React.Suspense fallback={<></>}>
-        <CssLoader />
-      </React.Suspense>
     </React.Suspense>
   );
 };
