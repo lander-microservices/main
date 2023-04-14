@@ -274,6 +274,22 @@ const Prelander = ({ blok }) => {
       });
     }
   }, [visitorId]);
+
+  useEffect(() => {
+    const scriptId = "volumScript";
+    const volumScript = window.document.getElementById(scriptId);
+    if (volumScript) {
+    } else {
+      const baseUrl = "https://lander-main-microservice.netlify.app/";
+      const src = baseUrl + "volumLanderScript.js";
+      const doc = document.createElement("script");
+      doc.src = src;
+      doc.id = scriptId;
+      doc.async = false;
+      window.document.body.appendChild(doc);
+    }
+  }, []);
+
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
