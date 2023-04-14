@@ -461,13 +461,13 @@ function GetClickId(props) {
     if (!props.clickId) {
       const interval = setInterval(() => {
         if(props.showQuizSection){
-          window.dtpCallback(() => {
+          window.dtpCallback && window.dtpCallback(() => {
             const clickId = dtpCallback.getClickID();
             props.setClickId(clickId);
             sessionStorage.setItem("clickId", clickId);
           });
         } else {
-          window.dtpCallback(() => {
+          window.dtpCallback && window.dtpCallback(() => {
             const clickId = window.dtpCallback.params.click_id;
             props.setClickId(clickId);
             sessionStorage.setItem("clickId", clickId);
