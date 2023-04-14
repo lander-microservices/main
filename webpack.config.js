@@ -17,6 +17,9 @@ arr.forEach((i)=> {
 })
 
 fs.copyFileSync('./src/html/scripts.js', "./dist/scripts.js");;
+fs.copyFileSync('./src/html/volumLanderScript.js', "./dist/volumLanderScript.js");;
+fs.copyFileSync('./src/html/volumOfferScript.js', "./dist/volumOfferScript.js");;
+
 
 const deps = require("./package.json").dependencies;
 module.exports = {

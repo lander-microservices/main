@@ -319,8 +319,27 @@ export default function Lander({ blok }) {
     }
   }, [eventID]);
 
+  useEffect(() => {
+    const scriptId = "volumScript";
+    const volumScript = window.document.getElementById(scriptId);
+    if (volumScript) {
+    } else {
+      const baseUrl = "https://lander-main-microservice.netlify.app/";
+      const src =
+        lander_show_quiz_section &&
+        lander_show_quiz_section.toLowerCase() === "yes"
+          ? baseUrl + "volumOfferScript.js"
+          : baseUrl + "volumLanderScript.js";
+      const doc = document.createElement("script");
+      doc.src = src;
+      doc.id = scriptId;
+      doc.async = false;
+      window.document.body.appendChild(doc);
+    }
+  }, []);
+
   const Lander = LANDERS.lander[theme].lander;
-  const FloatingCard = LANDERS.lander[theme].floatingCard
+  const FloatingCard = LANDERS.lander[theme].floatingCard;
   return (
     <React.Suspense
       fallback={
