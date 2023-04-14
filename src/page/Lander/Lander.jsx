@@ -285,6 +285,7 @@ export default function Lander({ blok }) {
   useEffect(() => {
     if (clickId && clickId.length > 0) {
       storeRgbaData(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
+      Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId)
       Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId, {
         domain: domainName,
       });
