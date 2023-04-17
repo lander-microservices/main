@@ -117,12 +117,12 @@ const initMetaDetails = (obj) => {
 
     const ogUrlTag = document.createElement("META");
     ogUrlTag.setAttribute("property", "og:url");
-    ogUrlTag.setAttribute("content", window.location.href);
+    ogUrlTag.setAttribute("content", window.location.host + window.location.pathname);
     headTag.appendChild(ogUrlTag);
 
     const ogTitleTag = document.createElement("META");
     ogTitleTag.setAttribute("property", "og:title");
-    ogTitleTag.setAttribute("content", obj["og:title"]);
+    ogTitleTag.setAttribute("content", obj["og:title"] ? obj["og:title"] + window.location.host : "" );
     headTag.appendChild(ogUrlTag);
 
     const ogDescriptionTag = document.createElement("META");
@@ -137,7 +137,7 @@ const initMetaDetails = (obj) => {
 
     const titleTag = document.createElement("META");
     titleTag.setAttribute("name", "title");
-    titleTag.setAttribute("content", obj["title"]);
+    titleTag.setAttribute("content", obj["title"] ? obj["title"] + window.location.host  : "");
     headTag.appendChild(titleTag);
 
     const descriptionTag = document.createElement("META");
