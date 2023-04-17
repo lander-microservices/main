@@ -89,18 +89,18 @@ export default function Lander({ blok }) {
     user: "pranavtest",
     number: "1-866-578-2331",
   };
-  const { number } = useInitRingba({
-    ringbaKey: {
-      key: testRingba.key,
-      number: testRingba.number,
-    },
-  });
   // const { number } = useInitRingba({
   //   ringbaKey: {
-  //     key: blok.lander_ringba_number_pool_key,
-  //     number: blok.lander_ringba_static_number,
+  //     key: testRingba.key,
+  //     number: testRingba.number,
   //   },
   // });
+  const { number } = useInitRingba({
+    ringbaKey: {
+      key: blok.lander_ringba_number_pool_key,
+      number: blok.lander_ringba_static_number,
+    },
+  });
 
   const fbc = Cookies.get("_fbc" || "");
   const fbp = Cookies.get("_fbp" || "");
