@@ -13,6 +13,7 @@ import { useEventID } from "wecall-config-lib";
 import { useRingba } from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
+import PropagateLoader from "react-spinners/PropagateLoader"
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -56,6 +57,10 @@ const Prelander = ({ blok }) => {
     zip: "",
   });
 
+  const getRichText = (texts) => {
+    return renderRichText(texts);
+  };
+
   const getComponent = (content_block, index) => {
     switch (content_block.component) {
       case "menu":
@@ -95,6 +100,13 @@ const Prelander = ({ blok }) => {
             prelander_hero_subtitle={prelander_hero_subtitle}
             prelander_hero_title={prelander_hero_title}
             content_block={content_block}
+            
+            PropagateLoader={PropagateLoader}
+            storeRgbaData={storeRgbaData}
+            handlePixelEventTrigger={handlePixelEventTrigger}
+            getRichText={getRichText}
+            RINGBA_STORAGE_KEYS={RINGBA_STORAGE_KEYS}
+            number={number}
           />
         );
       case "prelander_testimonials_section":
