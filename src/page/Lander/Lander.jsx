@@ -156,7 +156,12 @@ export default function Lander({ blok }) {
     );
 
     QUERY_STRINGS.forEach((i) => {
-      storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+      if (
+        params.get(i.redirectString) &&
+        params.get(i.redirectString).length > 0
+      ) {
+        storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+      }
     });
 
     storeRgbaData(
@@ -285,7 +290,7 @@ export default function Lander({ blok }) {
   useEffect(() => {
     if (clickId && clickId.length > 0) {
       storeRgbaData(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
-      Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId)
+      Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId);
       Cookies.set(RINGBA_STORAGE_KEYS.vl_click_id, clickId, {
         domain: domainName,
       });
@@ -295,7 +300,6 @@ export default function Lander({ blok }) {
       );
     }
   }, [clickId]);
-
 
   useEffect(() => {
     window.trackCallEvent = () => handlePixelEventTrigger("Contact");
@@ -321,8 +325,9 @@ export default function Lander({ blok }) {
     }
   }, [eventID]);
 
-  const showQuizSection = lander_show_quiz_section &&
-        lander_show_quiz_section.toLowerCase() === "yes"
+  const showQuizSection =
+    lander_show_quiz_section &&
+    lander_show_quiz_section.toLowerCase() === "yes";
 
   useEffect(() => {
     const scriptId = "volumScript";
@@ -330,10 +335,9 @@ export default function Lander({ blok }) {
     if (volumScript) {
     } else {
       const baseUrl = "https://lander-main-microservice.netlify.app/";
-      const src =
-      showQuizSection
-          ? baseUrl + "volumOfferScript.js"
-          : baseUrl + "volumLanderScript.js";
+      const src = showQuizSection
+        ? baseUrl + "volumOfferScript.js"
+        : baseUrl + "volumLanderScript.js";
       const doc = document.createElement("script");
       doc.src = src;
       doc.id = scriptId;
@@ -366,7 +370,11 @@ export default function Lander({ blok }) {
       }
     >
       {!clickId ? (
-        <GetClickId clickId={clickId} showQuizSection={showQuizSection} setClickId={setClickId} />
+        <GetClickId
+          clickId={clickId}
+          showQuizSection={showQuizSection}
+          setClickId={setClickId}
+        />
       ) : undefined}
 
       <div {...storyblokEditable(blok)}>
@@ -460,18 +468,20 @@ function GetClickId(props) {
   React.useEffect(() => {
     if (!props.clickId) {
       const interval = setInterval(() => {
-        if(props.showQuizSection){
-          window.dtpCallback && window.dtpCallback(() => {
-            const clickId = dtpCallback.getClickID();
-            props.setClickId(clickId);
-            sessionStorage.setItem("clickId", clickId);
-          });
+        if (props.showQuizSection) {
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = dtpCallback.getClickID();
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
         } else {
-          window.dtpCallback && window.dtpCallback(() => {
-            const clickId = window.dtpCallback.params.click_id;
-            props.setClickId(clickId);
-            sessionStorage.setItem("clickId", clickId);
-          });
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = window.dtpCallback.params.click_id;
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
         }
       }, 400);
       return () => clearInterval(interval);

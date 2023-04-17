@@ -171,7 +171,12 @@ const Prelander = ({ blok }) => {
     );
 
     QUERY_STRINGS.forEach((i) => {
-      storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+      if (
+        params.get(i.redirectString) &&
+        params.get(i.redirectString).length > 0
+      ) {
+        storeRgbaData(i.ringbaKey, params.get(i.redirectString));
+      }
     });
 
     storeRgbaData(

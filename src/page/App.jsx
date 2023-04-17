@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { useStoryblok, StoryblokComponent } from "@storyblok/react";
-import Prelander from "./PreLander/PreLander";
 import PuffLoader from "react-spinners/PuffLoader";
 import Lander from "./Lander/Lander";
-import Advertorial from "./Advertorial";
+import Prelander from "./PreLander/PreLander";
 
 localStorage.removeItem('ringbaData');
 
@@ -17,7 +16,6 @@ storyblokInit({
   components: {
     prelander: Prelander,
     lander: Lander,
-    advertorial: Advertorial
   },
   apiOptions: { region: "us" },
 });
