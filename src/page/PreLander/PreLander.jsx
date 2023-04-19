@@ -1,4 +1,4 @@
-import { renderRichText, storyblokEditable } from "@storyblok/react";
+import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
@@ -26,6 +26,12 @@ const Prelander = ({ blok }) => {
   const fbp = Cookies.get("_fbp" || "");
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
+
+  const renderRichText = (texts) =>{
+    let renderedTexts = originalRenderedTexts(texts);
+    renderedTexts = renderedTexts.replaceAll('<span style="background-color:', '<span style="color:')
+    return renderedTexts
+  }
 
   const { storeRgbaData, removeRingba } = useRingba();
 

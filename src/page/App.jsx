@@ -6,9 +6,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import Lander from "./Lander/Lander";
 import Prelander from "./PreLander/PreLander";
 
-localStorage.removeItem('ringbaData');
-
-let init = true;
+localStorage.removeItem("ringbaData");
 
 storyblokInit({
   accessToken: window.domain_settings.storyblockAccessToken,

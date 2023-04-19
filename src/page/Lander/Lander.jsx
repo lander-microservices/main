@@ -119,7 +119,9 @@ export default function Lander({ blok }) {
   };
 
   const getRichText = (texts) => {
-    return renderRichText(texts);
+    let renderedTexts = renderRichText(texts);
+    renderedTexts = renderedTexts.replaceAll('<span style="background-color:', '<span style="color:')
+    return renderedTexts
   };
 
   const cityAddress = async () => {
