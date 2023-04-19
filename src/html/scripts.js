@@ -395,13 +395,13 @@ const domain_settings = [
     },
     {
         name: "prelander.futurehealthcenter.com",
-        gtm: "GTM-KT8XQWB",
-        facebookPixel: "487439593578874",
+        gtm: "GTM-P4BNZBZ",
+        facebookPixel: "1279112236350881",
         volum: {
-            url: "https://track.myacaquote.com/d/.js",
+            url: "https://track.futurehealthcenter.com/d/.js",
             noScript:
-                "https://track.myacaquote.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.myacaquote.com",
+                "https://track.futurehealthcenter.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.futurehealthcenter.com",
         },
         metaDetails: {
             "og:title": "og title",
@@ -414,7 +414,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "rTose7Mor5RO346LgEd4Cgtt",
+        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
     },
 ];
 
