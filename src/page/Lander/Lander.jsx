@@ -67,6 +67,7 @@ const Advertorial = ({ content_block, theme }) => {
 };
 
 export default function Lander({ blok }) {
+  console.log("Blok", blok);
   const lander_show_cta_section = blok.lander_show_cta_section;
   const lander_show_quiz_section = blok.lander_show_quiz_section;
   const theme = blok.theme;
@@ -120,8 +121,11 @@ export default function Lander({ blok }) {
 
   const getRichText = (texts) => {
     let renderedTexts = renderRichText(texts);
-    renderedTexts = renderedTexts.replaceAll('<span style="background-color:', '<span style="color:')
-    return renderedTexts
+    renderedTexts = renderedTexts.replaceAll(
+      '<span style="background-color:',
+      '<span style="color:'
+    );
+    return renderedTexts;
   };
 
   const cityAddress = async () => {
@@ -441,26 +445,28 @@ export default function Lander({ blok }) {
           />
         )}
         {/* Footer */}
-        <React.Suspense
-          fallback={
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <div>
-                <PuffLoader color="#274066" />
-                <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+        {blok.lander_floating_card === "yes" ? (
+          <React.Suspense
+            fallback={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <PuffLoader color="#274066" />
+                  <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+                </div>
               </div>
-            </div>
-          }
-        >
-          <FloatingCard />
-        </React.Suspense>
+            }
+          >
+            <FloatingCard />
+          </React.Suspense>
+        ) : undefined}
       </div>
     </React.Suspense>
   );
