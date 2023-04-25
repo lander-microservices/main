@@ -297,7 +297,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "Localhost",
         vertical: "medicareaca",
-        storyblockAccessToken: "vjPisCfQJsj3fla7OO07DAtt",
+        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
     {
         name: "prelander.qualifyaca.com",
