@@ -5,6 +5,10 @@ import { useStoryblok, StoryblokComponent } from "@storyblok/react";
 import PuffLoader from "react-spinners/PuffLoader";
 import Lander from "./Lander/Lander";
 import Prelander from "./PreLander/PreLander";
+import Cookies from "js-cookie";
+import { EVENT_ID  } from "wecall-config-lib"
+
+Cookies.remove(EVENT_ID);
 
 localStorage.removeItem("ringbaData");
 
