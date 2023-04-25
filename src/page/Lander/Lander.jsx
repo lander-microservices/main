@@ -111,7 +111,7 @@ export default function Lander({ blok }) {
 
   const { storeRgbaData, removeRingba } = useRingba();
 
-  const { visitorId } = useVisitorId();
+  const visitorId = useVisitorId();
   const eventID = useEventID();
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(

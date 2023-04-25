@@ -35,7 +35,7 @@ const Prelander = ({ blok }) => {
 
   const { storeRgbaData, removeRingba } = useRingba();
 
-  const { visitorId } = useVisitorId();
+  const visitorId = useVisitorId();
   const eventID = useEventID();
 
   const testRingba = {
