@@ -12,6 +12,8 @@ Cookies.remove(EVENT_ID);
 
 localStorage.removeItem("ringbaData");
 
+console.log("StorybLock Settings", window.domain_settings.storyblockAccessToken)
+
 storyblokInit({
   accessToken: window.domain_settings.storyblockAccessToken,
   use: [apiPlugin],
