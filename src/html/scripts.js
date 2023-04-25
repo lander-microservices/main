@@ -148,6 +148,7 @@ const initMetaDetails = (obj) => {
 
 const initScripts = (domain_settings) => {
     const domain = window.location.hostname;
+    console.log(domain);
     const currentDomainSettings = domain_settings.find((i) => {
         return i.name.includes(domain);
     });
@@ -173,9 +174,9 @@ const initScripts = (domain_settings) => {
             title: currentDomainSettings.metaDetails["title"],
             description: currentDomainSettings.metaDetails["description"],
         });
+        window.document.title = currentDomainSettings.websiteTitle;
     }
-
-    window.document.title = currentDomainSettings.websiteTitle;
+    console.log(window.domain_settings)
 };
 
 // fetch(
