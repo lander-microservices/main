@@ -416,6 +416,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
     },
+    {
+        name: "prelander.quickbenefits.co",
+        gtm: "GTM-MVRS5TM",
+        facebookPixel: "",
+        volum: {
+            url: "https://track.futurehealthcenter.com/d/.js",
+            noScript:
+                "https://track.futurehealthcenter.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.futurehealthcenter.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+    },
 ];
 
 initScripts(domain_settings);
