@@ -16,10 +16,18 @@ import Cookies from "js-cookie";
 import PropagateLoader from "react-spinners/PropagateLoader"
 
 const Prelander = ({ blok }) => {
+  console.log("block", blok);
+
+  const prelander_hero_section = blok.prelander_blocks.find((i)=>{
+    return i.component === "prelander_hero_section"
+  })
+
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
+  const showQuizSection = prelander_hero_section.prelander_show_quiz_section;
+  // blok.prelander_show_quiz_section
 
   const [clickId, setClickId] = useState();
   const fbc = Cookies.get("_fbc" || "");
