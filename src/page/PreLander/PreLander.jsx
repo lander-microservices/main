@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
-import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, sessionStorageKeys, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
+import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
@@ -174,9 +174,9 @@ const Prelander = ({ blok }) => {
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
 
-      localStorage.setItem(sessionStorageKeys.zip, postalCode);
-      localStorage.setItem(sessionStorageKeys.city, city);
-      localStorage.setItem(sessionStorageKeys.state, state);
+      localStorage.setItem('zip', postalCode);
+      localStorage.setItem('city', city);
+      localStorage.setItem('state', state);
 
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
@@ -219,9 +219,9 @@ const Prelander = ({ blok }) => {
       domain: domainName,
     });
 
-    localStorage.setItem(sessionStorageKeys.wbraid, params.get('wbraid'));
-    localStorage.setItem(sessionStorageKeys.gclid, params.get('gclid'));
-    localStorage.setItem(sessionStorageKeys.grbaid, params.get('grbaid'));
+    localStorage.setItem('wbraid', params.get('wbraid'));
+    localStorage.setItem('gclid', params.get('gclid'));
+    localStorage.setItem('grbaid', params.get('grbaid'));
 
     getIpAdd();
     cityAddress();
@@ -230,11 +230,11 @@ const Prelander = ({ blok }) => {
   useEffect(() => {
     if (fbc) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
-      localStorage.setItem(sessionStorageKeys.fbc, fbc);
+      localStorage.setItem('fbc', fbc);
     }
     if (fbp) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
-      localStorage.setItem(sessionStorageKeys.fbp, fbp);
+      localStorage.setItem('fbp', fbp);
     }
   }, [fbc, fbp]);
 
@@ -269,7 +269,7 @@ const Prelander = ({ blok }) => {
         },
       });
       userIp = response.data["ip"];
-      localStorage.setItem(sessionStorageKeys.userIp, userIp)
+      localStorage.setItem('userIp', userIp)
     } catch (error) {
       console.error("IpError" + error);
     }
@@ -283,7 +283,7 @@ const Prelander = ({ blok }) => {
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
         domain: domainName,
       });
-      localStorage.setItem(sessionStorageKeys.eventID, eventID);
+      localStorage.setItem('eventID', eventID);
     }
   }, [eventID]);
 
