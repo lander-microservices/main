@@ -1,19 +1,10 @@
 import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
-import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
-import { useInitRingba } from "wecall-config-lib";
-import React, { useEffect, useState } from "react";
-import { LANDERS } from "../../config/imports";
 import axios from "axios";
-import { APIS } from "wecall-config-lib";
-import { COOKIES } from "wecall-config-lib";
-import { QUERY_STRINGS } from "wecall-config-lib";
-import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
-import { STORAGE_KEYS } from "wecall-config-lib";
-import { useEventID } from "wecall-config-lib";
-import { useRingba } from "wecall-config-lib";
-import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
-import PropagateLoader from "react-spinners/PropagateLoader"
+import React, { useEffect, useState } from "react";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, sessionStorageKeys, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
+import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
 
@@ -182,6 +173,11 @@ const Prelander = ({ blok }) => {
       storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
+
+      localStorage.setItem(sessionStorageKeys.zip, postalCode);
+      localStorage.setItem(sessionStorageKeys.city, city);
+      localStorage.setItem(sessionStorageKeys.state, state);
+
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -223,6 +219,10 @@ const Prelander = ({ blok }) => {
       domain: domainName,
     });
 
+    localStorage.setItem(sessionStorageKeys.wbraid, params.get('wbraid'));
+    localStorage.setItem(sessionStorageKeys.gclid, params.get('gclid'));
+    localStorage.setItem(sessionStorageKeys.grbaid, params.get('grbaid'));
+
     getIpAdd();
     cityAddress();
   };
@@ -230,9 +230,11 @@ const Prelander = ({ blok }) => {
   useEffect(() => {
     if (fbc) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
+      localStorage.setItem(sessionStorageKeys.fbc, fbc);
     }
     if (fbp) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
+      localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
   }, [fbc, fbp]);
 
@@ -267,11 +269,23 @@ const Prelander = ({ blok }) => {
         },
       });
       userIp = response.data["ip"];
+      localStorage.setItem(sessionStorageKeys.userIp, userIp)
     } catch (error) {
       console.error("IpError" + error);
     }
     storeRgbaData(RINGBA_STORAGE_KEYS.userIp, userIp);
   };
+
+  useEffect(() => {
+    if (eventID && eventID.length) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
+        domain: domainName,
+      });
+      localStorage.setItem(sessionStorageKeys.eventID, eventID);
+    }
+  }, [eventID]);
 
   useEffect(() => {
     setInitialData();
@@ -346,13 +360,15 @@ function GetClickId(props) {
               const clickId = dtpCallback.getClickID();
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
+              localStorage.setItem("vl_click_id", clickId);
             });
-        } else {
-          window.dtpCallback &&
+          } else {
+            window.dtpCallback &&
             window.dtpCallback(() => {
               const clickId = window.dtpCallback.params.click_id;
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
+              localStorage.setItem("vl_click_id", clickId);
             });
         }
       }, 400);

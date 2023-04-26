@@ -439,6 +439,52 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
     },
+    {
+        name: "prelander.qualifybenefits.co",
+        gtm: "GTM-TC59FRB",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.qualifybenefits.co/d/.js",
+            noScript:
+                "https://track.qualifybenefits.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.qualifybenefits.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+    },
+    {
+        name: "prelander.additionalbenefits.org",
+        gtm: "GTM-W86TBLG",
+        facebookPixel: "1025625051349500",
+        volum: {
+            url: "https://track.additionalbenefits.org/d/.js",
+            noScript:
+                "https://track.additionalbenefits.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.additionalbenefits.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+    },
 ];
 
 initScripts(domain_settings);
