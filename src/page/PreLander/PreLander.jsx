@@ -325,7 +325,7 @@ const Prelander = ({ blok }) => {
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
-        <GetClickId clickId={clickId} setClickId={setClickId} />
+        <GetClickId clickId={clickId} showQuizSection={showQuizSection === 'yes' || showQuizSection === 'Yes'} setClickId={setClickId} />
       ) : undefined}
       <div {...storyblokEditable(blok)}>
         {blok.prelander_blocks.map((content_block, index) =>
@@ -340,11 +340,21 @@ function GetClickId(props) {
   React.useEffect(() => {
     if (!props.clickId) {
       const interval = setInterval(() => {
-        window.dtpCallback(() => {
-          const clickId = window.dtpCallback.params.click_id;
-          props.setClickId(clickId);
-          sessionStorage.setItem("clickId", clickId);
-        });
+        if (props.showQuizSection) {
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = dtpCallback.getClickID();
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
+        } else {
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = window.dtpCallback.params.click_id;
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
+        }
       }, 400);
       return () => clearInterval(interval);
     }
