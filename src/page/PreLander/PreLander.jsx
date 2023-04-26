@@ -312,7 +312,7 @@ const Prelander = ({ blok }) => {
     if (volumScript) {
     } else {
       const baseUrl = "https://lander-main-microservice.netlify.app/";
-      const src = showQuizSection
+      const src = showQuizSection == "yes" || showQuizSection == "Yes"
         ? baseUrl + "volumOfferScript.js"
         : baseUrl + "volumLanderScript.js";
       const doc = document.createElement("script");
