@@ -16,7 +16,6 @@ import Cookies from "js-cookie";
 import PropagateLoader from "react-spinners/PropagateLoader"
 
 const Prelander = ({ blok }) => {
-  console.log("block", blok);
 
   const prelander_hero_section = blok.prelander_blocks.find((i)=>{
     return i.component === "prelander_hero_section"
