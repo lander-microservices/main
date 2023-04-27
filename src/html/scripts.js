@@ -460,7 +460,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+        storyblockAccessToken: "ZiAQEdps3wsq2TGbciwSYwtt",
     },
     {
         name: "prelander.additionalbenefits.org",
@@ -483,7 +483,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+        storyblockAccessToken: "hvQmVeF6CUeAK38sBdj5PAtt",
     },
 ];
 
