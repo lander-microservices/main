@@ -1,4 +1,7 @@
-import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
+import {
+  renderRichText as originalRenderedTexts,
+  storyblokEditable,
+} from "@storyblok/react";
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
@@ -13,7 +16,7 @@ import { useEventID } from "wecall-config-lib";
 import { useRingba } from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
-import PropagateLoader from "react-spinners/PropagateLoader"
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -21,17 +24,25 @@ const Prelander = ({ blok }) => {
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
 
+  const prelander_hero_section = blok.prelander_blocks.find((i) => {
+    return i.component === "prelander_hero_section";
+  });
+  const showQuizSection = prelander_hero_section.prelander_show_quiz_section;
+
   const [clickId, setClickId] = useState();
   const fbc = Cookies.get("_fbc" || "");
   const fbp = Cookies.get("_fbp" || "");
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
 
-  const renderRichText = (texts) =>{
+  const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    renderedTexts = renderedTexts.replaceAll('<span style="background-color:', '<span style="color:')
-    return renderedTexts
-  }
+    renderedTexts = renderedTexts.replaceAll(
+      '<span style="background-color:',
+      '<span style="color:'
+    );
+    return renderedTexts;
+  };
 
   const { storeRgbaData, removeRingba } = useRingba();
 
@@ -106,7 +117,6 @@ const Prelander = ({ blok }) => {
             prelander_hero_subtitle={prelander_hero_subtitle}
             prelander_hero_title={prelander_hero_title}
             content_block={content_block}
-            
             PropagateLoader={PropagateLoader}
             storeRgbaData={storeRgbaData}
             handlePixelEventTrigger={handlePixelEventTrigger}
@@ -175,6 +185,11 @@ const Prelander = ({ blok }) => {
       storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
       storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
       const postalCode = success.postal.code;
+
+      localStorage.setItem(sessionStorageKeys.zip, postalCode);
+      localStorage.setItem(sessionStorageKeys.city, city);
+      localStorage.setItem(sessionStorageKeys.state, state);
+
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -216,6 +231,10 @@ const Prelander = ({ blok }) => {
       domain: domainName,
     });
 
+    localStorage.setItem(sessionStorageKeys.wbraid, params.get("wbraid"));
+    localStorage.setItem(sessionStorageKeys.gclid, params.get("gclid"));
+    localStorage.setItem(sessionStorageKeys.grbaid, params.get("grbaid"));
+
     getIpAdd();
     cityAddress();
   };
@@ -223,9 +242,11 @@ const Prelander = ({ blok }) => {
   useEffect(() => {
     if (fbc) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
+      localStorage.setItem(sessionStorageKeys.fbc, fbc);
     }
     if (fbp) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
+      localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
   }, [fbc, fbp]);
 
@@ -260,6 +281,7 @@ const Prelander = ({ blok }) => {
         },
       });
       userIp = response.data["ip"];
+      localStorage.setItem(sessionStorageKeys.userIp, userIp);
     } catch (error) {
       console.error("IpError" + error);
     }
@@ -304,7 +326,10 @@ const Prelander = ({ blok }) => {
     if (volumScript) {
     } else {
       const baseUrl = "https://lander-main-microservice.netlify.app/";
-      const src = baseUrl + "volumLanderScript.js";
+      const src =
+        showQuizSection == "yes" || showQuizSection == "Yes"
+          ? baseUrl + "volumOfferScript.js"
+          : baseUrl + "volumLanderScript.js";
       const doc = document.createElement("script");
       doc.src = src;
       doc.id = scriptId;
@@ -313,10 +338,27 @@ const Prelander = ({ blok }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (eventID && eventID.length) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
+        domain: domainName,
+      });
+      localStorage.setItem(sessionStorageKeys.eventID, eventID);
+    }
+  }, [eventID]);
+
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
-        <GetClickId clickId={clickId} setClickId={setClickId} />
+        <GetClickId
+          clickId={clickId}
+          showQuizSection={
+            showQuizSection === "yes" || showQuizSection === "Yes"
+          }
+          setClickId={setClickId}
+        />
       ) : undefined}
       <div {...storyblokEditable(blok)}>
         {blok.prelander_blocks.map((content_block, index) =>
@@ -331,11 +373,21 @@ function GetClickId(props) {
   React.useEffect(() => {
     if (!props.clickId) {
       const interval = setInterval(() => {
-        window.dtpCallback(() => {
-          const clickId = window.dtpCallback.params.click_id;
-          props.setClickId(clickId);
-          sessionStorage.setItem("clickId", clickId);
-        });
+        if (props.showQuizSection) {
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = dtpCallback.getClickID();
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
+        } else {
+          window.dtpCallback &&
+            window.dtpCallback(() => {
+              const clickId = window.dtpCallback.params.click_id;
+              props.setClickId(clickId);
+              sessionStorage.setItem("clickId", clickId);
+            });
+        }
       }, 400);
       return () => clearInterval(interval);
     }
