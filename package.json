@@ -34,7 +34,7 @@
     "style-loader": "^3.3.0",
     "webpack": "^5.57.1",
     "webpack-cli": "^4.9.0",
-    "wecall-config-lib": "^1.0.19",
+    "wecall-config-lib": "^1.0.21",
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
