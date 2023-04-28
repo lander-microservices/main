@@ -437,7 +437,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+        storyblockAccessToken: "vv04FKcPsQh1k5joAkJXQgtt",
     },
     {
         name: "prelander.qualifybenefits.co",
