@@ -198,7 +198,7 @@ const domain_settings = [
     },
     {
         name: "localhost",
-        gtm: "GTM-THXW4VH",
+        gtm: "GTM-MVRS5TM",
         facebookPixel: "532418778266412",
         volum: {
             url: "https://track.improveourcredit.com/d/.js",
