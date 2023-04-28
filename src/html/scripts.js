@@ -213,7 +213,7 @@ const domain_settings = [
             title: "Meta title",
             description: "Meta Description",
         },
-        tikTok: "",
+        tikTok: "CH4QHMRC77UBPA5M9M80",
         industry: "",
         websiteTitle: "Localhost",
         vertical: "medicareaca",
