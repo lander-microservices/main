@@ -256,7 +256,6 @@ export default function Lander({ blok }) {
         });
       }
     });
-    // lander_paragraph_holder.quiz_holder_questions
   };
 
   const handlePixelEventTrigger = (eventName) => {

@@ -79,6 +79,12 @@ const Prelander = ({ blok }) => {
     return renderRichText(texts);
   };
 
+  const findComponent = (componentName) => {
+    return blok.prelander_blocks.find(
+      (block) => block.component === componentName
+    );
+  };
+
   const getComponent = (content_block, index) => {
     switch (content_block.component) {
       case "menu":
@@ -182,9 +188,11 @@ const Prelander = ({ blok }) => {
           : ""
         : "";
 
-      storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
-      storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
-      storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+      // if(showQuizSection !== 'yes'){
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+      // }
       const postalCode = success.postal.code;
 
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
@@ -251,7 +259,47 @@ const Prelander = ({ blok }) => {
     }
   }, [fbc, fbp]);
 
+  const setBlankData = () => {
+    const ringbaData = localStorage.getItem("ringbaData");
+    console.log("Blok--=-=-=-=-=-=-=-=-=-=-=", blok)
+    const comp = findComponent("prelander_hero_section");
+    console.log("COMPONENT", comp);
+    comp.prelander_hero_quiz_section.forEach((component) => {
+      if (component.component == "quiz_holder_section") {
+        component.quiz_holder_questions.forEach((question) => {
+          question.question_option.forEach((i) => {
+            if (ringbaData.includes(i.question_key_name)) {
+            } else {
+              storeRgbaData(
+                i.question_key_name,
+                i.question_option_default_value
+              );
+            }
+          });
+        });
+      }
+    });
+  };
+
   const handlePixelEventTrigger = (eventName) => {
+    setBlankData();
+
+    const ringbaData = localStorage.getItem("ringbaData");
+    if (ringbaData.includes("zip")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.zip, stateCityResponse.zip);
+    }
+
+    if (ringbaData.includes("city")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.city, stateCityResponse.city);
+    }
+
+    if (ringbaData.includes("state")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.state, stateCityResponse.state);
+    }
+
     if (params.get("utm_source") == "facebook") {
       window.fbcFunc &&
         window.fbcFunc("track", eventName, {
