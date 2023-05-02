@@ -94,6 +94,15 @@ export default function Lander({ blok }) {
     user: "pranavtest",
     number: "1-866-578-2331",
   };
+
+  let ringba={};
+
+  if(window.dev){
+    ringba = testRingba
+  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+    number: blok.prelander_ringba_static_number,
+  }
+
   const { number } = useInitRingba({
     ringbaKey: {
       key: testRingba.key,
@@ -369,6 +378,14 @@ export default function Lander({ blok }) {
       window.document.body.appendChild(doc);
     }
   }, []);
+
+  useEffect(()=>{
+    window.addEventListener("beforeunload", (ev) => {
+      ev.preventDefault();
+      localStorage.removeItem('ringbaNumber_' + ringba.key)
+      return
+    });
+  },[])
 
   const Lander = LANDERS.lander[theme].lander;
   const FloatingCard = LANDERS.lander[theme].floatingCard;

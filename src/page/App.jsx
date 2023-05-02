@@ -7,6 +7,7 @@ import Lander from "./Lander/Lander";
 import Prelander from "./PreLander/PreLander";
 
 localStorage.removeItem("ringbaData");
+window.dev = true;
 
 storyblokInit({
   accessToken: window.domain_settings.storyblockAccessToken,

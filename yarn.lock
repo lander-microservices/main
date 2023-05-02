@@ -2933,6 +2933,11 @@ mkdirp-classic@^0.5.2, mkdirp-classic@^0.5.3:
   resolved "https://registry.npmjs.org/mkdirp-classic/-/mkdirp-classic-0.5.3.tgz"
   integrity sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
@@ -4191,12 +4196,13 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-wecall-config-lib@1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/wecall-config-lib/-/wecall-config-lib-1.0.14.tgz#ae3428bb08021caa1c4d72566ae1da664be414a7"
-  integrity sha512-ZxZmK6gMxX9Jqs2oh0QyYQWIRGH/n4vkPfFQWZF/u+MpRPBbXcUM7FpEjDDeLHQX4hv94M6ppQfSO6OSr8VxZg==
+wecall-config-lib@^1.0.21:
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/wecall-config-lib/-/wecall-config-lib-1.0.21.tgz#a556c49b39cc88686ece08bbc1f57c39ddc58d09"
+  integrity sha512-vHU0uEbye7Dn66TO33/TVRwN5BbtwUuTkLBIr1tcBoUD1JU7TiP2KvdzYmkK/B+kCOToQ1ZUyZHbGdtwZc/UZA==
   dependencies:
     js-cookie "^3.0.1"
+    moment "^2.29.4"
     uuid "^9.0.0"
 
 which@^2.0.1:

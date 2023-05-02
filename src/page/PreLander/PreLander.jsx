@@ -45,7 +45,7 @@ const Prelander = ({ blok }) => {
     return renderedTexts;
   };
 
-  const { storeRgbaData, removeRingba } = useRingba();
+  const { storeRgbaData } = useRingba();
 
   const visitorId = useVisitorId();
   const eventID = useEventID();
@@ -55,6 +55,15 @@ const Prelander = ({ blok }) => {
     user: "pranavtest",
     number: "1-866-578-2331",
   };
+
+  let ringba={};
+
+  if(window.dev){
+    ringba = testRingba
+  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+    number: blok.prelander_ringba_static_number,
+  }
+
   const { number } = useInitRingba({
     ringbaKey: {
       key: testRingba.key,
@@ -397,6 +406,15 @@ const Prelander = ({ blok }) => {
       localStorage.setItem(sessionStorageKeys.eventID, eventID);
     }
   }, [eventID]);
+
+  useEffect(()=>{
+    window.addEventListener("beforeunload", (ev) => {
+      ev.preventDefault();
+      localStorage.removeItem('ringbaNumber_' + ringba.key)
+      return
+    });
+  },[])
+
 
   return (
     <React.Suspense fallback={<></>}>
