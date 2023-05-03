@@ -291,7 +291,7 @@ const Prelander = ({ blok }) => {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    if(showQuizSection !== 'yes') {
+    if(showQuizSection === 'yes') {
       setBlankData();
     }
 
