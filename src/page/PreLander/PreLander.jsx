@@ -291,7 +291,9 @@ const Prelander = ({ blok }) => {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    setBlankData();
+    if(showQuizSection !== 'yes') {
+      setBlankData();
+    }
 
     const ringbaData = localStorage.getItem("ringbaData");
     if (ringbaData.includes("zip")) {

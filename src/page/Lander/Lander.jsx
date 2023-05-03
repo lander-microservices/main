@@ -268,7 +268,9 @@ export default function Lander({ blok }) {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    setBlankData();
+    if(showQuizSection !== 'yes') {
+      setBlankData();
+    }
 
     const ringbaData = localStorage.getItem("ringbaData");
 
