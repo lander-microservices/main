@@ -508,6 +508,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "hvQmVeF6CUeAK38sBdj5PAtt",
     },
+    {
+        name: "prelander.qualifyobamacare.com",
+        gtm: "GTM-NZ2PBFN",
+        facebookPixel: "",
+        volum: {
+            url: "https://track.qualifyobamacare.com/d/.js",
+            noScript:
+                "https://track.qualifyobamacare.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.qualifyobamacare.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "hvQmVeF6CUeAK38sBdj5PAtt",
+    },
 ];
 
 initScripts(domain_settings);
