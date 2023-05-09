@@ -529,7 +529,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "hvQmVeF6CUeAK38sBdj5PAtt",
+        storyblockAccessToken: "DCs5glmk44S4h38Ur1Q2igtt",
     },
 ];
 
