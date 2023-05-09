@@ -56,6 +56,7 @@ const Prelander = ({ blok }) => {
     ringba = testRingba
   } else ringba = { key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number,
+    user: blok.prelander_generator,
   }
 
   // const { number } = useInitRingba({
