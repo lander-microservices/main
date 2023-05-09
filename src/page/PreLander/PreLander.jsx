@@ -3,15 +3,11 @@ import {
   renderRichText as originalRenderedTexts,
   storyblokEditable,
 } from "@storyblok/react";
-import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
-import { useInitRingba } from "wecall-config-lib";
-import React, { useEffect, useState } from "react";
-import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { sessionStorageKeys } from "wecall-config-lib";
+import React, { useEffect, useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
-import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
+import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, sessionStorageKeys, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
