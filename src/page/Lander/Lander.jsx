@@ -94,11 +94,14 @@ export default function Lander({ blok }) {
     number: "1-866-578-2331",
   };
 
-  let ringba={};
+  let ringba = {};
 
-   ringba = { key: blok.prelander_ringba_number_pool_key,
+  ringba = {
+    key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number,
-   }
+  };
+
+  console.log("RINGBA", ringba);
 
   // const { number } = useInitRingba({
   //   ringbaKey: {
@@ -261,7 +264,7 @@ export default function Lander({ blok }) {
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    if(showQuizSection === 'yes') {
+    if (showQuizSection === "yes") {
       setBlankData();
     }
 
@@ -374,13 +377,13 @@ export default function Lander({ blok }) {
     }
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener("beforeunload", (ev) => {
       ev.preventDefault();
-      localStorage.removeItem('ringbaNumber_' + ringba.key)
-      return
+      localStorage.removeItem("ringbaNumber_" + ringba.key);
+      return;
     });
-  },[])
+  }, []);
 
   const Lander = LANDERS.lander[theme].lander;
   const FloatingCard = LANDERS.lander[theme].floatingCard;
@@ -514,8 +517,8 @@ function GetClickId(props) {
               sessionStorage.setItem("clickId", clickId);
               localStorage.setItem("vl_click_id", clickId);
             });
-          } else {
-            window.dtpCallback &&
+        } else {
+          window.dtpCallback &&
             window.dtpCallback(() => {
               const clickId = window.dtpCallback.params.click_id;
               props.setClickId(clickId);
