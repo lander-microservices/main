@@ -1,23 +1,32 @@
+
+import {
+  renderRichText as originalRenderedTexts,
+  storyblokEditable,
+} from "@storyblok/react";
+import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
+import { useInitRingba } from "wecall-config-lib";
+import React, { useEffect, useState } from "react";
 import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import { sessionStorageKeys } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
 
-  const prelander_hero_section = blok.prelander_blocks.find((i)=>{
-    return i.component === "prelander_hero_section"
-  })
 
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
-  const showQuizSection = prelander_hero_section.prelander_show_quiz_section;
   // blok.prelander_show_quiz_section
+
+  const prelander_hero_section = blok.prelander_blocks.find((i) => {
+    return i.component === "prelander_hero_section";
+  });
+  const showQuizSection = prelander_hero_section.prelander_show_quiz_section;
 
   const [clickId, setClickId] = useState();
   const fbc = Cookies.get("_fbc" || "");
@@ -25,15 +34,18 @@ const Prelander = ({ blok }) => {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
 
-  const renderRichText = (texts) =>{
+  const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    renderedTexts = renderedTexts.replaceAll('<span style="background-color:', '<span style="color:')
-    return renderedTexts
-  }
+    renderedTexts = renderedTexts.replaceAll(
+      '<span style="background-color:',
+      '<span style="color:'
+    );
+    return renderedTexts;
+  };
 
-  const { storeRgbaData, removeRingba } = useRingba();
+  const { storeRgbaData } = useRingba();
 
-  const { visitorId } = useVisitorId();
+  const visitorId = useVisitorId();
   const eventID = useEventID();
 
   const testRingba = {
@@ -41,19 +53,28 @@ const Prelander = ({ blok }) => {
     user: "pranavtest",
     number: "1-866-578-2331",
   };
-  // const { number } = useInitRingba({
-  //   ringbaKey: {
-  //     key: testRingba.key,
-  //     number: testRingba.number,
-  //   },
-  // });
+
+  let ringba={};
+
+  if(window.dev){
+    ringba = testRingba
+  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+    number: blok.prelander_ringba_static_number,
+  }
 
   const { number } = useInitRingba({
     ringbaKey: {
-      key: blok.prelander_ringba_number_pool_key,
-      number: blok.prelander_ringba_static_number,
+      key: testRingba.key,
+      number: testRingba.number,
     },
   });
+
+  // const { number } = useInitRingba({
+  //   ringbaKey: {
+  //     key: blok.prelander_ringba_number_pool_key,
+  //     number: blok.prelander_ringba_static_number,
+  //   },
+  // });
   const [headerData, setHeaderData] = useState({});
   const [stateCityResponse, setStateCityResponse] = useState({
     state: "",
@@ -63,6 +84,12 @@ const Prelander = ({ blok }) => {
 
   const getRichText = (texts) => {
     return renderRichText(texts);
+  };
+
+  const findComponent = (componentName) => {
+    return blok.prelander_blocks.find(
+      (block) => block.component === componentName
+    );
   };
 
   const getComponent = (content_block, index) => {
@@ -104,7 +131,6 @@ const Prelander = ({ blok }) => {
             prelander_hero_subtitle={prelander_hero_subtitle}
             prelander_hero_title={prelander_hero_title}
             content_block={content_block}
-            
             PropagateLoader={PropagateLoader}
             storeRgbaData={storeRgbaData}
             handlePixelEventTrigger={handlePixelEventTrigger}
@@ -169,14 +195,16 @@ const Prelander = ({ blok }) => {
           : ""
         : "";
 
-      storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
-      storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
-      storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+      // if(showQuizSection !== 'yes'){
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
+      //   storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
+      // }
       const postalCode = success.postal.code;
 
-      localStorage.setItem('zip', postalCode);
-      localStorage.setItem('city', city);
-      localStorage.setItem('state', state);
+      localStorage.setItem(sessionStorageKeys.zip, postalCode);
+      localStorage.setItem(sessionStorageKeys.city, city);
+      localStorage.setItem(sessionStorageKeys.state, state);
 
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
@@ -219,9 +247,9 @@ const Prelander = ({ blok }) => {
       domain: domainName,
     });
 
-    localStorage.setItem('wbraid', params.get('wbraid'));
-    localStorage.setItem('gclid', params.get('gclid'));
-    localStorage.setItem('grbaid', params.get('grbaid'));
+    localStorage.setItem(sessionStorageKeys.wbraid, params.get("wbraid"));
+    localStorage.setItem(sessionStorageKeys.gclid, params.get("gclid"));
+    localStorage.setItem(sessionStorageKeys.grbaid, params.get("grbaid"));
 
     getIpAdd();
     cityAddress();
@@ -230,15 +258,57 @@ const Prelander = ({ blok }) => {
   useEffect(() => {
     if (fbc) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
-      localStorage.setItem('fbc', fbc);
+      localStorage.setItem(sessionStorageKeys.fbc, fbc);
     }
     if (fbp) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
-      localStorage.setItem('fbp', fbp);
+      localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
   }, [fbc, fbp]);
 
+  const setBlankData = () => {
+    const ringbaData = localStorage.getItem("ringbaData");
+    console.log("Blok--=-=-=-=-=-=-=-=-=-=-=", blok)
+    const comp = findComponent("prelander_hero_section");
+    console.log("COMPONENT", comp);
+    comp.prelander_hero_quiz_section.forEach((component) => {
+      if (component.component == "quiz_holder_section") {
+        component.quiz_holder_questions.forEach((question) => {
+          question.question_option.forEach((i) => {
+            if (ringbaData.includes(i.question_key_name)) {
+            } else {
+              storeRgbaData(
+                i.question_key_name,
+                i.question_option_default_value
+              );
+            }
+          });
+        });
+      }
+    });
+  };
+
   const handlePixelEventTrigger = (eventName) => {
+    if(showQuizSection === 'yes') {
+      setBlankData();
+    }
+
+    const ringbaData = localStorage.getItem("ringbaData");
+    if (ringbaData.includes("zip")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.zip, stateCityResponse.zip);
+    }
+
+    if (ringbaData.includes("city")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.city, stateCityResponse.city);
+    }
+
+    if (ringbaData.includes("state")) {
+    } else {
+      storeRgbaData(RINGBA_STORAGE_KEYS.state, stateCityResponse.state);
+    }
+
     if (params.get("utm_source") == "facebook") {
       window.fbcFunc &&
         window.fbcFunc("track", eventName, {
@@ -269,7 +339,7 @@ const Prelander = ({ blok }) => {
         },
       });
       userIp = response.data["ip"];
-      localStorage.setItem('userIp', userIp)
+      localStorage.setItem(sessionStorageKeys.userIp, userIp);
     } catch (error) {
       console.error("IpError" + error);
     }
@@ -325,9 +395,10 @@ const Prelander = ({ blok }) => {
     if (volumScript) {
     } else {
       const baseUrl = "https://lander-main-microservice.netlify.app/";
-      const src = showQuizSection == "yes" || showQuizSection == "Yes"
-        ? baseUrl + "volumOfferScript.js"
-        : baseUrl + "volumLanderScript.js";
+      const src =
+        showQuizSection == "yes" || showQuizSection == "Yes"
+          ? baseUrl + "volumOfferScript.js"
+          : baseUrl + "volumLanderScript.js";
       const doc = document.createElement("script");
       doc.src = src;
       doc.id = scriptId;
@@ -336,10 +407,36 @@ const Prelander = ({ blok }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (eventID && eventID.length) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
+        domain: domainName,
+      });
+      localStorage.setItem(sessionStorageKeys.eventID, eventID);
+    }
+  }, [eventID]);
+
+  useEffect(()=>{
+    window.addEventListener("beforeunload", (ev) => {
+      ev.preventDefault();
+      localStorage.removeItem('ringbaNumber_' + ringba.key)
+      return
+    });
+  },[])
+
+
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
-        <GetClickId clickId={clickId} showQuizSection={showQuizSection === 'yes' || showQuizSection === 'Yes'} setClickId={setClickId} />
+        <GetClickId
+          clickId={clickId}
+          showQuizSection={
+            showQuizSection === "yes" || showQuizSection === "Yes"
+          }
+          setClickId={setClickId}
+        />
       ) : undefined}
       <div {...storyblokEditable(blok)}>
         {blok.prelander_blocks.map((content_block, index) =>
@@ -360,10 +457,9 @@ function GetClickId(props) {
               const clickId = dtpCallback.getClickID();
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
-              localStorage.setItem("vl_click_id", clickId);
             });
-          } else {
-            window.dtpCallback &&
+        } else {
+          window.dtpCallback &&
             window.dtpCallback(() => {
               const clickId = window.dtpCallback.params.click_id;
               props.setClickId(clickId);

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { LANDERS } from "../../config/imports";
 import { renderRichText, storyblokEditable } from "@storyblok/react";
-import { useInitRingba, useRingba } from "wecall-config-lib";
+import {
+  sessionStorageKeys,
+  useInitRingba,
+  useRingba,
+} from "wecall-config-lib";
 import { useVisitorId } from "wecall-config-lib";
 import { useEventID } from "wecall-config-lib";
 import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
@@ -89,18 +93,27 @@ export default function Lander({ blok }) {
     user: "pranavtest",
     number: "1-866-578-2331",
   };
-  // const { number } = useInitRingba({
-  //   ringbaKey: {
-  //     key: testRingba.key,
-  //     number: testRingba.number,
-  //   },
-  // });
+
+  let ringba={};
+
+  if(window.dev){
+    ringba = testRingba
+  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+    number: blok.prelander_ringba_static_number,
+  }
+
   const { number } = useInitRingba({
     ringbaKey: {
-      key: blok.lander_ringba_number_pool_key,
-      number: blok.lander_ringba_static_number,
+      key: testRingba.key,
+      number: testRingba.number,
     },
   });
+  // const { number } = useInitRingba({
+  //   ringbaKey: {
+  //     key: blok.lander_ringba_number_pool_key,
+  //     number: blok.lander_ringba_static_number,
+  //   },
+  // });
 
   const fbc = Cookies.get("_fbc" || "");
   const fbp = Cookies.get("_fbp" || "");
@@ -110,7 +123,7 @@ export default function Lander({ blok }) {
 
   const { storeRgbaData, removeRingba } = useRingba();
 
-  const { visitorId } = useVisitorId();
+  const visitorId = useVisitorId();
   const eventID = useEventID();
   const findComponent = (componentName) => {
     return blok.lander_blocks.find(
@@ -147,9 +160,9 @@ export default function Lander({ blok }) {
         : "";
 
       const postalCode = success.postal.code;
-      localStorage.setItem('zip', postalCode);
-      localStorage.setItem('city', city);
-      localStorage.setItem('state', state);
+      localStorage.setItem(sessionStorageKeys.zip, postalCode);
+      localStorage.setItem(sessionStorageKeys.city, city);
+      localStorage.setItem(sessionStorageKeys.state, state);
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -158,7 +171,6 @@ export default function Lander({ blok }) {
 
   const setInitialData = () => {
     storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
-    localStorage.setItem('eventID', eventID);
     storeRgbaData(
       RINGBA_STORAGE_KEYS.visitor_id,
       localStorage.getItem(STORAGE_KEYS.localStorageKeys.visitorId)
@@ -192,10 +204,9 @@ export default function Lander({ blok }) {
       domain: domainName,
     });
 
-    localStorage.setItem('wbraid', params.get('wbraid'));
-    localStorage.setItem('gclid', params.get('gclid'));
-    localStorage.setItem('grbaid', params.get('grbaid'));
-
+    localStorage.setItem(sessionStorageKeys.wbraid, params.get("wbraid"));
+    localStorage.setItem(sessionStorageKeys.gclid, params.get("gclid"));
+    localStorage.setItem(sessionStorageKeys.grbaid, params.get("grbaid"));
     getIpAdd();
     cityAddress();
   };
@@ -212,7 +223,7 @@ export default function Lander({ blok }) {
         },
       });
       userIp = response.data["ip"];
-      localStorage.setItem('userIp', userIp)
+      localStorage.setItem(sessionStorageKeys.userIp, userIp);
     } catch (error) {
       console.error("IpError" + error);
     }
@@ -222,11 +233,12 @@ export default function Lander({ blok }) {
   useEffect(() => {
     if (fbc) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbc, fbc);
-      localStorage.setItem('fbc', fbc);
+      localStorage.setItem(sessionStorageKeys.fbc, fbc);
     }
+
     if (fbp) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
-      localStorage.setItem('fbp', fbp);
+      localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
   }, [fbc, fbp]);
 
@@ -248,11 +260,12 @@ export default function Lander({ blok }) {
         });
       }
     });
-    // lander_paragraph_holder.quiz_holder_questions
   };
 
   const handlePixelEventTrigger = (eventName) => {
-    setBlankData();
+    if(showQuizSection === 'yes') {
+      setBlankData();
+    }
 
     const ringbaData = localStorage.getItem("ringbaData");
 
@@ -338,7 +351,7 @@ export default function Lander({ blok }) {
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
         domain: domainName,
       });
-      localStorage.setItem('eventID', eventID);
+      localStorage.setItem(sessionStorageKeys.eventID, eventID);
     }
   }, [eventID]);
 
@@ -362,6 +375,14 @@ export default function Lander({ blok }) {
       window.document.body.appendChild(doc);
     }
   }, []);
+
+  useEffect(()=>{
+    window.addEventListener("beforeunload", (ev) => {
+      ev.preventDefault();
+      localStorage.removeItem('ringbaNumber_' + ringba.key)
+      return
+    });
+  },[])
 
   const Lander = LANDERS.lander[theme].lander;
   const FloatingCard = LANDERS.lander[theme].floatingCard;
