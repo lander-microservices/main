@@ -96,11 +96,9 @@ export default function Lander({ blok }) {
 
   let ringba={};
 
-  if(window.dev){
-    ringba = testRingba
-  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+   ringba = { key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number,
-  }
+   }
 
   // const { number } = useInitRingba({
   //   ringbaKey: {

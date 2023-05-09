@@ -52,9 +52,10 @@ const Prelander = ({ blok }) => {
 
   let ringba={};
 
-  if(window.dev){
-    ringba = testRingba
-  } else ringba = { key: blok.prelander_ringba_number_pool_key,
+  // if(window.dev){
+  //   ringba = testRingba
+  // } else
+   ringba = { key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number,
     user: blok.prelander_generator,
   }
