@@ -58,19 +58,19 @@ const Prelander = ({ blok }) => {
     number: blok.prelander_ringba_static_number,
   }
 
-  const { number } = useInitRingba({
-    ringbaKey: {
-      key: testRingba.key,
-      number: testRingba.number,
-    },
-  });
-
   // const { number } = useInitRingba({
   //   ringbaKey: {
-  //     key: blok.prelander_ringba_number_pool_key,
-  //     number: blok.prelander_ringba_static_number,
+  //     key: testRingba.key,
+  //     number: testRingba.number,
   //   },
   // });
+
+  const { number } = useInitRingba({
+    ringbaKey: {
+      key: blok.prelander_ringba_number_pool_key,
+      number: blok.prelander_ringba_static_number,
+    },
+  });
   const [headerData, setHeaderData] = useState({});
   const [stateCityResponse, setStateCityResponse] = useState({
     state: "",
