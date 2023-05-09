@@ -198,7 +198,7 @@ const domain_settings = [
     },
     {
         name: "localhost",
-        gtm: "GTM-THXW4VH",
+        gtm: "GTM-MVRS5TM",
         facebookPixel: "532418778266412",
         volum: {
             url: "https://track.improveourcredit.com/d/.js",
@@ -213,7 +213,7 @@ const domain_settings = [
             title: "Meta title",
             description: "Meta Description",
         },
-        tikTok: "",
+        tikTok: "CH4QHMRC77UBPA5M9M80",
         industry: "",
         websiteTitle: "Localhost",
         vertical: "medicareaca",
@@ -456,11 +456,11 @@ const domain_settings = [
             title: "Meta title",
             description: "Meta Description",
         },
-        tikTok: "",
+        tikTok: "CH4QHMRC77UBPA5M9M80",
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "oSLK045XXm1zdlM42pt98gtt",
+        storyblockAccessToken: "vv04FKcPsQh1k5joAkJXQgtt",
     },
     {
         name: "prelander.qualifybenefits.co",

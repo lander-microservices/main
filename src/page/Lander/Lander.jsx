@@ -71,7 +71,6 @@ const Advertorial = ({ content_block, theme }) => {
 };
 
 export default function Lander({ blok }) {
-  console.log("Blok", blok);
   const lander_show_cta_section = blok.lander_show_cta_section;
   const lander_show_quiz_section = blok.lander_show_quiz_section;
   const theme = blok.theme;
@@ -161,11 +160,9 @@ export default function Lander({ blok }) {
         : "";
 
       const postalCode = success.postal.code;
-
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
       localStorage.setItem(sessionStorageKeys.city, city);
       localStorage.setItem(sessionStorageKeys.state, state);
-
       setStateCityResponse({ state, city, country, zip: postalCode });
     };
     const onError = (error) => {};
@@ -174,7 +171,6 @@ export default function Lander({ blok }) {
 
   const setInitialData = () => {
     storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
-
     storeRgbaData(
       RINGBA_STORAGE_KEYS.visitor_id,
       localStorage.getItem(STORAGE_KEYS.localStorageKeys.visitorId)
@@ -211,7 +207,6 @@ export default function Lander({ blok }) {
     localStorage.setItem(sessionStorageKeys.wbraid, params.get("wbraid"));
     localStorage.setItem(sessionStorageKeys.gclid, params.get("gclid"));
     localStorage.setItem(sessionStorageKeys.grbaid, params.get("grbaid"));
-
     getIpAdd();
     cityAddress();
   };
@@ -519,13 +514,15 @@ function GetClickId(props) {
               const clickId = dtpCallback.getClickID();
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
+              localStorage.setItem("vl_click_id", clickId);
             });
-        } else {
-          window.dtpCallback &&
+          } else {
+            window.dtpCallback &&
             window.dtpCallback(() => {
               const clickId = window.dtpCallback.params.click_id;
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
+              localStorage.setItem("vl_click_id", clickId);
             });
         }
       }, 400);

@@ -1,3 +1,4 @@
+
 import {
   renderRichText as originalRenderedTexts,
   storyblokEditable,
@@ -5,25 +6,22 @@ import {
 import { replaceShortCodes as shortCodeReplacer } from "wecall-config-lib";
 import { useInitRingba } from "wecall-config-lib";
 import React, { useEffect, useState } from "react";
-import { LANDERS } from "../../config/imports";
+import { renderRichText as originalRenderedTexts, storyblokEditable } from "@storyblok/react";
 import axios from "axios";
-import { APIS } from "wecall-config-lib";
-import { COOKIES } from "wecall-config-lib";
-import { QUERY_STRINGS } from "wecall-config-lib";
-import { RINGBA_STORAGE_KEYS } from "wecall-config-lib";
-import { STORAGE_KEYS } from "wecall-config-lib";
-import { useEventID } from "wecall-config-lib";
-import { useRingba } from "wecall-config-lib";
-import { useVisitorId } from "wecall-config-lib";
 import Cookies from "js-cookie";
 import { sessionStorageKeys } from "wecall-config-lib";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
+import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
+
+
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
+  // blok.prelander_show_quiz_section
 
   const prelander_hero_section = blok.prelander_blocks.find((i) => {
     return i.component === "prelander_hero_section";
@@ -349,6 +347,17 @@ const Prelander = ({ blok }) => {
   };
 
   useEffect(() => {
+    if (eventID && eventID.length) {
+      storeRgbaData(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID);
+      Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
+        domain: domainName,
+      });
+      localStorage.setItem('eventID', eventID);
+    }
+  }, [eventID]);
+
+  useEffect(() => {
     setInitialData();
     window.document.title = blok.prelander_meta_title;
   }, []);
@@ -455,6 +464,7 @@ function GetClickId(props) {
               const clickId = window.dtpCallback.params.click_id;
               props.setClickId(clickId);
               sessionStorage.setItem("clickId", clickId);
+              localStorage.setItem("vl_click_id", clickId);
             });
         }
       }, 400);
