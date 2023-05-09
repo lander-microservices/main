@@ -24,7 +24,7 @@ fs.copyFileSync('./src/html/volumOfferScript.js', "./dist/volumOfferScript.js");
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://eloquent-tartufo-c4ff5e.netlify.app/",
+    publicPath: "https://lander-main-microservice.netlify.app/",
   },
 
   resolve: {
