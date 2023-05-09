@@ -97,11 +97,11 @@ export default function Lander({ blok }) {
   let ringba = {};
 
   ringba = {
-    key: blok.prelander_ringba_number_pool_key,
-    number: blok.prelander_ringba_static_number,
+    key: blok.lander_ringba_number_pool_key,
+    number: blok.lander_ringba_static_number,
   };
 
-  console.log("RINGBA", ringba);
+  // console.log("RINGBA", ringba);
 
   // const { number } = useInitRingba({
   //   ringbaKey: {

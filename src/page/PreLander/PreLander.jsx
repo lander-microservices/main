@@ -60,7 +60,7 @@ const Prelander = ({ blok }) => {
     user: blok.prelander_generator,
   }
 
-  console.log("RINGBA", ringba);
+  // console.log("RINGBA", ringba);
 
   // const { number } = useInitRingba({
   //   ringbaKey: {
