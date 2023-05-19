@@ -241,6 +241,7 @@ export default function Lander({ blok }) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
       localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
+    
   }, [fbc, fbp]);
 
   const setBlankData = () => {
