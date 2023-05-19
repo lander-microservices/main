@@ -442,12 +442,12 @@ const domain_settings = [
     {
         name: "prelander.quickbenefits.co",
         gtm: "GTM-MVRS5TM",
-        facebookPixel: "",
+        facebookPixel: "273512268451425",
         volum: {
-            url: "https://track.futurehealthcenter.com/d/.js",
+            url: "https://track.quickbenefits.co/d/.js",
             noScript:
-                "https://track.futurehealthcenter.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.futurehealthcenter.com",
+                "https://track.quickbenefits.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.quickbenefits.co",
         },
         metaDetails: {
             "og:title": "og title",
@@ -530,6 +530,29 @@ const domain_settings = [
         websiteTitle: "",
         vertical: "aca",
         storyblockAccessToken: "DCs5glmk44S4h38Ur1Q2igtt",
+    },
+    {
+        name: "prelander.healthytippro.com",
+        gtm: "GTM-T5FQD7T",
+        facebookPixel: "165447432880733",
+        volum: {
+            url: "https://track.healthytippro.com/d/.js",
+            noScript:
+                "https://track.healthytippro.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.healthytippro.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "U0BO3twsfZr5bFjZrvcvdQtt",
     },
 ];
 
