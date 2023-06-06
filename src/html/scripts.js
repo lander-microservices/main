@@ -554,6 +554,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "U0BO3twsfZr5bFjZrvcvdQtt",
     },
+    {
+        name: "prelander.americansubsidy.com",
+        gtm: "GTM-PHW6TMX",
+        facebookPixel: "1602445023585487",
+        volum: {
+            url: "https://track.americansubsidy.com/d/.js",
+            noScript:
+                "https://track.americansubsidy.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.americansubsidy.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "cX5rAmrdQ4SBdLyt0Kjpqgtt",
+    },
 ];
 
 initScripts(domain_settings);
