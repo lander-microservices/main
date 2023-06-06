@@ -575,7 +575,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "cX5rAmrdQ4SBdLyt0Kjpqgtt",
+        storyblockAccessToken: "7au4z06U9St7Dd7wQsL5mwtt",
     },
     {
         name: "prelander.advantagesenior.org",
