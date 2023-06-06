@@ -577,6 +577,52 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "cX5rAmrdQ4SBdLyt0Kjpqgtt",
     },
+    {
+        name: "prelander.advantagesenior.org",
+        gtm: "GTM-N4LMH4V",
+        facebookPixel: "1602445023585487",
+        volum: {
+            url: "https://track.prelander.advantagesenior.org/d/.js",
+            noScript:
+                "https://track.prelander.advantagesenior.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.prelander.advantagesenior.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "q6qcySlHvoLuVulG6fHM3gtt",
+    },
+    {
+        name: "prelander.advantageamerican.org",
+        gtm: "GTM-TJ9MVL9",
+        facebookPixel: "1602445023585487",
+        volum: {
+            url: "https://track.prelander.advantageamerican.org/d/.js",
+            noScript:
+                "https://track.prelander.advantageamerican.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.prelander.advantageamerican.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "DM8G1kfPVsK9hhl6Fi0sQAtt",
+    },
 ];
 
 initScripts(domain_settings);
