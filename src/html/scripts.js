@@ -582,10 +582,10 @@ const domain_settings = [
         gtm: "GTM-N4LMH4V",
         facebookPixel: "1602445023585487",
         volum: {
-            url: "https://track.prelander.advantagesenior.org/d/.js",
+            url: "https://track.advantagesenior.org/d/.js",
             noScript:
-                "https://track.prelander.advantagesenior.org/d/.js?noscript=true&lpurl=",
-            meta: "https://track.prelander.advantagesenior.org",
+                "https://track.advantagesenior.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.advantagesenior.org",
         },
         metaDetails: {
             "og:title": "og title",
@@ -605,10 +605,10 @@ const domain_settings = [
         gtm: "GTM-TJ9MVL9",
         facebookPixel: "1602445023585487",
         volum: {
-            url: "https://track.prelander.advantageamerican.org/d/.js",
+            url: "https://track.advantageamerican.org/d/.js",
             noScript:
-                "https://track.prelander.advantageamerican.org/d/.js?noscript=true&lpurl=",
-            meta: "https://track.prelander.advantageamerican.org",
+                "https://track.advantageamerican.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.advantageamerican.org",
         },
         metaDetails: {
             "og:title": "og title",
