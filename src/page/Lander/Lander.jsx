@@ -241,7 +241,6 @@ export default function Lander({ blok }) {
       storeRgbaData(RINGBA_STORAGE_KEYS.fbp, fbp);
       localStorage.setItem(sessionStorageKeys.fbp, fbp);
     }
-    
   }, [fbc, fbp]);
 
   const setBlankData = () => {
@@ -265,6 +264,12 @@ export default function Lander({ blok }) {
   };
 
   const handlePixelEventTrigger = (eventName) => {
+    // console.log("contactButtonClicked");
+    const contactButtonClicked = sessionStorage.getItem("ContactButtonClicked");
+    console.log("contactButtonClicked", contactButtonClicked);
+    if (contactButtonClicked) return;
+    console.log("contactButtonClicked2", contactButtonClicked);
+
     if (showQuizSection === "yes") {
       setBlankData();
     }
@@ -302,15 +307,23 @@ export default function Lander({ blok }) {
         }
       );
     }
+
+    sessionStorage.setItem("ContactButtonClicked", "true");
   };
 
   const addPixelEventListenerToAllButtons = () => {
+    const contactButtonClicked = sessionStorage.getItem("ContactButtonClicked");
+
+    if (contactButtonClicked) return;
+
     const callNowButtons = window.document.querySelectorAll(".callnow");
     const listenerFunc = () => handlePixelEventTrigger("Contact");
     callNowButtons.forEach((i) => {
       i.removeEventListener("click", listenerFunc);
       i.addEventListener("click", listenerFunc);
     });
+
+    sessionStorage.setItem("ContactButtonClicked", "true");
   };
 
   useEffect(() => {

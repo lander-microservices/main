@@ -195,11 +195,6 @@ const Prelander = ({ blok }) => {
           : ""
         : "";
 
-      // if(showQuizSection !== 'yes'){
-      //   storeRgbaData(RINGBA_STORAGE_KEYS.city, city);
-      //   storeRgbaData(RINGBA_STORAGE_KEYS.state, state);
-      //   storeRgbaData(RINGBA_STORAGE_KEYS.zip, success.postal.code);
-      // }
       const postalCode = success.postal.code;
 
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
@@ -268,9 +263,7 @@ const Prelander = ({ blok }) => {
 
   const setBlankData = () => {
     const ringbaData = localStorage.getItem("ringbaData");
-    console.log("Blok--=-=-=-=-=-=-=-=-=-=-=", blok)
     const comp = findComponent("prelander_hero_section");
-    console.log("COMPONENT", comp);
     comp.prelander_hero_quiz_section.forEach((component) => {
       if (component.component == "quiz_holder_section") {
         component.quiz_holder_questions.forEach((question) => {
@@ -289,6 +282,9 @@ const Prelander = ({ blok }) => {
   };
 
   const handlePixelEventTrigger = (eventName) => {
+    const contactButtonClicked = sessionStorage.getItem("ContactButtonClicked");
+    if (contactButtonClicked) return;
+    
     if(showQuizSection === 'yes') {
       setBlankData();
     }
@@ -325,6 +321,8 @@ const Prelander = ({ blok }) => {
         }
       );
     }
+
+    sessionStorage.setItem("ContactButtonClicked", "true");
   };
 
   const getIpAdd = async () => {
