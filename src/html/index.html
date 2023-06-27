@@ -63,7 +63,7 @@
       for (const [key, value] of paramEntries) {
         queryParams.push(`${key}: ${value}`);
       }
-      const domain = window.location.hostname;
+      const domain = window.location.origin;
       
       if (domain.length === 0) {
         window.location.href = domain;
