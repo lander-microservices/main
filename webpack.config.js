@@ -24,7 +24,8 @@ fs.copyFileSync('./src/html/volumOfferScript.js', "./dist/volumOfferScript.js");
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "https://lander-main-microservice.netlify.app/",
+    publicPath: "https://illustrious-squirrel-bec40c.netlify.app/",
+    // publicPath: "https://lander-main-microservice.netlify.app/",
   },
 
   resolve: {
