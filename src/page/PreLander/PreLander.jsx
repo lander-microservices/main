@@ -1,4 +1,3 @@
-
 import {
   renderRichText as originalRenderedTexts,
   storyblokEditable,
@@ -7,12 +6,22 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
-import { APIS, COOKIES, QUERY_STRINGS, RINGBA_STORAGE_KEYS, STORAGE_KEYS, sessionStorageKeys, replaceShortCodes as shortCodeReplacer, useEventID, useInitRingba, useRingba, useVisitorId } from "wecall-config-lib";
+import {
+  APIS,
+  COOKIES,
+  QUERY_STRINGS,
+  RINGBA_STORAGE_KEYS,
+  STORAGE_KEYS,
+  sessionStorageKeys,
+  replaceShortCodes as shortCodeReplacer,
+  useEventID,
+  useInitRingba,
+  useRingba,
+  useVisitorId,
+} from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
 
 const Prelander = ({ blok }) => {
-
-
   const acc_id = blok.prelander_acc_id;
   const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
@@ -50,15 +59,16 @@ const Prelander = ({ blok }) => {
     number: "1-866-578-2331",
   };
 
-  let ringba={};
+  let ringba = {};
 
   // if(window.dev){
   //   ringba = testRingba
   // } else
-   ringba = { key: blok.prelander_ringba_number_pool_key,
+  ringba = {
+    key: blok.prelander_ringba_number_pool_key,
     number: blok.prelander_ringba_static_number,
     user: blok.prelander_generator,
-  }
+  };
 
   // console.log("RINGBA", ringba);
 
@@ -284,8 +294,8 @@ const Prelander = ({ blok }) => {
   const handlePixelEventTrigger = (eventName) => {
     const contactButtonClicked = sessionStorage.getItem("ContactButtonClicked");
     if (contactButtonClicked) return;
-    
-    if(showQuizSection === 'yes') {
+
+    if (showQuizSection === "yes") {
       setBlankData();
     }
 
@@ -351,7 +361,7 @@ const Prelander = ({ blok }) => {
       Cookies.set(RINGBA_STORAGE_KEYS.event_id, eventID, {
         domain: domainName,
       });
-      localStorage.setItem('eventID', eventID);
+      localStorage.setItem("eventID", eventID);
     }
   }, [eventID]);
 
@@ -416,14 +426,13 @@ const Prelander = ({ blok }) => {
     }
   }, [eventID]);
 
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener("beforeunload", (ev) => {
       ev.preventDefault();
-      localStorage.removeItem('ringbaNumber_' + ringba.key)
-      return
+      localStorage.removeItem("ringbaNumber_" + ringba.key);
+      return;
     });
-  },[])
-
+  }, []);
 
   return (
     <React.Suspense fallback={<></>}>
