@@ -64,6 +64,7 @@
         queryParams.push(`${key}: ${value}`);
       }
       const domain = window.location.origin;
+      console.log(domain);
       
       if (domain.length === 0) {
         window.location.href = domain;
