@@ -72,8 +72,8 @@
       if (
         params.get("utm_campaign") === "{{campaign.id}}" ||
         params.get("utm_adset") === "{{adset.id}}}" ||
-        (params.get("utm_adset") && params.get("utm_adset").length === 0) ||
-        (params.get("utm_campaign") && params.get("utm_campaign").length === 0)
+        !params.get("utm_adset") || params.get("utm_adset").length === 0 ||
+        !params.get("utm_campaign") || params.get("utm_campaign").length === 0
       ) {
         window.location.href = domain;
       }
