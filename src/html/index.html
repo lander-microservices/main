@@ -50,17 +50,41 @@
     </style>
 
     <script src="https://lander-main-microservice.netlify.app/scripts.js"></script>
+    <!-- <script src="https://illustrious-squirrel-bec40c.netlify.app/scripts.js"></script> -->
     <script
       src="//geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"
       type="text/javascript"
     ></script>
-    <title>Lander</title>
+    <script>
+      const queryString = window.location.search;
+      const params = new URLSearchParams(queryString);
+      const paramEntries = params.entries();
+      const queryParams = [];
+      for (const [key, value] of paramEntries) {
+        queryParams.push(`${key}: ${value}`);
+      }
+      const domain = window.location.origin.replace('prelander.', '');
+      console.log(domain);
+      
+      if (domain.length === 0) {
+        window.location.href = domain;
+      }
+      
+      if (
+        params.get("utm_campaign") === "{{campaign.id}}" ||
+        params.get("utm_adset") === "{{adset.id}}}" ||
+        !params.get("utm_adset") || params.get("utm_adset").length === 0 ||
+        !params.get("utm_campaign") || params.get("utm_campaign").length === 0
+      ) {
+        window.location.href = domain;
+      }
+    </script>
   </head>
-
   <body>
     <div id="root"></div>
     <div id="noscripts"></div>
   </body>
+
   <script>
     const initNoScripts = ({ volum, gtm, fb, tikTok }) => {
       const element = window.document.getElementById("noscripts");
