@@ -85,6 +85,13 @@
       ) {
         window.location.href = domain;
       }
+      
+      if(isNaN(Number(params.get("utm_campaign"))) || params.get("utm_campaign").length < 5){
+        window.location.href = domain;
+      }
+      if(isNaN(Number(params.get("utm_adset"))) || params.get("utm_adset").length < 5){
+        window.location.href = domain;
+      }
     </script>
   </head>
   <body>
