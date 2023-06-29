@@ -55,6 +55,7 @@
       src="//geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"
       type="text/javascript"
     ></script>
+
     <script>
       const queryString = window.location.search;
       const params = new URLSearchParams(queryString);
@@ -63,19 +64,32 @@
       for (const [key, value] of paramEntries) {
         queryParams.push(`${key}: ${value}`);
       }
-      const domain = window.location.origin.replace('prelander.', '');
+      const domain = window.location.origin.replace("lander.", "");
       console.log(domain);
-      
+
       if (domain.length === 0) {
         window.location.href = domain;
       }
-      
+
       if (
+        params.getAll("utm_campaign").includes("{{campaign.id}}") ||
+        params.getAll("utm_campaign").includes("{campaignid}") ||
+        params.getAll("utm_adset").includes("{adgroupid}") ||
+        params.getAll("utm_adset").includes("{{adset.id}}") ||
         params.get("utm_campaign") === "{{campaign.id}}" ||
-        params.get("utm_adset") === "{{adset.id}}}" ||
-        !params.get("utm_adset") || params.get("utm_adset").length === 0 ||
-        !params.get("utm_campaign") || params.get("utm_campaign").length === 0
+        params.get("utm_adset") === "{{adset.id}}" ||
+        !params.get("utm_adset") ||
+        params.get("utm_adset").length === 0 ||
+        !params.get("utm_campaign") ||
+        params.get("utm_campaign").length === 0
       ) {
+        window.location.href = domain;
+      }
+      
+      if(isNaN(Number(params.get("utm_campaign"))) || params.get("utm_campaign").length < 5){
+        window.location.href = domain;
+      }
+      if(isNaN(Number(params.get("utm_adset"))) || params.get("utm_adset").length < 5){
         window.location.href = domain;
       }
     </script>
