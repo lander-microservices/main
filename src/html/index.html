@@ -56,43 +56,7 @@
       type="text/javascript"
     ></script>
 
-    <script>
-      const queryString = window.location.search;
-      const params = new URLSearchParams(queryString);
-      const paramEntries = params.entries();
-      const queryParams = [];
-      for (const [key, value] of paramEntries) {
-        queryParams.push(`${key}: ${value}`);
-      }
-      const domain = window.location.origin.replace("lander.", "");
-      console.log(domain);
-
-      if (domain.length === 0) {
-        window.location.href = domain;
-      }
-
-      if (
-        params.getAll("utm_campaign").includes("{{campaign.id}}") ||
-        params.getAll("utm_campaign").includes("{campaignid}") ||
-        params.getAll("utm_adset").includes("{adgroupid}") ||
-        params.getAll("utm_adset").includes("{{adset.id}}") ||
-        params.get("utm_campaign") === "{{campaign.id}}" ||
-        params.get("utm_adset") === "{{adset.id}}" ||
-        !params.get("utm_adset") ||
-        params.get("utm_adset").length === 0 ||
-        !params.get("utm_campaign") ||
-        params.get("utm_campaign").length === 0
-      ) {
-        window.location.href = domain;
-      }
-      
-      if(isNaN(Number(params.get("utm_campaign"))) || params.get("utm_campaign").length < 5){
-        window.location.href = domain;
-      }
-      if(isNaN(Number(params.get("utm_adset"))) || params.get("utm_adset").length < 5){
-        window.location.href = domain;
-      }
-    </script>
+    <script src="https://lander-static-files.netlify.app/assets/scripts/prelanderRedirectToHome.js"></script>
   </head>
   <body>
     <div id="root"></div>
