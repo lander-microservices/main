@@ -148,6 +148,7 @@ const initMetaDetails = (obj) => {
 
 const initScripts = (domain_settings) => {
     const domain = window.location.hostname;
+    console.log("DOmain", domain);
     const currentDomainSettings = domain_settings.find((i) => {
         return i.name.includes(domain);
     });
