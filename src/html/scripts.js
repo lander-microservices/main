@@ -242,24 +242,11 @@ const domain_settings = [
         vertical: "medicareaca",
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
-
     {
-        name: "precious-shortbread-c64405.netlify.app",
+        name: "lander-main-microservice.netlify.app",
         gtm: "GTM-THXW4VH",
         facebookPixel: "532418778266412",
-        volum: {
-            url: "https://track.improveourcredit.com/d/.js",
-            noScript:
-                "https://track.improveourcredit.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.improveourcredit.com",
-        },
-        metaDetails: {
-            "og:title": "og title",
-            "og:description": "og description",
-            "og:site_name": "og site_name",
-            title: "Meta title",
-            description: "Meta Description",
-        },
+        volumUrl: "https://track.realseniorbenefits.com/d/.js",
         tikTok: "",
         industry: "",
         websiteTitle: "Localhost",
@@ -267,7 +254,7 @@ const domain_settings = [
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
     {
-        name: "lander-main-microservice.netlify.app",
+        name: "precious-shortbread-c64405.netlify.app",
         gtm: "GTM-THXW4VH",
         facebookPixel: "532418778266412",
         volumUrl: "https://track.realseniorbenefits.com/d/.js",
