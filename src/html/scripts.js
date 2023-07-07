@@ -640,10 +640,10 @@ const domain_settings = [
         gtm: "GTM-TJ9MVL9",
         facebookPixel: "632024732266157",
         volum: {
-            url: "https://track.advantageamerican.org/d/.js",
+            url: "https://track.prohealthypoint.com/d/.js",
             noScript:
-                "https://track.advantageamerican.org/d/.js?noscript=true&lpurl=",
-            meta: "https://track.advantageamerican.org",
+                "https://track.prohealthypoint.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.prohealthypoint.com",
         },
         metaDetails: {
             "og:title": "og title",
