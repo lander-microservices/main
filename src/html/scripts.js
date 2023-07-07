@@ -635,6 +635,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "DM8G1kfPVsK9hhl6Fi0sQAtt",
     },
+    {
+        name: "prelandertest.prohealthypoint.com",
+        gtm: "GTM-TJ9MVL9",
+        facebookPixel: "632024732266157",
+        volum: {
+            url: "https://track.advantageamerican.org/d/.js",
+            noScript:
+                "https://track.advantageamerican.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.advantageamerican.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "CQkbthd8Prfr2bOjPc885Att",
+    },
 ];
 
 initScripts(domain_settings);
