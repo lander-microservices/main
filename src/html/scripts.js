@@ -669,6 +669,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "CQkbthd8Prfr2bOjPc885Att",
     },
+    {
+        name: "prelander.americanassurance.org",
+        gtm: "GTM-TJ9MVL9",
+        facebookPixel: "632024732266157",
+        volum: {
+            url: "https://track.americanassurance.org/d/.js",
+            noScript:
+                "https://track.americanassurance.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.americanassurance.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "tWQ76Q1L6VnCWJbGxPr4Jwtt",
+    },
 ];
 
 initScripts(domain_settings);
