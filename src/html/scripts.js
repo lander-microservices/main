@@ -694,8 +694,8 @@ const domain_settings = [
     },
     {
         name: "prelander.timeforacahelp.com",
-        gtm: "GTM-TJ9MVL9",
-        facebookPixel: "632024732266157",
+        gtm: "GTM-5NCTSKB7",
+        facebookPixel: "585900857078512",
         volum: {
             url: "https://track.americanassurance.org/d/.js",
             noScript:
