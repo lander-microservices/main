@@ -47,4 +47,27 @@ const App = () => {
 
   return <StoryblokComponent blok={story.content} />;
 };
-ReactDOM.render(<App />, document.getElementById("root"));
+
+function Renderer(){
+  const [pageRender, setPageRender] = useState(false);
+
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      if (window.domain_settings){
+        setPageRender(true);
+        clearInterval(interval);
+      }
+    }, 50)
+
+    return () => clearInterval(interval);
+  },[])
+
+  if (!pageRender){
+    return <></>
+  }
+  return (
+    <App />
+  )
+}
+
+ReactDOM.render(<Renderer />, document.getElementById("root"));

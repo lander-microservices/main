@@ -50,8 +50,255 @@
       }
     </style>
 
-    <script src="https://lander-main-microservice.netlify.app/scripts.js"></script>
+    <!-- <script src="https://lander-main-microservice.netlify.app/scripts.js"></script> -->
+
     <!-- <script src="https://illustrious-squirrel-bec40c.netlify.app/scripts.js"></script> -->
+
+    <script>
+      const initFacebookPixel = (id) => {
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js"
+        );
+        const fbPixelId = id;
+        fbq("init", fbPixelId);
+        window.fbPixelId = fbPixelId;
+        window.fbcFunc = fbq;
+        window.facebookPixelLoaded = true;
+      };
+      
+      const initGTM = (id) => {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", id);
+      };
+      
+      const initTikTok = (pixelId) => {
+        if (!pixelId || pixelId.length === 0) return;
+        console.log("TikTok Initialised");
+      
+        var queryString = window.location.search;
+        var params = new URLSearchParams(queryString);
+        var utm_source = params.get("utm_source");
+        if (utm_source === "tiktok") {
+          !(function (w, d, t) {
+            w.TiktokAnalyticsObject = t;
+            var ttq = (w[t] = w[t] || []);
+            (ttq.methods = [
+              "page",
+              "track",
+              "identify",
+              "instances",
+              "debug",
+              "on",
+              "off",
+              "once",
+              "ready",
+              "alias",
+              "group",
+              "enableCookie",
+              "disableCookie",
+            ]),
+              (ttq.setAndDefer = function (t, e) {
+                t[e] = function () {
+                  t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                };
+              });
+            for (var i = 0; i < ttq.methods.length; i++)
+              ttq.setAndDefer(ttq, ttq.methods[i]);
+            (ttq.instance = function (t) {
+              for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)
+                ttq.setAndDefer(e, ttq.methods[n]);
+              return e;
+            }),
+              (ttq.load = function (e, n) {
+                var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+                (ttq._i = ttq._i || {}),
+                  (ttq._i[e] = []),
+                  (ttq._i[e]._u = i),
+                  (ttq._t = ttq._t || {}),
+                  (ttq._t[e] = +new Date()),
+                  (ttq._o = ttq._o || {}),
+                  (ttq._o[e] = n || {});
+                var o = document.createElement("script");
+                (o.type = "text/javascript"),
+                  (o.async = !0),
+                  (o.src = i + "?sdkid=" + e + "&lib=" + t);
+                var a = document.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(o, a);
+              });
+            ttq.load(pixelId);
+            ttq.page();
+          })(window, document, "ttq");
+          window.tikTokPixel = pixelId;
+          window.tikTokEvent = ttq;
+        }
+      };
+      
+      const initMetaDetails = (obj) => {
+        const { volumMeta } = obj;
+        const headTag = document.getElementsByTagName("HEAD")[0];
+        const volumMetaTag = document.createElement("META");
+        volumMetaTag.setAttribute("http-equiv", "delegate-ch");
+        volumMetaTag.setAttribute(
+          "content",
+          `sec-ch-ua ${volumMeta}; sec-ch-ua-mobile ${volumMeta}; sec-ch-ua-arch ${volumMeta}; sec-ch-ua-model ${volumMeta}; sec-ch-ua-platform ${volumMeta}; sec-ch-ua-platform-version ${volumMeta}; sec-ch-ua-bitness ${volumMeta}; sec-ch-ua-full-version-list ${volumMeta}; sec-ch-ua-full-version ${volumMeta}`
+        );
+        headTag.appendChild(volumMetaTag);
+      
+        // add meta description and meta title normally . for google
+      
+        const ogUrlTag = document.createElement("META");
+        ogUrlTag.setAttribute("property", "og:url");
+        ogUrlTag.setAttribute(
+          "content",
+          window.location.host + window.location.pathname
+        );
+        headTag.appendChild(ogUrlTag);
+      
+        const ogTitleTag = document.createElement("META");
+        ogTitleTag.setAttribute("property", "og:title");
+        ogTitleTag.setAttribute(
+          "content",
+          obj["og:title"] ? obj["og:title"] + window.location.host : ""
+        );
+        headTag.appendChild(ogUrlTag);
+      
+        const ogDescriptionTag = document.createElement("META");
+        ogDescriptionTag.setAttribute("property", "og:description");
+        ogDescriptionTag.setAttribute("content", obj["og:description"]);
+        headTag.appendChild(ogDescriptionTag);
+      
+        const ogSiteNameTag = document.createElement("META");
+        ogSiteNameTag.setAttribute("property", "og:site_name");
+        ogSiteNameTag.setAttribute("content", obj["og:site_name"]);
+        headTag.appendChild(ogSiteNameTag);
+      
+        const titleTag = document.createElement("META");
+        titleTag.setAttribute("name", "title");
+        titleTag.setAttribute(
+          "content",
+          obj["title"] ? obj["title"] + window.location.host : ""
+        );
+        headTag.appendChild(titleTag);
+      
+        const descriptionTag = document.createElement("META");
+        descriptionTag.setAttribute("name", "description");
+        descriptionTag.setAttribute("content", obj["description"]);
+        headTag.appendChild(descriptionTag);
+      };
+      
+      const initScripts = (currentDomainSettings) => {
+        // const domain = window.location.hostname;
+        // const currentDomainSettings = domain_settings.find((i) => {
+        //   return i.name.includes(domain);
+        // });
+      
+        const queryString = window.location.search;
+        const params = new URLSearchParams(queryString);
+      
+        window.domain_settings = currentDomainSettings;
+      
+        if (window.domain_settings) {
+          initFacebookPixel(currentDomainSettings.facebookPixel);
+          initGTM(currentDomainSettings.gtm);
+      
+          if (params.get("utm_source") === "tiktok") {
+            initTikTok(currentDomainSettings.tikTok);
+          }
+          // initNoScripts({ volum: currentDomainSettings.volum.noScript });
+          initMetaDetails({
+            volumMeta: currentDomainSettings.volum.meta,
+            "og:title": currentDomainSettings.metaDetails["og:title"],
+            "og:description":
+              currentDomainSettings.metaDetails["og:description"],
+            "og:site_name": currentDomainSettings.metaDetails["og:site_name"],
+            title: currentDomainSettings.metaDetails["title"],
+            description: currentDomainSettings.metaDetails["description"],
+          });
+        }
+      
+        window.document.title = currentDomainSettings.websiteTitle;
+      };
+      
+      const domainName = window.location.host.replace("quotes.", "");
+      const API_URL =
+        "https://funnel.improveourcredit.com/prelander/" + domainName;
+      
+      const fetchData = async () => {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        initScripts(data);
+      
+        const initNoScripts = ({ volum, gtm, fb, tikTok }) => {
+          const element = window.document.getElementById("noscripts");
+          element.innerHTML = `
+      <noscript>
+        <link
+          href="${volum}"
+          rel="stylesheet"
+        />
+      </noscript>
+      `;
+      
+          element.innerHTML = `
+      <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=${gtm}"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe
+      ></noscript>
+      `;
+          element.innerHTML = `
+      <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=${fb}&ev=PageView&noscript=1"
+      /></noscript>
+      `;
+        };
+        initNoScripts({
+          volum: window.domain_settings.volum.noScript,
+          gtm: window.domain_settings.gtm,
+          fb: window.domain_settings.facebookPixel,
+          tikTok: window.domain_settings.tikTok,
+        });
+      };
+      
+      fetchData();
+      
+      // initScripts(domain_settings);
+      </script>
     <script
       src="//geoip-js.com/js/apis/geoip2/v2.1/geoip2.js"
       type="text/javascript"
