@@ -736,7 +736,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "YD8Bd1PtxQZyLT8OairWSQtt ",
+        storyblockAccessToken: "YD8Bd1PtxQZyLT8OairWSQtt",
     },
     {
         name: "prelander.youracahelper.com",
@@ -759,7 +759,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "",
         vertical: "aca",
-        storyblockAccessToken: "RX8OdQ6aSiMAWhEAjO64xgtt  ",
+        storyblockAccessToken: "RX8OdQ6aSiMAWhEAjO64xgtt",
     },
 ];
 
