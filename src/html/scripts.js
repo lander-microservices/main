@@ -704,6 +704,52 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "jPS1PqaLIXgBQnzqtjQRAAtt",
     },
+        {
+        name: "prelandertest.youracahelper.com",
+        gtm: "GTM-5NCTSKB7",
+        facebookPixel: "585900857078512",
+        volum: {
+            url: "https://track.youracahelper.com/d/.js",
+            noScript:
+                "https://track.youracahelper.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.youracahelper.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "RX8OdQ6aSiMAWhEAjO64xgtt",
+    },
+        {
+        name: "prelandertest.youracaneighbor.com",
+        gtm: "GTM-5NCTSKB7",
+        facebookPixel: "585900857078512",
+        volum: {
+            url: "https://track.youracaneighbor.com/d/.js",
+            noScript:
+                "https://track.youracaneighbor.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.youracaneighbor.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "YD8Bd1PtxQZyLT8OairWSQtt",
+    },
 ];
 
 initScripts(domain_settings);
