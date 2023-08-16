@@ -663,7 +663,7 @@ const domain_settings = [
             title: "Meta title",
             description: "Meta Description",
         },
-        tikTok: "",
+        tikTok: "CJB6TDJC77U7QCENGGE0",
         industry: "",
         websiteTitle: "",
         vertical: "aca",
@@ -760,6 +760,52 @@ const domain_settings = [
         websiteTitle: "",
         vertical: "aca",
         storyblockAccessToken: "RX8OdQ6aSiMAWhEAjO64xgtt",
+    },
+    {
+        name: "prelander.awarenesstips.com",
+        gtm: "GTM-TQ5CW45B",
+        facebookPixel: "1232977270696782",
+        volum: {
+            url: "https://track.youracahelper.com/d/.js",
+            noScript:
+                "https://track.youracahelper.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.youracahelper.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "UXITgcJWoQLBQOqUNJlrpwtt",
+    },
+    {
+        name: "prelander.americanhelpers.org",
+        gtm: "GTM-TQ5CW45B",
+        facebookPixel: "1232977270696782",
+        volum: {
+            url: "https://track.youracahelper.com/d/.js",
+            noScript:
+                "https://track.youracahelper.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.youracahelper.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "bgqZlJkSCq6MSox4UJUUuAtt",
     },
 ];
 

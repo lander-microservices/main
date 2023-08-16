@@ -54,6 +54,7 @@ const Footer = ({
   return (
     <Footer
       lander_logo_text={headerData.lander_logo_text}
+      logo_subheadline={headerData.lander_logo_subheadline}
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
       handlePixelEventTrigger={handlePixelEventTrigger}
