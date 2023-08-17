@@ -763,7 +763,7 @@ const domain_settings = [
     },
     {
         name: "prelander.awarenesstips.com",
-        gtm: "GTM-TQ5CW45B",
+        gtm: "GTM-PLPKKNC6",
         facebookPixel: "1232977270696782",
         volum: {
             url: "https://track.youracahelper.com/d/.js",
@@ -786,7 +786,7 @@ const domain_settings = [
     },
     {
         name: "prelander.americanhelpers.org",
-        gtm: "GTM-TQ5CW45B",
+        gtm: "GTM-M6ZSW8H3",
         facebookPixel: "1232977270696782",
         volum: {
             url: "https://track.youracahelper.com/d/.js",
