@@ -57,6 +57,7 @@ const Footer = ({
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
       handlePixelEventTrigger={handlePixelEventTrigger}
+      logo_subheadline={headerData.lander_logo_subheadline}
       content_block={content_block}
     />
   );
