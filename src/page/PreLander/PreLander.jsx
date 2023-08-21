@@ -175,6 +175,7 @@ const Prelander = ({ blok }) => {
             key={index}
             prelander_logo_text={headerData.prelander_logo_text}
             prelander_logo_text_color={headerData.prelander_logo_text_color}
+            prelander_logo_subheadline={headerData.prelander_logo_subheadline}
             dis={renderedRichText}
             tikTokEvent={window.tikTokEvent}
             fbcFunc={window.fbcFunc}
