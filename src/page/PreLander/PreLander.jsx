@@ -105,6 +105,7 @@ const Prelander = ({ blok }) => {
   const getComponent = (content_block, index) => {
     switch (content_block.component) {
       case "menu":
+        console.log("menu", content_block);
         if (!headerData.prelander_logo_text) {
           setHeaderData(content_block);
         }
@@ -174,6 +175,7 @@ const Prelander = ({ blok }) => {
           <Footer
             key={index}
             prelander_logo_text={headerData.prelander_logo_text}
+            prelander_logo_subheadline={headerData.prelander_logo_subheadline}
             prelander_logo_text_color={headerData.prelander_logo_text_color}
             dis={renderedRichText}
             tikTokEvent={window.tikTokEvent}
