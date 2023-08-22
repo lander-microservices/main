@@ -292,22 +292,22 @@ export default function Lander({ blok }) {
       storeRgbaData(RINGBA_STORAGE_KEYS.state, stateCityResponse.state);
     }
 
-    if (params.get("utm_source") == "facebook") {
-      window.fbcFunc &&
-        window.fbcFunc("track", eventName, {
-          eventID: eventID,
-        });
-    }
+    // if (params.get("utm_source") == "facebook") {
+    //   window.fbcFunc &&
+    //     window.fbcFunc("track", eventName, {
+    //       eventID: eventID,
+    //     });
+    // }
 
-    if (params.get("utm_source") === "tiktok") {
-      window.tikTokEvent.track(
-        eventName,
-        {},
-        {
-          eventID: eventID,
-        }
-      );
-    }
+    // if (params.get("utm_source") === "tiktok") {
+    //   window.tikTokEvent.track(
+    //     eventName,
+    //     {},
+    //     {
+    //       eventID: eventID,
+    //     }
+    //   );
+    // }
 
     sessionStorage.setItem("ContactButtonClicked", "true");
   };
