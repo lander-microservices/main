@@ -64,7 +64,6 @@ module.exports = {
       remotes: {
         landers: "lander@http://localhost:8082/remoteEntry.js",
         prelander: "prelander@http://localhost:8086/remoteEntry.js",
-        advertorial: "advertorial@http://localhost:8088/remoteEntry.js"
       },
       exposes: {},
       shared: {
