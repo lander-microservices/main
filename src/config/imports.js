@@ -11,8 +11,6 @@ const V1PrelanderHeader = React.lazy(() => import("prelander/V1PrelanderHeader")
 const V1PrelanderPrelander = React.lazy(() => import("prelander/V1Prelander"));
 const V1Testimonials = React.lazy(() => import("prelander/V1Testimonials"));
 
-const V1AdvertorialLander = React.lazy(() => import("advertorial/V1Advertorial"));
-
 export const LANDERS = {
   lander:{
     v1: {
@@ -31,7 +29,4 @@ export const LANDERS = {
       testimonials: V1Testimonials
     }
   },
-  advertorial:{
-    v1: V1AdvertorialLander
-  }
 }
