@@ -41,10 +41,12 @@ const Prelander = ({ blok }) => {
 
   const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    renderedTexts = renderedTexts.replaceAll(
-      '<span style="background-color:',
-      '<span style="color:'
-    );
+    if(renderedTexts && renderedTexts.length > 0){
+      renderedTexts = renderedTexts.replaceAll(
+        '<span style="background-color:',
+        '<span style="color:'
+      );
+    } else renderedTexts = "";
     return renderedTexts;
   };
 
