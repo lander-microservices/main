@@ -90,7 +90,7 @@ export default function Lander({ blok }) {
   });
 
   const testRingba = {
-    key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
+    key: "JS511d482ee8884fa88a77d940d63dbe42",
     user: "pranavtest",
     number: "1-866-578-2331",
   };
