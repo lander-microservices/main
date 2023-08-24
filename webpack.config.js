@@ -71,7 +71,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         landers: "lander@https://lander-component-microservice.netlify.app/remoteEntry.js",
-        prelander: "prelander@https://preladner-micorservice.netlify.app/remoteEntry.js"
+        prelander: "prelander@https://preladner-micorservice.netlify.app/remoteEntry.js",
       },
       exposes: {},
       shared: {

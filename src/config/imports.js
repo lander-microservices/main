@@ -28,5 +28,5 @@ export const LANDERS = {
       header: V1PrelanderHeader,
       testimonials: V1Testimonials
     }
-  },
+  }
 }

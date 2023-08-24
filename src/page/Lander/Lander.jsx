@@ -54,6 +54,7 @@ const Footer = ({
   return (
     <Footer
       lander_logo_text={headerData.lander_logo_text}
+      logo_subheadline={headerData.lander_logo_subheadline}
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
       handlePixelEventTrigger={handlePixelEventTrigger}
@@ -90,7 +91,7 @@ export default function Lander({ blok }) {
   });
 
   const testRingba = {
-    key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
+    key: "JS511d482ee8884fa88a77d940d63dbe42",
     user: "pranavtest",
     number: "1-866-578-2331",
   };
