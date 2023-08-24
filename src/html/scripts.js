@@ -221,6 +221,29 @@ const domain_settings = [
         storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
     },
     {
+        name: "prelandertest.storyblock.improveourcredit.com",
+        gtm: "GTM-MVRS5TM",
+        facebookPixel: "532418778266412",
+        volum: {
+            url: "https://track.improveourcredit.com/d/.js",
+            noScript:
+                "https://track.improveourcredit.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.improveourcredit.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "CH4QHMRC77UBPA5M9M80",
+        industry: "",
+        websiteTitle: "Localhost",
+        vertical: "medicareaca",
+        storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+    },
+    {
         name: "prelandertest.improveourcredit.com",
         gtm: "GTM-THXW4VH",
         facebookPixel: "532418778266412",

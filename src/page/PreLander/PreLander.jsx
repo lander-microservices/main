@@ -41,10 +41,12 @@ const Prelander = ({ blok }) => {
 
   const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    renderedTexts = renderedTexts.replaceAll(
-      '<span style="background-color:',
-      '<span style="color:'
-    );
+    if(renderedTexts && renderedTexts.length > 0){
+      renderedTexts = renderedTexts.replaceAll(
+        '<span style="background-color:',
+        '<span style="color:'
+      );
+    } else renderedTexts = "";
     return renderedTexts;
   };
 
@@ -54,7 +56,7 @@ const Prelander = ({ blok }) => {
   const eventID = useEventID();
 
   const testRingba = {
-    key: "JS8d271f1ea8034bda8e8c7f24e346e5cb",
+    key: "JS511d482ee8884fa88a77d940d63dbe42",
     user: "pranavtest",
     number: "1-866-578-2331",
   };
@@ -72,19 +74,20 @@ const Prelander = ({ blok }) => {
 
   // console.log("RINGBA", ringba);
 
+  const { number } = useInitRingba({
+    ringbaKey: {
+      key: testRingba.key,
+      number: testRingba.number,
+    },
+  });
+
   // const { number } = useInitRingba({
   //   ringbaKey: {
-  //     key: testRingba.key,
-  //     number: testRingba.number,
+  //     key: blok.prelander_ringba_number_pool_key,
+  //     number: blok.prelander_ringba_static_number,
   //   },
   // });
 
-  const { number } = useInitRingba({
-    ringbaKey: {
-      key: blok.prelander_ringba_number_pool_key,
-      number: blok.prelander_ringba_static_number,
-    },
-  });
   const [headerData, setHeaderData] = useState({});
   const [stateCityResponse, setStateCityResponse] = useState({
     state: "",
@@ -295,11 +298,11 @@ const Prelander = ({ blok }) => {
 
   const handlePixelEventTrigger = (eventName) => {
     const contactButtonClicked = sessionStorage.getItem("ContactButtonClicked");
-    if (contactButtonClicked) return;
+    // if (contactButtonClicked) return;
 
-    if (showQuizSection === "yes") {
-      setBlankData();
-    }
+    // if (showQuizSection === "yes") {
+    //   setBlankData();
+    // }
 
     const ringbaData = localStorage.getItem("ringbaData");
     if (ringbaData.includes("zip")) {
