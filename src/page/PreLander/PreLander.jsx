@@ -41,7 +41,7 @@ const Prelander = ({ blok }) => {
 
   const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    if(renderedTexts && renderedTexts.length > 0){
+    if (renderedTexts && renderedTexts.length > 0) {
       renderedTexts = renderedTexts.replaceAll(
         '<span style="background-color:',
         '<span style="color:'
@@ -198,17 +198,15 @@ const Prelander = ({ blok }) => {
         "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
       );
       console.log(data);
-      const state = data.subdivisions[0].names.en
-      const city = data.city.names.en
-      const country = data.country.names.en
-      const postalCode = data.postal.code
+      const state = data.subdivisions[0].names.en;
+      const city = data.city.names.en;
+      const country = data.country.names.en;
+      const postalCode = data.postal.code;
 
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
       localStorage.setItem(sessionStorageKeys.city, city);
       localStorage.setItem(sessionStorageKeys.state, state);
       setStateCityResponse({ state, city, country, zip: postalCode });
-
-   
     } catch (error) {
       console.log(error);
     }
