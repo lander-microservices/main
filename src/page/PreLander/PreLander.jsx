@@ -193,33 +193,25 @@ const Prelander = ({ blok }) => {
 
   const cityAddress = async () => {
     const options = {};
-    const onSuccess = (success) => {
-      const country = success.country
-        ? success.country.names
-          ? success.country.names.en
-          : ""
-        : "";
-      const city = success.city
-        ? success.city.names
-          ? success.city.names.en
-          : ""
-        : "";
-      const state = success.subdivisions
-        ? success.subdivisions[0]
-          ? success.subdivisions[0].names.en
-          : ""
-        : "";
-
-      const postalCode = success.postal.code;
+    try {
+      const { data } = await axios.get(
+        "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
+      );
+      console.log(data);
+      const state = data.subdivisions[0].names.en
+      const city = data.city.names.en
+      const country = data.country.names.en
+      const postalCode = data.postal.code
 
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
       localStorage.setItem(sessionStorageKeys.city, city);
       localStorage.setItem(sessionStorageKeys.state, state);
-
       setStateCityResponse({ state, city, country, zip: postalCode });
-    };
-    const onError = (error) => {};
-    if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
+
+   
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const setInitialData = () => {

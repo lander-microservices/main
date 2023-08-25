@@ -58,7 +58,6 @@ const Footer = ({
       lander_logo_text_color={headerData.lander_logo_text_color}
       dis={renderedRichText}
       handlePixelEventTrigger={handlePixelEventTrigger}
-      logo_subheadline={headerData.lander_logo_subheadline}
       content_block={content_block}
     />
   );
@@ -145,31 +144,23 @@ export default function Lander({ blok }) {
 
   const cityAddress = async () => {
     const options = {};
-    const onSuccess = (success) => {
-      const country = success.country
-        ? success.country.names
-          ? success.country.names.en
-          : ""
-        : "";
-      const city = success.city
-        ? success.city.names
-          ? success.city.names.en
-          : ""
-        : "";
-      const state = success.subdivisions
-        ? success.subdivisions[0]
-          ? success.subdivisions[0].names.en
-          : ""
-        : "";
+    try {
+      const { data } = await axios.get(
+        "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
+      );
+      console.log(data);
+      const state = data.subdivisions[0].names.en
+      const city = data.city.names.en
+      const country = data.country.names.en
+      const postalCode = data.postal.code
 
-      const postalCode = success.postal.code;
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
       localStorage.setItem(sessionStorageKeys.city, city);
       localStorage.setItem(sessionStorageKeys.state, state);
       setStateCityResponse({ state, city, country, zip: postalCode });
-    };
-    const onError = (error) => {};
-    if (window.geoip2) await window.geoip2.city(onSuccess, onError, options);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const setInitialData = () => {
