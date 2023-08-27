@@ -764,7 +764,7 @@ const domain_settings = [
     {
         name: "prelander.awarenesstips.com",
         gtm: "GTM-PLPKKNC6",
-        facebookPixel: "1232977270696782",
+        facebookPixel: "842113914148903",
         volum: {
             url: "https://track.youracahelper.com/d/.js",
             noScript:
