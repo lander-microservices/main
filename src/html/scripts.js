@@ -766,10 +766,10 @@ const domain_settings = [
         gtm: "GTM-PLPKKNC6",
         facebookPixel: "842113914148903",
         volum: {
-            url: "https://track.youracahelper.com/d/.js",
+            url: "https://track.awarenesstips.com/d/.js",
             noScript:
-                "https://track.youracahelper.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.youracahelper.com",
+                "https://track.awarenesstips.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.awarenesstips.com",
         },
         metaDetails: {
             "og:title": "og title",
@@ -789,10 +789,10 @@ const domain_settings = [
         gtm: "GTM-M6ZSW8H3",
         facebookPixel: "1232977270696782",
         volum: {
-            url: "https://track.youracahelper.com/d/.js",
+            url: "https://track.americanhelpers.org/d/.js",
             noScript:
-                "https://track.youracahelper.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.youracahelper.com",
+                "https://track.americanhelpers.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.americanhelpers.org",
         },
         metaDetails: {
             "og:title": "og title",
