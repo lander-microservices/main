@@ -808,7 +808,7 @@ const domain_settings = [
         storyblockAccessToken: "bgqZlJkSCq6MSox4UJUUuAtt",
     },
       {
-        name: "prelandertest.nationwidesubsidy.com",
+        name: "prelander.nationwidesubsidy.com",
         gtm: "GTM-TQ5CW45B",
         facebookPixel: "1232977270696782",
         volum: {
