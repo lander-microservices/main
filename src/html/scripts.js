@@ -807,6 +807,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "bgqZlJkSCq6MSox4UJUUuAtt",
     },
+      {
+        name: "prelandertest.nationwidesubsidy.com",
+        gtm: "GTM-TQ5CW45B",
+        facebookPixel: "1232977270696782",
+        volum: {
+            url: "https://track.nationwidesubsidy.com/d/.js",
+            noScript:
+                "https://track.nationwidesubsidy.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.nationwidesubsidy.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "hrN1KIrdox1RnNAu1XQQCwtt",
+    },
 ];
 
 initScripts(domain_settings);
