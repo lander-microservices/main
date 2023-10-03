@@ -842,6 +842,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "hrN1KIrdox1RnNAu1XQQCwtt",
     },
+      {
+        name: "prelandertest.subsidyacrossnation.com",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.subsidyacrossnation.com/d/.js",
+            noScript:
+                "https://track.subsidyacrossnation.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.subsidyacrossnation.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "RuU8GjUyc1ufhWtGwVQOzgtt",
+    },
 ];
 
 initScripts(domain_settings);
