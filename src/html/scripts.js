@@ -851,6 +851,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "RuU8GjUyc1ufhWtGwVQOzgtt",
     },
+      {
+        name: "prelander.healthyhelperonline.com",
+        gtm: "GTM-P4BNZBZ",
+        facebookPixel: "1279112236350881",
+        volum: {
+            url: "https://track.subsidyacrossnation.com/d/.js",
+            noScript:
+                "https://track.subsidyacrossnation.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.subsidyacrossnation.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "RuU8GjUyc1ufhWtGwVQOzgtt",
+    },
 ];
 
 initScripts(domain_settings);
