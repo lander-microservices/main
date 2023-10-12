@@ -149,7 +149,7 @@ export default function Lander({ blok }) {
         "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
       );
 
-      const state = data.subdivisions[0].iso_code
+      const state = data.subdivisions[0].isoCode
       const city = data.city.names.en
       const country = data.country.names.en
       const postalCode = data.postal.code
