@@ -148,8 +148,8 @@ export default function Lander({ blok }) {
       const { data } = await axios.get(
         "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
       );
-      console.log(data);
-      const state = data.subdivisions[0].names.en
+
+      const state = data.subdivisions[0].iso_code
       const city = data.city.names.en
       const country = data.country.names.en
       const postalCode = data.postal.code
