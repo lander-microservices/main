@@ -20,6 +20,7 @@ import {
   useVisitorId,
 } from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -428,7 +429,7 @@ const Prelander = ({ blok }) => {
       return;
     });
   }, []);
-
+  const FloatingCard = LANDERS.lander['v1'].floatingCard;
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -444,6 +445,28 @@ const Prelander = ({ blok }) => {
         {blok.prelander_blocks.map((content_block, index) =>
           getComponent(content_block, index)
         )}
+        {true ? (
+          <React.Suspense
+            fallback={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <PuffLoader color="#274066" />
+                  <p style={{ margin: 0, padding: 0 }}>Loading...</p>
+                </div>
+              </div>
+            }
+          >
+            <FloatingCard />
+          </React.Suspense>
+        ) : undefined}
       </div>
     </React.Suspense>
   );
