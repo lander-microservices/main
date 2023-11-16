@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta name="robots" content="noindex" />
-    
+    <meta name="robots" content="noindex" />
+
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -52,7 +52,6 @@
 
     <script src="https://lander-main-microservice.netlify.app/scripts.js"></script>
     <!-- <script src="https://illustrious-squirrel-bec40c.netlify.app/scripts.js"></script> -->
- 
 
     <script src="https://lander-static-files.netlify.app/assets/scripts/prelanderRedirectToHome.js"></script>
   </head>
@@ -68,7 +67,7 @@
       const element1 = window.document.getElementById("noscripts1");
       const element2 = window.document.getElementById("noscripts2");
       const element3 = window.document.getElementById("noscripts3");
-      
+
       element1.innerHTML = `
       <noscript>
         <link
@@ -105,5 +104,13 @@
       fb: window.domain_settings.facebookPixel,
       tikTok: window.domain_settings.tikTok,
     });
+  </script>
+
+  <script
+    src="https://js.sentry-cdn.com/096a175ac58bf6322c6364a8cf02f292.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    myUndefinedFunction();
   </script>
 </html>
