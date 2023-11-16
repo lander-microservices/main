@@ -888,6 +888,75 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "YMdqayZuCR3R8wrtf1XJbAtt",
     },
+    {
+        name: "prelandertest.subsidyhelpers.co",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.subsidyhelpers.co/d/.js",
+            noScript:
+                "https://track.subsidyhelpers.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.subsidyhelpers.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "V6rRON3DBQqYk90KBkwIJgtt",
+    },
+    {
+        name: "prelandertest.localaid.co",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.localaid.co/d/.js",
+            noScript:
+                "https://track.localaid.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.localaid.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "MT26RcSC9fdT4PQGdLf3Ngtt",
+    },
+    {
+        name: "prelandertest.grabsubsidy.com",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.grabsubsidy.com/d/.js",
+            noScript:
+                "https://track.grabsubsidy.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.grabsubsidy.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "mx8YPUaZ52cDUoYg5T7Towtt",
+    },
 ];
 
 initScripts(domain_settings);
