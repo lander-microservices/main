@@ -943,6 +943,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "mx8YPUaZ52cDUoYg5T7Towtt",
     },
+    {
+        name: "prelander.subsidyaid.com",
+        gtm: "GTM-M8F8CW4",
+        facebookPixel: "3630004413952856",
+        volum: {
+            url: "https://track.grabsubsidy.com/d/.js",
+            noScript:
+                "https://track.grabsubsidy.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.grabsubsidy.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "",
+        vertical: "aca",
+        storyblockAccessToken: "cG049QDP9kSgI7r4XmkqRAtt",
+    },
 ];
 
 initScripts(domain_settings);
