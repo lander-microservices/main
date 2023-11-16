@@ -13,7 +13,6 @@ import {
   RINGBA_STORAGE_KEYS,
   STORAGE_KEYS,
   sessionStorageKeys,
-  replaceShortCodes as shortCodeReplacer,
   useEventID,
   useInitRingba,
   useRingba,
@@ -21,6 +20,48 @@ import {
 } from "wecall-config-lib";
 import { LANDERS } from "../../config/imports";
 import PuffLoader from "react-spinners/PuffLoader";
+
+
+const SHORT_CODES = [
+  { code: "ringbaNumber", replacement: ({ number, city, state }) => `<a href="tel:${number}" onclick="trackCallEvent()" class="callnow blue paragraph-btn"><b>${number}</b></a>` },
+  { code: "city", replacement: ({ number, city, state }) => `<span class="">${city}</span>` },
+  { code: "state", replacement: ({ number, city, state }) => `<span class="">${state}</span>` },
+  { code: "fname", replacement: ({ fname }) => `<span class="">${fname}</span>` },
+  { code: "lname", replacement: ({ lname }) => `<span class="">${lname}</span>` },
+  { code: "zip", replacement: ({  zip }) => `<span class="">${zip}</span>` },
+];
+
+export const shortCodeReplacer = (html, obj) => {
+  SHORT_CODES.forEach((i) => {
+      try{
+          html = html.replaceAll(`{{ ${i.code} }}`, i.replacement(obj));
+      } catch(error){
+          console.error("Replace All ERror1", i.code, obj);
+      }
+      try{
+
+          html = html.replaceAll(`{{ ${i.code}}}`, i.replacement(obj));
+      } catch(error){
+          console.error("Replace All ERror2", i.code, obj);
+
+      }
+
+      try{
+          html = html.replaceAll(`{{${i.code} }}`, i.replacement(obj));
+
+      } catch(Error){
+          console.error("Replace All ERror3", i.code, obj);
+
+      }
+      try{
+          html = html.replaceAll(`{{${i.code}}}`, i.replacement(obj));
+      } catch(error){
+          console.error("Replace All ERror4", i.code, obj);
+      }
+  });
+  return html;
+};
+
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
