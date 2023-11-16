@@ -531,7 +531,7 @@ const domain_settings = [
     },
     {
         name: "prelander.qualifyobamacare.com",
-        gtm: "GTM-NZ2PBFN",
+        gtm: "GTM-PFZC78L",
         facebookPixel: "",
         volum: {
             url: "https://track.qualifyobamacare.com/d/.js",
