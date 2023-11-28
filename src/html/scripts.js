@@ -980,6 +980,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "cG049QDP9kSgI7r4XmkqRAtt",
     },
+        {
+        name: "prelandertest.planadvisors.org",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.grabsubsidy.com/d/.js",
+            noScript:
+                "https://track.grabsubsidy.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.grabsubsidy.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Planadvisors.org",
+        vertical: "aca",
+        storyblockAccessToken: "AKRLVWCpRedYyzVGEWoa9Qtt",
+    }
 ];
 
 initScripts(domain_settings);
