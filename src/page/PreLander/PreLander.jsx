@@ -65,6 +65,8 @@ export const shortCodeReplacer = (html, obj) => {
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
+  const lander_floating_card = blok.lander_floating_card;
+
   const domainName = window.location.host.replace("prelander.", "");
   const generator = blok.prelander_generator;
   const utm_source = blok.prelander_utm_source;
@@ -486,7 +488,7 @@ const Prelander = ({ blok }) => {
         {blok.prelander_blocks.map((content_block, index) =>
           getComponent(content_block, index)
         )}
-        {true ? (
+        {lander_floating_card !== 'no' ? (
           <React.Suspense
             fallback={
               <div
