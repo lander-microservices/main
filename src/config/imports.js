@@ -10,6 +10,7 @@ const V1PrelanderFooter = React.lazy(() => import("prelander/V1PrelanderFooter")
 const V1PrelanderHeader = React.lazy(() => import("prelander/V1PrelanderHeader"));
 const V1PrelanderPrelander = React.lazy(() => import("prelander/V1Prelander"));
 const V1Testimonials = React.lazy(() => import("prelander/V1Testimonials"));
+const V1PrelanderFloatingCard = React.lazy(() => import("prelander/V1FloatingCard"));
 
 export const LANDERS = {
   lander:{
@@ -26,7 +27,8 @@ export const LANDERS = {
       prelander: V1PrelanderPrelander,
       footer: V1PrelanderFooter,
       header: V1PrelanderHeader,
-      testimonials: V1Testimonials
+      testimonials: V1Testimonials,
+      floatingCard: V1PrelanderFloatingCard
     }
   }
 }

@@ -5,8 +5,13 @@ import { useStoryblok, StoryblokComponent } from "@storyblok/react";
 import PuffLoader from "react-spinners/PuffLoader";
 import Lander from "./Lander/Lander";
 import Prelander from "./PreLander/PreLander";
+import axios from "axios";
+import * as moment from "moment-timezone";
 
-const ERROR_API = "http://api.logger.analytics.improveourcredit.com/funnel-logger";
+const ERROR_API =
+  "http://api.logger.analytics.improveourcredit.com/funnel-logger";
+const CLICKS_API =
+  "http://api.logger.analytics.improveourcredit.com/prelander-traffic-loggger";
 
 const errorApi = async (error, errorInfo, localStorage) => {
   fetch(ERROR_API, {
@@ -20,21 +25,48 @@ const errorApi = async (error, errorInfo, localStorage) => {
       domainName: window.location.host,
       completeUrl: window.location.href,
       sessionStorage: {},
-      localStorage: localStorage? localStorage :  {},
+      localStorage: localStorage ? localStorage : {},
       otherError: errorInfo,
       // You can add more details like user info, browser, etc.
     }),
   });
 };
 
-window.onerror = function (message, source, lineno, colno, error) {
-  // Log or handle the error
-  console.error('An error occurred:', message, 'at line:', lineno, 'of file:', source);
-  // Optionally, send the error information to your server
-  sendErrorToServer("error", "error", { localStorage: {message, source, lineno, colno, error} });
-  return true; // Prevents the default browser error handler
+const sendClicksToServer = async (click) => {
+  try {
+    const { data } = await axios.post(CLICKS_API, {
+      click,
+      visitorId: localStorage.getItem("visitorId"),
+      domainName: window.location.host,
+      completeUrl: window.location.href,
+      browserDateTime:  moment(new Date())
+      .tz("America/New_York")
+      .format("YYYY-MM-DD hh:mm:ss"),
+    });
+    console.log("Click", data);
+  } catch (error) {
+    console.log(error)
+  }
 };
 
+window.sendClicksToServer = sendClicksToServer;
+
+window.onerror = function (message, source, lineno, colno, error) {
+  // Log or handle the error
+  console.error(
+    "An error occurred:",
+    message,
+    "at line:",
+    lineno,
+    "of file:",
+    source
+  );
+  // Optionally, send the error information to your server
+  sendErrorToServer("error", "error", {
+    localStorage: { message, source, lineno, colno, error },
+  });
+  return true; // Prevents the default browser error handler
+};
 
 localStorage.removeItem("ringbaData");
 window.dev = false;
@@ -110,7 +142,7 @@ class ErrorBoundary extends Component {
   }
 }
 
-export default ErrorBoundary;
+
 
 ReactDOM.render(
   <ErrorBoundary>

@@ -470,7 +470,7 @@ const Prelander = ({ blok }) => {
       return;
     });
   }, []);
-  const FloatingCard = LANDERS.lander['v1'].floatingCard;
+  const FloatingCard = LANDERS.prelander['v1'].floatingCard;
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (

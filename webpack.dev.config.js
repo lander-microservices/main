@@ -1,7 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 require('dotenv').config();
 
 const fs = require('fs');
@@ -54,6 +53,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
     ],
   },
 
