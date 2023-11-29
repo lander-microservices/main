@@ -148,9 +148,22 @@ const initMetaDetails = (obj) => {
 
 const initScripts = (domain_settings) => {
     const domain = window.location.hostname;
-    const currentDomainSettings = domain_settings.find((i) => {
+    let currentDomainSettings = domain_settings.find((i) => {
         return i.name.includes(domain);
     });
+    if(!currentDomainSettings) {
+        currentDomainSettings =  {
+            name: "precious-shortbread-c64405.netlify.app",
+            gtm: "GTM-THXW4VH",
+            facebookPixel: "532418778266412",
+            volumUrl: "https://track.realseniorbenefits.com/d/.js",
+            tikTok: "",
+            industry: "",
+            websiteTitle: "Localhost",
+            vertical: "medicareaca",
+            storyblockAccessToken: "gVJgZvajxLWDT0saMgTqswtt",
+        }
+    }
 
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
