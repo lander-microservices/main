@@ -96,8 +96,10 @@ const Prelander = ({ blok }) => {
 
   const { storeRgbaData } = useRingba();
 
-  const visitorId = useVisitorId();
-  const eventID = useEventID();
+  const { getVisitorId } = useVisitorId();
+  const visitorId = getVisitorId();
+  const { getEventId } = useEventID();
+  const eventID = getEventId();
 
   const testRingba = {
     key: "JS511d482ee8884fa88a77d940d63dbe42",
