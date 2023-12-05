@@ -87,7 +87,7 @@ const App = () => {
       ? "home"
       : window.location.pathname.replace("/", "");
 
-  const story = useStoryblok(slug, { version: "draft" });
+  const story = useStoryblok('/lander-1', { version: "draft" });
   if (!story || !story.content) {
     return (
       <div
