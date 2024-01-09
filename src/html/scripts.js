@@ -1025,6 +1025,52 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "MBOLsht9WIl7oeiQjEwrzQtt",
     },
+    {
+        name: "prelandertest.senior-benefits.co",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.senior-benefits.co/d/.js",
+            noScript:
+                "https://track.senior-benefits.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.senior-benefits.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Senior-benefits.co",
+        vertical: "aca",
+        storyblockAccessToken: "QQqI9BvN7HyHFyHoYLgbrgtt",
+    },
+    {
+        name: "prelandertest.senioradvise.co",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.senioradvise.co/d/.js",
+            noScript:
+                "https://track.senioradvise.co/d/.js?noscript=true&lpurl=",
+            meta: "https://track.senioradvise.co",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Senioradvise.co",
+        vertical: "aca",
+        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+    },
 ];
 
 initScripts(domain_settings);
