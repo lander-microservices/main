@@ -21,47 +21,57 @@ import {
 import { LANDERS } from "../../config/imports";
 import PuffLoader from "react-spinners/PuffLoader";
 
-
 const SHORT_CODES = [
-  { code: "ringbaNumber", replacement: ({ number, city, state }) => `<a href="tel:${number}" onclick="trackCallEvent()" class="callnow blue paragraph-btn"><b>${number}</b></a>` },
-  { code: "city", replacement: ({ number, city, state }) => `<span class="">${city}</span>` },
-  { code: "state", replacement: ({ number, city, state }) => `<span class="">${state}</span>` },
-  { code: "fname", replacement: ({ fname }) => `<span class="">${fname}</span>` },
-  { code: "lname", replacement: ({ lname }) => `<span class="">${lname}</span>` },
-  { code: "zip", replacement: ({  zip }) => `<span class="">${zip}</span>` },
+  {
+    code: "ringbaNumber",
+    replacement: ({ number, city, state }) =>
+      `<a href="tel:${number}" onclick="trackCallEvent()" class="callnow blue paragraph-btn"><b>${number}</b></a>`,
+  },
+  {
+    code: "city",
+    replacement: ({ number, city, state }) => `<span class="">${city}</span>`,
+  },
+  {
+    code: "state",
+    replacement: ({ number, city, state }) => `<span class="">${state}</span>`,
+  },
+  {
+    code: "fname",
+    replacement: ({ fname }) => `<span class="">${fname}</span>`,
+  },
+  {
+    code: "lname",
+    replacement: ({ lname }) => `<span class="">${lname}</span>`,
+  },
+  { code: "zip", replacement: ({ zip }) => `<span class="">${zip}</span>` },
 ];
 
 export const shortCodeReplacer = (html, obj) => {
   SHORT_CODES.forEach((i) => {
-      try{
-          html = html.replaceAll(`{{ ${i.code} }}`, i.replacement(obj));
-      } catch(error){
-          console.error("Replace All ERror1", i.code, obj);
-      }
-      try{
+    try {
+      html = html.replaceAll(`{{ ${i.code} }}`, i.replacement(obj));
+    } catch (error) {
+      console.error("Replace All ERror1", i.code, obj);
+    }
+    try {
+      html = html.replaceAll(`{{ ${i.code}}}`, i.replacement(obj));
+    } catch (error) {
+      console.error("Replace All ERror2", i.code, obj);
+    }
 
-          html = html.replaceAll(`{{ ${i.code}}}`, i.replacement(obj));
-      } catch(error){
-          console.error("Replace All ERror2", i.code, obj);
-
-      }
-
-      try{
-          html = html.replaceAll(`{{${i.code} }}`, i.replacement(obj));
-
-      } catch(Error){
-          console.error("Replace All ERror3", i.code, obj);
-
-      }
-      try{
-          html = html.replaceAll(`{{${i.code}}}`, i.replacement(obj));
-      } catch(error){
-          console.error("Replace All ERror4", i.code, obj);
-      }
+    try {
+      html = html.replaceAll(`{{${i.code} }}`, i.replacement(obj));
+    } catch (Error) {
+      console.error("Replace All ERror3", i.code, obj);
+    }
+    try {
+      html = html.replaceAll(`{{${i.code}}}`, i.replacement(obj));
+    } catch (error) {
+      console.error("Replace All ERror4", i.code, obj);
+    }
   });
   return html;
 };
-
 
 const Prelander = ({ blok }) => {
   const acc_id = blok.prelander_acc_id;
@@ -85,7 +95,7 @@ const Prelander = ({ blok }) => {
 
   const renderRichText = (texts) => {
     let renderedTexts = originalRenderedTexts(texts);
-    if(renderedTexts && renderedTexts.length > 0){
+    if (renderedTexts && renderedTexts.length > 0) {
       renderedTexts = renderedTexts.replaceAll(
         '<span style="background-color:',
         '<span style="color:'
@@ -240,17 +250,15 @@ const Prelander = ({ blok }) => {
         "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
       );
       console.log(data);
-      const state = data.subdivisions[0].isoCode
-      const city = data.city.names.en
-      const country = data.country.names.en
-      const postalCode = data.postal.code
+      const state = data.subdivisions[0].isoCode;
+      const city = data.city.names.en;
+      const country = data.country.names.en;
+      const postalCode = data.postal.code;
 
       localStorage.setItem(sessionStorageKeys.zip, postalCode);
       localStorage.setItem(sessionStorageKeys.city, city);
       localStorage.setItem(sessionStorageKeys.state, state);
       setStateCityResponse({ state, city, country, zip: postalCode });
-
-   
     } catch (error) {
       console.log(error);
     }
@@ -472,7 +480,7 @@ const Prelander = ({ blok }) => {
       return;
     });
   }, []);
-  const FloatingCard = LANDERS.prelander['v1'].floatingCard;
+  const FloatingCard = LANDERS.prelander["v1"].floatingCard;
   return (
     <React.Suspense fallback={<></>}>
       {!clickId ? (
@@ -488,7 +496,8 @@ const Prelander = ({ blok }) => {
         {blok.prelander_blocks.map((content_block, index) =>
           getComponent(content_block, index)
         )}
-        {lander_floating_card !== 'no' ? (
+        {prelander_hero_section &&
+        prelander_hero_section.lander_floating_card !== "no" ? (
           <React.Suspense
             fallback={
               <div
