@@ -501,7 +501,7 @@ const Prelander = ({ blok }) => {
           getComponent(content_block, index)
         )}
         {/* old code might with compaitable with other websites */}
-        {prelander_hero_section.lander_floating_card !== "no" ? (
+        {prelander_hero_section && prelander_hero_section.lander_floating_card !== "no" ? (
           <React.Suspense
             fallback={
               <div
