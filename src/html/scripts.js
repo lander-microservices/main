@@ -148,7 +148,8 @@ const initMetaDetails = (obj) => {
 
 const initScripts = (domain_settings) => {
     const domain = window.location.hostname;
-    let currentDomainSettings = domain_settings.find((i) => {
+    
+    let currentDomainSettings = domain_settings.filter((i) => {
         return i.name.includes(domain);
     });
     if(!currentDomainSettings) {
@@ -1068,6 +1069,52 @@ const domain_settings = [
         tikTok: "",
         industry: "",
         websiteTitle: "Senioradvise.co",
+        vertical: "aca",
+        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+    },
+    {
+        name: "prelandertest.allowancefinder.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.allowancefinder.com/d/.js",
+            noScript:
+                "https://track.allowancefinder.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.allowancefinder.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Allowancefinder.com",
+        vertical: "aca",
+        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+    },
+    {
+        name: "prelandertest.newclearmedicare.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.newclearmedicare.com/d/.js",
+            noScript:
+                "https://track.newclearmedicare.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.newclearmedicare.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Newclearmedicare.com",
         vertical: "aca",
         storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
     },
