@@ -1058,6 +1058,52 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
     },
+    {
+        name: "prelander.allowancefinder.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.allowancefinder.com/d/.js",
+            noScript:
+                "https://track.allowancefinder.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.allowancefinder.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Allowancefinder.com",
+        vertical: "aca",
+        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+    },
+    {
+        name: "prelander.newclearmedicare.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.newclearmedicare.com/d/.js",
+            noScript:
+                "https://track.newclearmedicare.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.newclearmedicare.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Newclearmedicare.com",
+        vertical: "aca",
+        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+    },
 ];
 
 initScripts(domain_settings);
