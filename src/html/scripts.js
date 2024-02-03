@@ -1093,7 +1093,7 @@ const domain_settings = [
         industry: "",
         websiteTitle: "Allowancefinder.com",
         vertical: "aca",
-        storyblockAccessToken: "Xi93hqGLPtxmQlWgB7kZrAtt",
+        storyblockAccessToken: "KLzlpkjzXAyBphOBbnKr1wtt",
     },
     {
         name: "prelandertest.newclearmedicare.com",
