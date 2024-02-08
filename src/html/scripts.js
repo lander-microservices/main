@@ -1119,14 +1119,14 @@ const domain_settings = [
         storyblockAccessToken: "XAelxqGHn7MiePZ5C1G32wtt",
     },
     {
-        name: "prelandertest.newclearplans.com",
+        name: "prelandertest.medplanners.org",
         gtm: "GTM-PHDTN6NR",
         facebookPixel: "687474176447071",
         volum: {
-            url: "https://track.newclearplans.com/d/.js",
+            url: "https://track.medplanners.org/d/.js",
             noScript:
-                "https://track.newclearplans.com/d/.js?noscript=true&lpurl=",
-            meta: "https://track.newclearplans.com",
+                "https://track.medplanners.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.medplanners.org",
         },
         metaDetails: {
             "og:title": "og title",
@@ -1137,9 +1137,9 @@ const domain_settings = [
         },
         tikTok: "",
         industry: "",
-        websiteTitle: "Newclearplans.com",
+        websiteTitle: "Medplanners.org",
         vertical: "aca",
-        storyblockAccessToken: "5QVvYK7bS37fDjnO77WFQwtt",
+        storyblockAccessToken: "KSVj8b92TcqWe9X2B6ZmBQtt",
     },
 ];
 
