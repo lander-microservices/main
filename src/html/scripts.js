@@ -1106,7 +1106,7 @@ const domain_settings = [
     },
     {
         name: "prelander.newclearplans.com",
-        gtm: "GTM-PHDTN6NR",
+        gtm: "GTM-WN2HXGMK",
         facebookPixel: "687474176447071",
         volum: {
             url: "https://track.newclearplans.com/d/.js",
