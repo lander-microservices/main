@@ -1126,7 +1126,30 @@ const domain_settings = [
         websiteTitle: "Newclearplans.com",
         vertical: "aca",
         storyblockAccessToken: "5QVvYK7bS37fDjnO77WFQwtt",
-    }
+    },
+    {
+        name: "prelander.medplanners.org",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.medplanners.org/d/.js",
+            noScript:
+                "https://track.medplanners.org/d/.js?noscript=true&lpurl=",
+            meta: "https://track.medplanners.org",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Medplanners.org",
+        vertical: "aca",
+        storyblockAccessToken: "KSVj8b92TcqWe9X2B6ZmBQtt",
+    },
 ];
 
 initScripts(domain_settings);
