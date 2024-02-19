@@ -1165,6 +1165,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "5QVvYK7bS37fDjnO77WFQwtt",
     },
+    {
+        name: "prelandertest.improveourcredit.com",
+        gtm: "GTM-MR23V5G8",
+        facebookPixel: "687474176447071",
+        volum: {
+            url: "https://track.newclearplans.com/d/.js",
+            noScript:
+                "https://track.newclearplans.com/d/.js?noscript=true&lpurl=",
+            meta: "https://track.newclearplans.com",
+        },
+        metaDetails: {
+            "og:title": "og title",
+            "og:description": "og description",
+            "og:site_name": "og site_name",
+            title: "Meta title",
+            description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Newclearplans.com",
+        vertical: "aca",
+        storyblockAccessToken: "5QVvYK7bS37fDjnO77WFQwtt",
+    },
 ];
 
 initScripts(domain_settings);
