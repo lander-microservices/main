@@ -1188,6 +1188,76 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "5QVvYK7bS37fDjnO77WFQwtt",
     },
+
+    {
+        name: "prelandertest.finalexpensefinder.co",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+          url: "https://track.finalexpensefinder.co/d/.js",
+          noScript:
+            "https://track.finalexpensefinder.co/d/.js?noscript=true&lpurl=",
+          meta: "https://track.finalexpensefinder.co",
+        },
+        metaDetails: {
+          "og:title": "og title",
+          "og:description": "og description",
+          "og:site_name": "og site_name",
+          title: "Meta title",
+          description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Final Expense Finder",
+        vertical: "aca",
+        storyblockAccessToken: "v4qhbOtIMXH8L51bSXry8Qtt",
+      },
+      {
+        name: "prelandertest.yourfinalexpenseplan.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+          url: "https://track.yourfinalexpenseplan.com/d/.js",
+          noScript:
+            "https://track.yourfinalexpenseplan.com/d/.js?noscript=true&lpurl=",
+          meta: "https://track.yourfinalexpenseplan.com",
+        },
+        metaDetails: {
+          "og:title": "og title",
+          "og:description": "og description",
+          "og:site_name": "og site_name",
+          title: "Meta title",
+          description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Your Final Expense Plan",
+        vertical: "aca",
+        storyblockAccessToken: "HOEWO1mqRCCu38PfgB79sAtt",
+      },
+      {
+        name: "prelandertest.advantage-health-plans.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+          url: "https://track.advantage-health-plans.com/d/.js",
+          noScript:
+            "https://track.advantage-health-plans.com/d/.js?noscript=true&lpurl=",
+          meta: "https://track.advantage-health-plans.com",
+        },
+        metaDetails: {
+          "og:title": "og title",
+          "og:description": "og description",
+          "og:site_name": "og site_name",
+          title: "Meta title",
+          description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Advantage Health Plans",
+        vertical: "aca",
+        storyblockAccessToken: "cXtgCL4pDo8Ggl2wwVXAwgtt",
+      },
 ];
 
 initScripts(domain_settings);
