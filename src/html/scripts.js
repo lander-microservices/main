@@ -1258,6 +1258,29 @@ const domain_settings = [
         vertical: "aca",
         storyblockAccessToken: "cXtgCL4pDo8Ggl2wwVXAwgtt",
       },
+      {
+        name: "prelandertest.prohealthypoint.com",
+        gtm: "GTM-PHDTN6NR",
+        facebookPixel: "687474176447071",
+        volum: {
+          url: "https://track.prohealthypoint.com/d/.js",
+          noScript:
+            "https://track.prohealthypoint.com/d/.js?noscript=true&lpurl=",
+          meta: "https://track.prohealthypoint.com",
+        },
+        metaDetails: {
+          "og:title": "og title",
+          "og:description": "og description",
+          "og:site_name": "og site_name",
+          title: "Meta title",
+          description: "Meta Description",
+        },
+        tikTok: "",
+        industry: "",
+        websiteTitle: "Pro Healthy Point",
+        vertical: "aca",
+        storyblockAccessToken: "r7geRrDfcqumatSMWrplaQtt",
+      },
 ];
 
 initScripts(domain_settings);
