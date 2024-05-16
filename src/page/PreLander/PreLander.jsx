@@ -479,7 +479,7 @@ const Prelander = ({ blok }) => {
 
   useEffect(() => {
     window.addEventListener("beforeunload", (ev) => {
-      ev.preventDefault();
+      // ev.preventDefault();
       localStorage.removeItem("ringbaNumber_" + ringba.key);
       return;
     });
