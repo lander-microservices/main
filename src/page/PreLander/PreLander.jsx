@@ -520,7 +520,7 @@ const Prelander = ({ blok }) => {
               </div>
             }
           >
-            <FloatingCard />
+          {/*<FloatingCard />*/}
           </React.Suspense>
         ) : undefined}
       </div>

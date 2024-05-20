@@ -506,7 +506,7 @@ export default function Lander({ blok }) {
               </div>
             }
           >
-            <FloatingCard />
+           {/*<FloatingCard />*/}
           </React.Suspense>
         ) : undefined}
       </div>
