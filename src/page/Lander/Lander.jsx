@@ -145,10 +145,10 @@ export default function Lander({ blok }) {
   const cityAddress = async () => {
     const options = {};
     try {
-      const { data } = await axios.get(
-        "https://funnel.improveourcredit.com/ip?key=askdjaslkdjaskjdsla"
+      const ipAddressData = await axios.get(
+          "https://api.wcnzoneapi.com/plugin/ip-address?key=askdjaslkdjaskjdsla"
       );
-
+      const data = ipAddressData.data.cityState;
       const state = data.subdivisions[0].isoCode
       const city = data.city.names.en
       const country = data.country.names.en
