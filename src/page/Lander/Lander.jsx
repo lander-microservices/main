@@ -146,7 +146,7 @@ export default function Lander({ blok }) {
     const options = {};
     try {
       const ipAddressData = await axios.get(
-          "https://api.wcnzoneapi.com/plugin/ip-address?key=askdjaslkdjaskjdsla"
+          "https://prod.api.adstiacms.com/plugin/ip-address?key=askdjaslkdjaskjdsla"
       );
       const data = ipAddressData.data.cityState;
       const state = data.subdivisions[0].isoCode
