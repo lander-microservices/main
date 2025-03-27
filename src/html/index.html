@@ -249,7 +249,11 @@
       
       const domainName = window.location.host.replace("quotes.", "");
       const API_URL =
-        "https://funnel.improveourcredit.com/prelander/" + domainName;
+        // Old CMS Server URL 
+        // "https://funnel.improveourcredit.com/prelander/" + domainName;
+
+        // New CMS Server URL 
+        "https://prod.api.adstiacms.com/plugin/prelander/" + domainName;
       
       const fetchData = async () => {
         const response = await fetch(API_URL);
