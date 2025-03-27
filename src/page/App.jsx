@@ -49,7 +49,7 @@ const sendClicksToServer = async (click) => {
   }
 };
 
-// window.sendClicksToServer = sendClicksToServer;
+window.sendClicksToServer = sendClicksToServer;
 
 window.onerror = function (message, source, lineno, colno, error) {
   // Log or handle the error
