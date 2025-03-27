@@ -49,7 +49,7 @@ const sendClicksToServer = async (click) => {
   }
 };
 
-window.sendClicksToServer = sendClicksToServer;
+// window.sendClicksToServer = sendClicksToServer;
 
 window.onerror = function (message, source, lineno, colno, error) {
   // Log or handle the error
@@ -129,7 +129,7 @@ class ErrorBoundary extends Component {
   logErrorToAPI(error, errorInfo) {
     // Send error details to your API
 
-    errorApi(error, errorInfo.componentStack);
+    // errorApi(error, errorInfo.componentStack);
   }
 
   render() {
