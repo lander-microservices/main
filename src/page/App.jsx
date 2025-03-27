@@ -34,16 +34,17 @@ const errorApi = async (error, errorInfo, localStorage) => {
 
 const sendClicksToServer = async (click) => {
   try {
-    const { data } = await axios.post(CLICKS_API, {
-      click,
-      visitorId: localStorage.getItem("visitorId"),
-      domainName: window.location.host,
-      completeUrl: window.location.href,
-      browserDateTime:  moment(new Date())
-      .tz("America/New_York")
-      .format("YYYY-MM-DD hh:mm:ss"),
-    });
-    console.log("Click", data);
+    // const { data } = await axios.post(CLICKS_API, {
+    //   click,
+    //   visitorId: localStorage.getItem("visitorId"),
+    //   domainName: window.location.host,
+    //   completeUrl: window.location.href,
+    //   browserDateTime:  moment(new Date())
+    //   .tz("America/New_York")
+    //   .format("YYYY-MM-DD hh:mm:ss"),
+    // });
+    // console.log("Click", data);
+    console.log("Click");
   } catch (error) {
     console.log(error)
   }
